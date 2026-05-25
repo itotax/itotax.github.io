@@ -1,0 +1,72 @@
+[
+	{
+    "date": "2026-05-17",
+    "tag": "paper",
+    "bibkey": "gao2026kdd",
+    "ja": "論文採択：Tianyou Gao and Takayuki Ito. On Optimizing Route-Responsive Urban Tree Placement in City-Scale Pedestrian Networks. In Proceedings of the 32nd ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD), 2026. August 9-13, 2026. Jeju, Korea. (accepted!)",
+    "en": "Paper Accepted: Tianyou Gao and Takayuki Ito. On Optimizing Route-Responsive Urban Tree Placement in City-Scale Pedestrian Networks. In Proceedings of the 32nd ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD), 2026. August 9-13, 2026. Jeju, Korea. (accepted!)"
+  },
+	{
+    "date": "2026-05-01",
+    "tag": "paper",
+    "ja": "論文採択：Zengqing Wu and Run Peng and Takayuki Ito and Makoto Onizuka and Chuan Xiao, {LLM}-Based Social Simulations Require a Boundary, Forty-third International Conference on Machine Learning (ICML2026), Position Paper Track, 2026",
+    "en": "Zengqing Wu and Run Peng and Takayuki Ito and Makoto Onizuka and Chuan Xiao, {LLM}-Based Social Simulations Require a Boundary, Forty-third International Conference on Machine Learning (ICML2026), Position Paper Track, 2026"
+  },
+  {
+    "date": "2026-05-01",
+    "tag": "paper",
+    "ja": "論文採択：Antonio J. Romero-Barrera and Alvaro Paricio-Garcia and Miguel A. Lopez-Carmona and Takayuki Ito, Robust Optimization for Wind-BESS Trading Under Meteorological and Market Uncertainty Using Wake Model Ensembles and Gaussian Copulas, 2026 ISIE – 35th IEEE International Symposium on Industrial Electronics, 2026",
+    "en": "Paper Accepted: Antonio J. Romero-Barrera and Alvaro Paricio-Garcia and Miguel A. Lopez-Carmona and Takayuki Ito, Robust Optimization for Wind-BESS Trading Under Meteorological and Market Uncertainty Using Wake Model Ensembles and Gaussian Copulas, 2026 ISIE – 35th IEEE International Symposium on Industrial Electronics, 2026"
+  },
+  {
+    "date": "2026-04-17",
+    "tag": "paper",
+    "ja": "論文採択：Romero-Barrera et al., \"Gradient-Based Power Strategies for Battery Energy Storage Systems,\" <em>2026 CPE-PowerEng</em>、中国・寧波",
+    "en": "Paper accepted: Romero-Barrera et al., \"Gradient-Based Power Strategies for Battery Energy Storage Systems,\" <em>2026 CPE-PowerEng</em>, Ningbo, China."
+  },
+  {
+    "date": "2026-04-13",
+    "tag": "paper",
+    "ja": "論文採択：Okuhara &amp; Ito, \"Generative Negotiation for Creative Agreements in Multi-Agent Systems,\" <em>HHAI 2026</em>、ブリュッセル",
+    "en": "Paper accepted: Okuhara &amp; Ito, \"Generative Negotiation for Creative Agreements in Multi-Agent Systems,\" <em>HHAI 2026</em>, Brussels, Belgium."
+  },
+  {
+    "date": "2026-04-09",
+    "tag": "paper",
+    "ja": "論文採択：小西ら、\"Preference Estimation via Opponent Modeling in Multi-Agent Negotiation\"、<strong>ACL 2026</strong>（Findings）、カリフォルニア州サンディエゴ",
+    "en": "Paper accepted: Konishi et al., \"Preference Estimation via Opponent Modeling in Multi-Agent Negotiation,\" <strong>ACL 2026</strong> (Findings), San Diego, CA."
+  },
+  {
+    "date": "2026-04-07",
+    "tag": "award",
+    "ja": "🏆 <strong>令和8年度 文部科学大臣表彰 科学技術賞（研究部門）</strong>を受賞しました（伊藤孝行・Rafik Hadfi・Sofia Sahab）。",
+    "en": "🏆 Received <strong>Prizes for Science and Technology (Research Category)</strong> from the Minister of MEXT for \"Study on Consensus Support Systems based on AI Agents.\"",
+    "link": "https://www.kyoto-u.ac.jp/ja/news/2026-04-08-2",
+    "link_ja": "京都大学ニュース →",
+    "link_en": "KU News →"
+  },
+  {
+    "date": "2026-03-27",
+    "tag": "paper",
+    "ja": "論文採択：Dong &amp; Ito, \"From Consensus Theory to LLM Agents: Practical Consensus-Building for Multi-Issue Negotiation,\" <em>Expert Systems with Applications</em>（IF=7.5、JCR Q1）",
+    "en": "Paper accepted: Dong &amp; Ito, \"From Consensus Theory to LLM Agents,\" <em>Expert Systems with Applications</em> (IF=7.5, JCR Q1)."
+  },
+  {
+    "date": "2026-02-24",
+    "tag": "paper",
+    "ja": "論文採択：Si &amp; Ito, \"Adaptive conformity promotes cooperation within structured populations,\" <em>Chaos: An Interdisciplinary Journal of Nonlinear Science</em>（AIP、IF=3.2、JCR Q1）",
+    "en": "Paper accepted: Si &amp; Ito, \"Adaptive conformity promotes cooperation within structured populations,\" <em>Chaos</em> (AIP, IF=3.2, JCR Q1)."
+  },
+  {
+    "date": "2026-02-23",
+    "tag": "paper",
+    "ja": "論文採択：Dong &amp; Ito, \"Multi-agent Systems and Credibility-based Advanced Scoring Mechanism in Fact-checking,\" <em>Scientific Reports</em>（JCR Q1）",
+    "en": "Paper accepted: Dong &amp; Ito, \"Multi-agent Systems and Credibility-based Advanced Scoring Mechanism in Fact-checking,\" <em>Scientific Reports</em> (JCR Q1)."
+  },
+  {
+    "date": "2026-01-19",
+    "tag": "paper",
+    "ja": "論文採択：Haqbeen, Sahab &amp; Ito, \"Facilitating Student Engagement and Learning Outcomes with GPT-based Chatbots\"、<em>IEICE Journal</em> 特集号",
+    "en": "Paper accepted: Haqbeen, Sahab &amp; Ito, \"Facilitating Student Engagement … with GPT-based Chatbots,\" <em>IEICE Journal</em>, Special Issue on ICT for a Hyperconnected Society."
+  }
+]

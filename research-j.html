@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta name="generator" content="Adobe GoLive 6">
+
+
+
+
+  
+  
+  
+  
+  <title>Research Summary in Japanese</title>
+  <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-172238-3";
+urchinTracker();
+</script>
+</head>
+
+	<body style="background-color: rgb(255, 255, 255);">
+		<div style="text-align: center;">
+			<h1>最近の主な研究成果の概略</h1>
+			<h2>伊藤孝行</h2>
+			<h2>2009年8月7日</h2>
+		</div>
+		<p><br>
+		これまでの主な研究成果は以下の３つのテーマに分類される．<br>
+		&nbsp;<a href="#thema1">１． 計算論的メカニズムデザイン</a><br>
+		<a href="#thema2">&nbsp;２． マルチエージェントの合意形成メカニズム</a><br>
+	<a href="#thema3">&nbsp;３． 電子商取引システムの構築とその要素技術の産業応用手法</a><br>
+&nbsp;以下，各テーマについて詳述する．論文等のお問い合わせは ito.takayuki at nitech.ac.jpにお願い致します．<br>
+		  <br>
+		  <span style="text-decoration: underline; font-weight: bold;"><a name="thema1"></a>&nbsp;１． 計算論的メカニズムデザインとオークション</span><br>
+&nbsp;計算論的メカニズムデザインの分野は，情報学の観点から経済学，特にミクロ経済学，ゲーム理論，メカニズムデザインといった分野を研究するこ とを目的とした新しい分野である．伝統的な経済学では，解概念や均衡概念は多くあるものの，その計算アルゴリズムに基づく解析が欠けていた．また，近年の インターネットや情報財に基づく商取引は，新たな経済学的解析が必要になっている． </p>
+	<p>　計算論的メカニズムデザインは，<u>プライベート情報や選好を持つ複数の主体間の望ましい相互作用の解析という観点</u>（数理経済学やゲーム理論の観点）と，<u>分散された情報システムによる計算効率性とアルゴリズムの解析という観点</u>（情報科学やマルチエージェントシステムの観点）によって，全く新しい社会的システムとメカニズムを実現する研究分野である．</p>
+		<p>　ここでは各主体にとって<u>真実の申告が最良になるメカニズム</u>の設計が主な課題である．すなわち，不正ができない（しにくい）メカニズムを設計することで，超広域ネットワーク上で<u>頑健かつ安定的に</u>運用することを目標とする．応用としては eBayの評判システムと競上げ式オークションから成る電子マーケット, 第２価格オークションに基づくGoogle電子広告メカニズム，米国連邦航空局の空港離発着計画メカニズムなどがある．</p>
+		<p>　私は，主に以下の３つのテーマに関して研究を進めている．<br>
+		</p>
+		<p></p>
+		<p>【&nbsp;<span style="text-decoration: underline;">相互依存価値に基づくオークションメカニズム</span>】<br>
+			エージェントが相互依存価値を持つ場合のオークションメカニズムに注目している．相互依存価値の仮定の元では，ある財に対するあるエージェントの価値が他 のエージェントのプライベートな価値（シグナル）に依存することを言う．例えば，高級なワインのオークションを考える．ある入札者は，同じようなワインを 試飲したことがあったり，他の人からの評価を聞いていたりする．一方，全くそのワインに関して情報のない入札者も存在し得る．このような状況下で Efficientなオークションを具体的に構築し，利益を最大化する方式を提案している． 　経済学の分野では，相互依存価値に基づくEfficientなオークションに関して様々な研究が行われているが，シグナルが多次元になると極めてネガ ティブな結果しか得られていない．そこで，まず最初のステップとしてシグナルが単一次元の場合のオークションを構築している．</p>
+		<p>特にDagupta&amp;Maskinによって提案されている条件付き入札モデルを用いる．Dasgupta&amp;Maskinでは， Efficientなオークションが構築されうる一般的な条件は示されているが，具体的にエージェントの価値の定式化や，価格の最大化に関しては議論され ていない．そこで，本研究では，エージェントの価値モデルとして線形モデルを用い，その上で，留保価格に基づく価格の最大化アルゴリズムを提案している． </p>
+		<p>さらに，近年，オンラインの環境における相互依存価値オークションについて分析を進め，いくつかの（ネガティブな）結果を得ている．</p>
+		<p>本テーマは，米国ハーバード大学との共同研究であり，国際的に最も質の高い会議の一つである自律エージェントとマルチエージェントに関する国際合同会議 AAMAS2006に採録され，最優秀論文賞を受賞しているなど，高い評価を得ている．</p>
+		<ul>
+			<li>Florin Constantin, David Parkes, Takayuki Ito, &quot; Online auctions for bidders with interdependent values&quot;, In the Proceedings of the Sixth International Joint Conference on Autonomous Agents and Multi-Agent Systems (AAMAS2007), 2007 (Poster).
+			<li>伊藤孝行，David C. Parkes，&quot;相互依存価値モデルに基づく不確定入札を用いた真実申告最良な組合せオークションの実現&quot;，電子情報通信学会論文誌D-I, 電子情報通信学会, 2007 (採録済)
+			<li>伊藤孝行，David C. Parkes，&quot;不確定入札に基づく真実申告最良な相互依存価値オークション&quot;，電子情報通信学会論文誌D-I, 電子情報通信学会, 2007(採録済)
+			<li>Takayuki Ito, David Parkes, &quot; Instantiating the Contingent Bids Model of Truthful Interdependent Value Auctions&quot;, In the Proceedings of the Fifth International Joint Conference on Autonomous Agents and Multi-Agent Systems (AAMAS2006), 2006.（Best Paper Award）
+		</ul>
+		<p></p>
+		<p>【<span style="text-decoration: underline;">専門家と素人が存在する場合のオークションメカニズム</span>】　<br>
+			インターネット上のオークションでは，不特定多数の人間が商品(財)を販売しており，商品の質を正確に見極めるのは困難である．例えば，骨董品が売られて いたとしても，その骨董品が本物であるか偽物であるかを見極めることは難しい．もし買い手が，偽物の骨董品を高い値段で購入してしまった場合，買い手はこ のオークションによって損害を被る．一方，損害を被ることを避けようとして，消極的な入札を行うと，本来ならば，落札できていた骨董品が得られなくなる可 能性が生じる．これは，オークションプロトコルが，財の効率的な配分に失敗していることを意味する． 　そこで，我々はまず専門家に自然の選択に関する情報を正しく申告させることによって，パレート効率的な配分を実現し，かつ，合理的な参加者が損害を被ら ないような(1)単一財のオークションおよび(2)単一財に興味を持つ専門家が存在する場合の複数財組み合わせオークションの設計に成功した．(1)と (2)の内容は国際的に最も質の高い会議の一つである自律エージェントとマルチエージェントに関する国際会議AAMAS2002及びAAMAS2003に 採録されている．また(1)の内容は日本ソフトウェア科学会の論文賞を受賞している． 　<br>
+			<br>
+			さらに我々は，多様な興味を持つ専門家と素人が存在する場合の組合わせオークションプロトコルを設計した．多様な興味を持つ専門家は複数の財に興味と専門 知識を持つ．筆者らはこれまでに多様な興味を持つ専門家を仮定する場合，VCGスタイルのオークションプロトコルでは，ただ乗り問題に起因する問題が発生 することを指摘した．そこで，本論文ではPORFプロトコルを用いることで，以下の特長を持つ新しいプロトコルを提案した：(1)専門家にとって真の申告 が支配戦略である．(2)素人にとって複数の専門家が支配戦略を取るなら真の申告が最適反応戦略である．(3)架空名義入札不可能性を満たす．さらに本論 文ではVCGと提案プロトコルの社会的余剰の差が十分に小さいことを示した．また，パレート効率的な割当てを保証しながら複数の専門家がすべての財に対し て存在する時でも専門家にとって戦略的操作不可能性を満たすプロトコルは存在しないことを示した．さらに，我々が設計した初期の非対称オークションプロト コルを，上界値を使う必要のないプロトコルとして再設計することに成功した．本内容は国際的に最も質の高い会議の一つである自律エージェントとマルチエー ジェントに関するAAMAS2004に採録されている．</p>
+		<ul>
+			<li>&nbsp;Takayuki Ito, Makoto Yokoo, and Shigeo Matsubara, &quot;A Combinatorial Auction among Versatile Experts and Amateurs&quot; In the Proceedings of the Third International Joint Conference on Autonomous Agents and Multi-Agent Systems (AAMAS2004), 2004.
+			<li>Takayuki Ito, Makoto Yokoo, and Shigeo Matsubara, &quot;Towards a Combinatorial Auction Protocol among Experts and Amateurs: The Case of Single-Skilled Experts,&quot; In the Proceedings of the Second International Joint Conference on Autonomous Agents and Multi-Agent Systems (AAMAS2003), pp.481-488, 2003.
+			<li>Takayuki Ito, Makoto Yokoo, and Shigeo Matsubara, &quot;Designing an Auction Protocol under Asymmetric Information on Nature's Selection,&quot; In the Proceedings of the International Joint Conference on Autonomous Agents and Multi-Agent Systems (AAMAS2002), Bologna, Italy, July 15-19, pp.61-68, 2002.
+		</ul>
+		<p></p>
+		<p><a name="thema2"></a><span style="font-weight: bold; text-decoration: underline;">２． マルチエージェントの合意形成メカニズム</span><br>
+			&nbsp;本テーマでは，主に合意形成メカニズムを提案している．ゲーム理論で言えば，バーゲニングの部分を扱っている．一般に交渉において当事者同士 が協力ゲーム的な状況であっても，互いにより良い妥結点を求めて，競争的に交渉を行う必要がある．そのような状況におけるエージェント間の交渉・合意形成 メカニズムを提案している．</p>
+		<p>【<span style="text-decoration: underline;">非線形な多属性効用に基づくエージェント間の交渉メカニズム</span>】<br>
+			実世界の交渉で合意に達するためは複数の互いに依存する問題に関して合意を得る必要がある．既存の交渉メカニズムの研究の多くは，単一の問題に関するもの が多い．本研究では，より一般的な上のような，複数の相互に依存する問題に関して合意を得るモデルを考える．複数の相互に依存する問題に対するエージェン トの効用は多属性効用として表すことができる．ここでは，各属性を各問題に対する効用とする．多属性効用に基づく交渉メカニズムの研究では，一般に多属性 効用を線形かそれに近い形の式にマッピングすることによって，実際は非常に単純な効用関数を扱っている．しかし，実世界では，複数の相互に依存する問題に 対する多属性効用がシンプルな線形関数として表すことができるとは考えにくい．我々は，多属性効用を非線形な関数として与えた上で，より望ましい合意を得 るためのエージェント間の交渉手法を提案している． 　</p>
+		<p>以上のモデルの上で実現すべき点は次の２点である．（A）まず，パレート最適な合意点を見つける探索問題．（B）パレート最適な合意点に達するための競争 的なエージェントが従うべき交渉ルールの実現． （A）の探索手法は，多目的最適化手法と呼ばれ，ORの分野で広く扱われている．我々は，シミュレーテッドアニーリングや，Evolutionary Computingの手法を採用することによって，近似的な解を高速に見つける方法を提案している． （B）の本研究で提案する交渉方式は，特に，問題間の制約に注目することによって，制約に関してエージェントが交渉し，最終的な合意はある範囲の解が得ら れるという特長を持つ．既存の提案手法では，解に関して交渉するため，最終的な合意もある一点の解でしかなかったのである．また，オークションのアイデア を取り入れることによって，n人のエージェントでも対応可能となっている．本内容は，国際的に質の高い国際合同会議AAMAS2006，AAAI2006，IJCAI2007, IJCAI2009に採録されているなど，高い評価を得ている．<br>
+		</p>
+		<ul>
+			<li>Takayuki Ito, Mark Klein, Hiromitsu Hattori, &quot;Multi-issue Negotiation Protocol for Agents: Exploring Nonlinear Utility Spaces&quot;, In the Twentieth International Joint Conference on Artificial Intelligence (IJCAI2007), Hyderabad, India, January 6-12, 2007 (full paper, poster presentation, accepted).
+			<li>服部宏充，伊藤孝行，Mark Klein，&quot;非線形効用関数を持つエージェントのためのオークションに基づく交渉プロトコル&quot;，電子情報通信学会論文誌D-I, 電子情報通信学会, VOl. J89-D, No. 12, pp.2648-2660, 2006.
+			<li>Takayuki Ito, Mark Klein, Hiromitsu Hattori, &quot;A Negotiation Protocol for Agents with Nonlinear Utility Functions&quot;, In the 21st National Conference on Artificial Intelligence (AAAI2006), Boston, July 16-20, 2006 (poster abstract)
+			<li>Takayuki Ito, Mark Klein, &quot;A Multi-Issue Negotiation Protocol among Competitive Agents based on Auctions&quot;, In the Proceedings of the Fifth International Joint Conference on Autonomous Agents and Multi-Agent Systems (AAMAS2006), 2006.&nbsp;
+			<li>服部宏充 ，伊藤孝行 ，Mark Klein，非線形効用関数を持つエージェントの入札に基づく交渉プロトコル，Joint Agent Workshop &amp; Symposium (JAWS2006), 2006(最優秀論文賞にノミネート）<br>
+			
+		</ul>
+		<p></p>
+		<p>【<span style="text-decoration: underline;">説得や多重交渉に基づくエージェント間の合意形成メカニズム</span>】<br>
+			&nbsp;実世界の合意形成では，人間同士が説得したり妥協したりして，合意を得ることがある．本研究では，合意形成支援グループウェアにおいて，人間 の代理として振る舞うエージェントが合意形成を行うための方法として説得メカニズムを提案している．ここでは，エージェントの信念はAHP (Analytic Hierarchy Process)によって表現される．AHPを用いることによって，ユーザは，グループの意思決定問題に対する自分の問題分析と代替案の重み付けを実現す ることができる．エージェントは，説得メカニズムにおいて，人間の曖昧な判断値を用いて，AHPの重み付けを調整することによって，信念の翻意を行う．代 替案の重み付けを変更することができれば，説得が成功したと定義する．説得により，グループ意思決定支援システムにおいて効果的に意思決定が促進される． 説得メカニズムを拡張し，ソフトウェアエージェントが，自ら自分のクローンを複数生成し，可能な交渉プロセスをすべて実行し，すべての可能な交渉過程を概 観するという多重交渉も提案している．本内容は，国際的に最も質の高い会議の一つである人工知能に関する国際合同会議IJCAI1997に採録されている など，高い評価を得ている．</p>
+		<ul>
+			<li>Takayuki Ito and Toramatsu Shintani.: ``Persuasion among Agents : An Approach to Implementing a Group Decision Support System Based on Multi-Agent Negotiation'', In the Proceedings of the 15th International Joint Conference on Artificial Intelligence (IJCAI-97), pp.592-597, Morgan Kaufmann Publishers, Inc., 1997.
+		</ul>
+		<p></p>
+		<p><a name="thema3"></a><span style="text-decoration: underline; font-weight: bold;">３． 電子商取引応用システムの構築</span><br>
+			&nbsp;本テーマでは，上記１．及び２．の理論や，その他の知見を統合した上で電子商取引システムの開発実装を行っている．特に本テーマの研究成果を活用して，規模の大きめのビジネス展開も想定しており，実世界にて実用性を追求している．</p>
+		<p><strong><u>【SearchTheoryに基づくShopBot(商品比較エージェント)の大規模化】</u></strong></p>
+		<p>電子商取引においてShopBot(商品比較エージェント)が現実的に使われるようになっている．例えば，PriceScan.com，Shopping.com，MySimon.comなどがある．これらのサイトは消費者に対して，ある商品に対する価格の比較情報を提供する．これらのShopBotは大量のアクセスを極めて短時間で，限られた資源を用いて受けつける必要がある．ここでは，ShopBotのスケールアップを実現するために，経済学のサーチ理論を用いた，動的タスクアロケーションメカニズムを提案している．本研究は，ハーバード大学およびバーレーン大学との共同研究である．</p>
+		<p>David Sarne, Sarit Kraus, Takayuki Ito, &quot;Scaling-Up Shopbots - a Dynamic Allocation-Based Approach&quot;, In the Proceedings of the Sixth International Joint Conference on Autonomous Agents and Multi-Agent Systems (AAMAS2007), 2007.(Full)</p>
+		<p></p>
+		<p><span style="font-weight: bold; text-decoration: underline;">【実時間大規模電子商取引支援，実時間２サイドマッチング】</span><br>
+		</p>
+		<p>（実時間大規模電子商取引支援）本研究では10,000〜100,000を超えるような多数の入札がある組み合わせオークションに対して，勝者決定の近似解法を提案し，その特性を評価する．提案アルゴリズムでは，従来手法のLehmannアルゴリズムにおける入札ソート順位の決定因子に着目し，さらに山登り法およびシミュレーテッドアニーリング(SA)による解の洗練を行うことで，安定して高い最適性を持った解を得る．入札数が1000程度の場合に，本提案手法では最適解に対して平均して0.997程度の総落札額が得られる解を見つけられることを示す．さらに，従来の最適解探索手法と比較して十分に高速に動作し，10,000を超える入札数を持つオークションに対して数秒(入札数10,000)から数分程度(入札数100,000)の実用的な時間で計算が行えることを示す．本近似解法の限界点の１つとして，本近似解法を用いた組み合わせオークションが一般には真実申告最良とはならないことを，Monotonicityという条件が成り立たないことから示す．一方で，真実申告最良とはならないものの，本近似解法の一部では，解探索の過程におけるランダム性を排除し順序性を保存することで，近似解に対して特定の好ましい性質を満たすことを示した．</p>
+		<ul>
+			<li>Naoki Fukuta and Takayuki Ito, &quot;Towards Better Approximation of Winner Determination for Combinatorial Auctions with Large Number of Bids&quot;, In the Proceeding of 2006 IEEE/WIC/ACM International Joing Conference on Web Intelligence and Intelligent Agent Technology (IAT2006), 2006 (short paper; to appear).
+		</ul>
+		<p>（実時間２サイドマッチング）エージェントがダイナミックに市場に入ってきたり出て行ったりする場面で，望ましいマッチングを実時間で行うというテーマ．現在のインターネット広告市場 などが，主な具体例である．ゲーム理論の分野では，two-sided matchingと呼ばれる分野もあり，今後，理論的にも，システムとしても興味深い分野である．<br>
+		</p>
+		<ul>
+			<li>Masaki Hyoudo, Tokuro Matsuo, and Takayuki Ito, &quot;An Optimal Coalition Formation Among Buyer Agents Based on a Genetic Algorithm&quot;, In the Proceedings of the 16th International Conference on Industrial and Engineering Applications of Artificial Intelligence and Expert Systems (IEA/AIE-2003), Loughborough, United Kingdom, June 23-26, pp.369-378, 2003 (Lecture Notes in Artificial Intelligence (LNAI 2718), Springer).
+			<li>Takayuki Ito, Hiroyuki Ochi, and Toramatsu Shintani,: ``A Group Buy Protocol based on Coalition Formation for Agent-mediated E-Commerce,'' in the International Journal of Computer and Information Science( IJCIS), Vol. 3, No. 1, pp.11-20, 2002 (a selected paper in SNPD01).（極めて初期の論文で，おもむきは多少異なるが，発想の一部は本論文にもある）
+		</ul>
+		<p>
+		</p>
+		<p>【<span style="text-decoration: underline;">電子商取引支援システムBiddingBot</span>】<br>
+			近年のインターネットの普及により，ネットワーク上で商取引を行う電子商取引が目を集めている．インターネット上の電子商取引の形態として，オンライン オークションが急速に普及している．インターネット上には，複数のオークションサイトが存在しているために，同じ商品が異なるサイトで取引されていること がある．なるべく安く商品を落札できるように複数のオークションサイトへ入札することは，人間にとっては大きな負担であると考えられる．そこで本研究で は，協調的なエージェントが人間の代理となって，複数のオークションサイトに対する入札を支援するシステムBiddingBot を提案する．さらに，BiddingBotのためのエージェント間の協調的入札機構を提案する．エージェントとは自律的かつ協調的にネットワーク上でユー ザの代理として行動するソフトウェアである．<br>
+			<br>
+			協調的入札機構に関する実験から，本協調的入札機構に関して以下の二つの知見が得られた．(1)オークションサイトが増加すればするほど，本協調的入札機 構は，より短い時間でより安い落札価格で商品を落札可能であること．(2) 効用関数に関しては，リスク回避型の効用関数が，リスク嗜好型よりも，短時間，かつ安価で商品を落札可能であること．BiddingBot の特長は以下の3 点である．(A) 提案した協調的入札機構により，複数のオークションに対して，ユーザの希望する価格の範囲でなるべく安価で，唯一，一つの商品を，落札することを支援でき る．(B)Yahoo! AuctionsやeBay といった即時購入機構を持つオークションサイトを含んだ場合も効果的に入札の支援を実行できる．(C)ユーザが指定したオークションサイト以外のオーク ションサイトからも商品情報を検索することによって，入札が少ない，または全くない，商品を検索することができる．<br>
+			<br>
+			&nbsp;伊藤孝行, 服部宏充, 新谷虎松: ``エージェント間の協調的入札機構に基づく複数オークション入札支援システムBiddingBot&quot;,人工知能学会論文誌, 人工知能学会, pp.247-258, Vol. 17, No. 3, 2002.<br>
+			<br>
+			<br>
+		</p>
+		<h3>その他の研究，過去の研究，興味など</h3>
+		以上のような研究成果以外にも，いろいろ試みている．この辺は，機会があったらいつでもチャレンジしたいテーマである．<br>
+		<br>
+		<span style="font-weight: bold; text-decoration: underline;">【センサーネットワーク，確率推論を用いた実システム】</span><br>
+		ベイジアンネットワークを用いた確率推論は実システムに向いていると考えている．計算コストが大きいのは確かだが，とりあえず近似アルゴリズムなどを用い ればそれなりの解が得られる．センサーネットワークは，その応用に最も適していると考え，確率推論を用いて，センサーネットワークによって，ある人物が次 の瞬間にどこに行くかを予測するシステムを実際に稼働させた．北陸先端知識科学センターの類い稀な先端設備を利用させて頂いた結果が下記の論文である．初 めての学生の修士論文で，いろいろと焦った部分もあるので，今後チャンスがあれば洗練化したいと思っている．<br>
+		<br>
+		伊藤孝行，大栗和久，&rdquo;確率推論に基づく位置情報推定システムの実現&rdquo;，情報処理学会論文誌，情報処理学会，Vol. 45, No.12, pp.2792-2804, 2004．<br>
+		<p></p>
+		<p>【<span style="text-decoration: underline;">オークションでの不正行為を防ぐメカニズム</span>】　<br>
+			オークションでは，古来からの談合などの不正行為，また近年のインターネット上での架空名義入札による詐欺などの問題点が指摘されておいる．特にインター ネット上でオークションが盛んに行われている現在，詐欺や談合を防ぐためのメカニズムを構築することが緊急の課題である．伝統的な経済学の分野でさえ問題 意識を持ちながら，明確な答えを示していない，オープンプロブレムである． 　その第一歩として，本研究では，まず組み合わせオークションにおける架空名義入札者の発見および財の割り当て手法を提案している．<br>
+			<br>
+			Vickrey- Clarke-Groves (VCG)メカニズムは，誘因両立性およびPareto 効率性が満たされるプロトコルであるため，最も重要な組み合わせオークションプロトコルである．ただし，VCGメカニズムが架空名義入札や談合に頑健でないことは良く指摘されている．また例えば，横尾らは架空名義入札に頑健な組み合わせ オークションプロトコルにおいて，誘因両立性，Pareto 効率性，個人合理性の３つの好ましい特長を有しているプロトコルが存在しないことを示している．本研究では，架空名義入札に対する新たなアプローチとし て，VCG において架空名義入札者を発見するメカニズムを提案し，新規に架空名義入札が存在する際の財の割り当て法を提案する．提案するメカニズムはVCG における手続きの結果から架空名義入札者として疑わしい入札者を判定する．架空名義入札に関しては，それに関わる入札者は全員が勝者にならなければ効用が 増加できないことを証明する．本定理に基づき，架空名義入札者を仮想的に除外して除外した入札者以外の入札者の効用を計算し，除外しない場合の効用と比較 する．この際に，効用に変化のある入札者が架空名義入札者としてリストアップされる．これらの架空名義入札者を一グループとして財はセットでグループに割 り当てることを許す．これは，売り手の収入の減少と架空名義入札者の不当な効用の増加を防ぐことを実現している．本内容は，国際的に最も質の高い会議の一 つである自律エージェントとマルチエージェントに関する国際合同会議AAMAS2006に採録されているなど，高い評価を得ている．<br>
+			<br>
+			&nbsp;Tokuro Matsuo, Takayuki Ito, Robert Day, Toramatsu Shintani &quot;A Robust Combinatorial Auction Mechanism against Shill Bidders&quot;, In the Proceedings of the Fifth International Joint Conference on Autonomous Agents and Multi-Agent Systems (AAMAS2006), 2006.<br>
+		</p>
+		<p></p>
+		<p>【<span style="text-decoration: underline;">インセンティブに基づく情報共有システム</span>】<br>
+			現在，World Wide Web（WWW）は，最も広く世界で利用されている情報共有システムの一つである．WWWの文書はHTMLに基づいて簡単に構造化されており，表現形式は 統一されている．また，XMLの登場により，文書の表現形式だけだなく，文の意味を定義したタグによって，文書に意味を与えることが可能となった．WWW を計算機で効果的に利用するためのSemantic Webは，XMLに基づく意味付け言語やオントロジーを利用することによって，文書の意味までも共有する仕組みを構築することを主目的とする研究テーマで ある． 　<br>
+			<br>
+			ここでの既存の問題は，WWWでもSemantic Webでも，情報を提供するにはコストがかかるため，なんらかのインセンティブがなければ，情報の提供は促進されないことである．WWWにおける表現形式 や意味付けの方法がいくら高度に洗練されていても，情報を提供することの負担が大きければ，質の良い情報の共有は期待できない．そこで本プロジェクトで は，ユーザに情報を提供するインセンティブを与えることによって，質の良い情報の提供を促進する． 　直感的にはユーザに具体的な報酬を与えることによって，インセンティブを与えるという方法もある．しかしソフトウェアシステムとして具体的な報酬をユー ザに与えるのは現実的ではない．そこで，ここでは，報酬ではなく，具体的なサービスを提供することによってユーザに情報を提供するインセンティブを与え る．ユーザのインセンティブとなり得るサービスは，ユーザの好み，立場，状況等によって変化する．本プロジェクトでは，ユーザの行動履歴に基づいて具体的 なサービスを特定し，ユーザに提示する仕組みを構築する． 　ここでのサービスの実現のためには，動的に変化するユーザの状況に適応する必要があり，単なる情報や知識だけではなく，情報や知識に基づいて計算・推論 するメカニズムも必要である．本プロジェクトでは，情報や知識に加えて計算や推論を行うメカニズムを持つ実体を，知恵（Wisdom）と呼ぶ．サービスは 知恵の具体例である．本プロジェクトでは，インセンティブに基づく知識共有システムの構築を通して，WWWやSemantic Webを凌駕し知恵を共有するWisdom Webを実現することを目指す．本プロジェクトは，独立行政法人情報処理促進機構IPAの未踏ソフトウェア創造プロジェクトに2004年および2005年 の２年連続で採択されました．そして，その質の高さが認められ，スーパークリエータとして認定されました．</p>
+		<p></p>
+		<p>【<span style="text-decoration: underline;">直接編集が可能なウェブインターフェース</span>】<br>
+			&nbsp;近年のインターネットの汎用化とともに，WWWが急激に発展し，手軽に個人用Web ページをもつ人も増えてきている．Web ページの作成や編集を行う際，ユーザには様々な負担がかかる．例えば，HTML を記述しWeb ページを作成・編集する場合には，HTML やFTP に関する初心者にとって負担となる作業である．また，サーバからのファイルのダウンロード，アップロードといった一連の作業は，煩雑な作業で大きな負担で ある．一方，これらの負担を軽減できる，HTMLオーサリングツールなどもあるが，利用法を習得するための時間的コストは大きく，オーサリングツールを用 意しなければならないことも負担である．そこで我々は，どのようなウェブブラウザからでも，ページを直接，リロードすることなしに編集可能にする技術を開 発実装した．本技術は最近注目を集めているAJAX技術をさらに高度化したものである．また，本技術を応用した様々なアプリケーションを開発している．本 研究成果は，私の研究成果活用企業の事業に活用されており，特許，論文，学会賞，など多数を獲得している技術です．<br>
+		</p>
+		<p>
+		</p>
+		<p><span style="text-decoration: underline; font-weight: bold;">・計算論的分子生物学</span><br>
+			言うまでもなくチャレンジングなフィールド．<br>
+		</p>
+	</body>
+
+</html>

@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>難関国際会議とACM CIの論文 — 伊藤孝行</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0f2044;
+      --accent:  #2563eb;
+      --accent-light: #eff6ff;
+      --accent-mid:   #bfdbfe;
+      --text:    #1f2937;
+      --text-sec:#6b7280;
+      --bg:      #ffffff;
+      --bg-sec:  #f9fafb;
+      --border:  #e5e7eb;
+      --radius:  8px;
+      --shadow:  0 1px 3px rgba(0,0,0,.07);
+      --max-w:   960px;
+      --nav-h:   58px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Noto Sans JP', 'Inter', system-ui, sans-serif; color: var(--text); background: var(--bg); font-size: 15px; line-height: 1.8; -webkit-font-smoothing: antialiased; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Nav ── */
+    nav {
+      position: sticky; top: 0; z-index: 200;
+      height: var(--nav-h);
+      background: rgba(255,255,255,0.93);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: var(--max-w); margin: 0 auto;
+      padding: 0 1.5rem; height: 100%;
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .nav-back {
+      font-size: .82rem; font-weight: 700;
+      color: var(--primary); white-space: nowrap;
+      padding: .3rem .75rem; border-radius: 6px;
+      background: var(--accent-light); border: 1px solid var(--accent-mid);
+    }
+    .nav-back:hover { background: #dbeafe; text-decoration: none; }
+    .nav-title { font-weight: 600; font-size: .95rem; color: var(--primary); }
+    .nav-title span { font-weight: 400; color: var(--text-sec); font-size: .85rem; margin-left: .5rem; }
+    .lang-pill {
+      margin-left: auto;
+      display: inline-flex; border: 1px solid var(--border);
+      border-radius: 20px; overflow: hidden;
+    }
+    .lang-pill a {
+      font-size: .75rem; font-weight: 700;
+      padding: .22rem .6rem; color: var(--text-sec); transition: all .15s;
+    }
+    .lang-pill a.on { background: var(--accent); color: #fff; }
+    .lang-pill a:hover { text-decoration: none; }
+
+    .wrap { max-width: var(--max-w); margin: 0 auto; padding: 2.5rem 1.5rem 5rem; }
+
+    /* ── Header ── */
+    .page-header {
+      margin-bottom: 1.75rem; padding-bottom: 1.25rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .page-title {
+      font-size: 1.55rem; font-weight: 700; color: var(--primary);
+      margin-bottom: .45rem; line-height: 1.35;
+    }
+    .page-sub {
+      font-size: .88rem; color: var(--text-sec); line-height: 1.65;
+    }
+
+    /* ── Stats strip ── */
+    .stats {
+      display: flex; flex-wrap: wrap; gap: .55rem;
+      margin: 1rem 0 1.75rem;
+    }
+    .stat-pill {
+      display: inline-flex; align-items: center; gap: .4rem;
+      font-size: .78rem; font-weight: 600;
+      padding: .35rem .8rem; border-radius: 20px;
+      background: var(--accent-light); color: var(--primary);
+      border: 1px solid var(--accent-mid);
+    }
+    .stat-pill .num { font-weight: 700; color: var(--accent); }
+    .stat-pill.total { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+    .stat-pill.total .num { color: #b45309; }
+
+    /* ── Section ── */
+    .section { margin-bottom: 2.75rem; }
+    .section-head {
+      display: flex; align-items: baseline; gap: .75rem; flex-wrap: wrap;
+      margin-bottom: 1rem; padding-bottom: .5rem;
+      border-bottom: 2px solid var(--accent);
+    }
+    .section-head h2 {
+      font-size: 1.25rem; font-weight: 700; color: var(--primary);
+      letter-spacing: .01em;
+    }
+    .section-head .count {
+      font-size: .8rem; color: var(--text-sec); font-weight: 500;
+    }
+    .section-head .desc {
+      flex: 1 1 100%; font-size: .82rem; color: var(--text-sec); margin-top: .25rem;
+    }
+
+    /* Entry */
+    .entry {
+      display: flex; gap: .9rem;
+      padding: .85rem .75rem;
+      border-radius: var(--radius);
+      margin-bottom: .35rem;
+      transition: background .12s;
+      border-left: 3px solid transparent;
+    }
+    .entry:hover { background: var(--bg-sec); border-left-color: var(--accent-mid); }
+    .entry-year {
+      flex-shrink: 0; width: 48px; padding-top: .2rem;
+      font-size: .82rem; font-weight: 700; color: var(--accent);
+      letter-spacing: .01em;
+    }
+    .entry-body { flex: 1; min-width: 0; }
+    .entry-title {
+      font-size: .94rem; font-weight: 600; color: var(--primary);
+      line-height: 1.5; margin-bottom: .3rem;
+    }
+    .entry-title .type-suffix {
+      font-size: .78rem; font-weight: 400; color: var(--text-sec);
+      margin-left: .4rem;
+    }
+    .entry-authors { font-size: .83rem; color: var(--text-sec); margin-bottom: .25rem; }
+    .entry-authors strong { color: var(--text); font-weight: 700; }
+    .entry-venue { font-size: .82rem; color: var(--text); font-style: italic; margin-bottom: .35rem; }
+    .entry-meta { display: flex; flex-wrap: wrap; gap: .35rem; align-items: center; }
+
+    .badge {
+      display: inline-flex; align-items: center; gap: .25rem;
+      font-size: .7rem; font-weight: 600;
+      padding: .18rem .55rem; border-radius: 20px;
+    }
+    .badge-award { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
+    .badge-rate  { background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; }
+    .badge-note  { background: #f1f5f9; color: #475569; border: 1px solid #e2e8f0; }
+    .badge-doi   { background: #eef2ff; color: #3730a3; border: 1px solid #c7d2fe;
+                   font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+                   font-size: .68rem; letter-spacing: .01em; max-width: 100%; }
+    .badge-doi a { color: inherit; text-decoration: none; }
+    .badge-doi:hover { background: #e0e7ff; border-color: #a5b4fc; }
+    .badge-url   { background: #f8fafc; color: #475569; border: 1px solid #e2e8f0; }
+    .badge-url a { color: inherit; text-decoration: none; }
+    .badge-url:hover { background: #f1f5f9; border-color: #cbd5e1; }
+    .badge-bib {
+      background: #f3f4f6; color: #374151; border: 1px solid #d1d5db;
+      cursor: pointer; font-family: inherit;
+    }
+    .badge-bib:hover { background: #e5e7eb; border-color: #9ca3af; }
+    .badge-bib.open  { background: #1e293b; color: #f1f5f9; border-color: #1e293b; }
+
+    /* ── BibTeX block ── */
+    .bib-block {
+      margin-top: .55rem;
+      background: #1e293b;
+      border-radius: 6px;
+      position: relative;
+    }
+    .bib-copy {
+      position: absolute; top: .45rem; right: .45rem;
+      background: rgba(255,255,255,.10); color: #e2e8f0;
+      border: 1px solid rgba(255,255,255,.20);
+      font-size: .7rem; font-weight: 600; font-family: inherit;
+      padding: .2rem .55rem; border-radius: 4px;
+      cursor: pointer; transition: background .12s;
+    }
+    .bib-copy:hover { background: rgba(255,255,255,.20); }
+    .bib-pre {
+      color: #e2e8f0;
+      font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+      font-size: .72rem; line-height: 1.55;
+      padding: .8rem 1rem; padding-right: 4.5rem;
+      overflow-x: auto; white-space: pre;
+      margin: 0;
+    }
+
+    /* Back to top */
+    #back-top {
+      position: fixed; bottom: 2rem; right: 1.5rem;
+      background: var(--accent); color: #fff;
+      width: 42px; height: 42px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; box-shadow: 0 4px 12px rgba(37,99,235,.35);
+      opacity: 0; transition: opacity .3s; z-index: 900;
+    }
+    #back-top.on { opacity: 1; }
+    #back-top:hover { background: #1d4ed8; text-decoration: none; }
+
+    /* TOC */
+    .toc {
+      display: flex; flex-wrap: wrap; gap: .4rem;
+      margin: 1rem 0 2rem;
+      padding: .8rem 1rem; background: var(--bg-sec);
+      border: 1px solid var(--border); border-radius: var(--radius);
+    }
+    .toc-label {
+      font-size: .75rem; font-weight: 700; color: var(--text-sec);
+      letter-spacing: .05em; align-self: center; margin-right: .25rem;
+    }
+    .toc a {
+      font-size: .78rem; font-weight: 600;
+      padding: .25rem .7rem; border-radius: 20px;
+      background: #fff; border: 1px solid var(--border);
+      color: var(--text); transition: all .15s;
+    }
+    .toc a:hover { background: var(--accent); color: #fff; border-color: var(--accent); text-decoration: none; }
+
+    .empty { text-align: center; padding: 4rem 1rem; color: var(--text-sec); }
+    .empty p { font-size: 1.05rem; margin-bottom: .35rem; }
+
+    @media (max-width: 600px) {
+      .entry-year { width: 40px; font-size: .75rem; }
+      .page-title { font-size: 1.3rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-back" href="index-j.html">← 伊藤孝行</a>
+    <span class="nav-title">難関国際会議とACM CIの論文 <span>伊藤孝行</span></span>
+    <div class="lang-pill">
+      <a href="publications-top-confs.html">EN</a>
+      <a href="publications-top-confs-j.html" class="on">JA</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <div class="page-header">
+    <div class="page-title">難関国際会議 (AAAI, IJCAI, AAMAS, ACL, EMNLP, ICML, KDD, SIGMOD 等) と ACM CI の論文</div>
+    <div class="page-sub">
+      人工知能・マルチエージェントシステム・自然言語処理・機械学習・データマイニング・データベース分野のトップ国際会議
+      (AAAI, IJCAI, AAMAS, ACL, EMNLP, ICML, KDD, SIGMOD) および
+      ACM Collective Intelligence (ACM CI) に採択された論文の一覧です。
+      フル論文・ショート・ポスター・デモ・Doctoral Consortium・Blue Sky Ideas を含みます (ワークショップは除く)。
+    </div>
+  </div>
+
+  <div id="stats" class="stats"></div>
+  <div id="toc" class="toc"></div>
+  <div id="sections"></div>
+
+</div>
+
+<a id="back-top" href="#">↑</a>
+
+<script>
+// ════════════════════════════════════════════════════════════
+//  BibTeX parser (same as publications-j.html)
+// ════════════════════════════════════════════════════════════
+function parseBibTeX(src) {
+  const entries = [];
+  src = src.replace(/^%.*$/gm, '');
+  const re = /@(\w+)\s*\{\s*([^,\s]+)\s*,/g;
+  let m;
+  while ((m = re.exec(src)) !== null) {
+    const type = m[1].toLowerCase();
+    if (['string','preamble','comment'].includes(type)) continue;
+    const key = m[2];
+    const start = m.index + m[0].length;
+    let depth = 1, i = start;
+    while (i < src.length && depth > 0) {
+      if (src[i] === '{') depth++;
+      else if (src[i] === '}') depth--;
+      i++;
+    }
+    const body = src.slice(start, i - 1);
+    const raw  = src.slice(m.index, i);
+    const entry = { _type: type, _key: key, _raw: raw };
+    const fre = /(\w+)\s*=\s*(?:\{((?:[^{}]|\{(?:[^{}]|\{[^{}]*\})*\})*)\}|"([^"]*)"|(\d+))/g;
+    let fm;
+    while ((fm = fre.exec(body)) !== null) {
+      const fname = fm[1].toLowerCase();
+      const fval = (fm[2] ?? fm[3] ?? fm[4] ?? '').trim();
+      entry[fname] = fval.replace(/\s+/g, ' ');
+    }
+    entries.push(entry);
+  }
+  return entries;
+}
+
+function cleanTeX(s) {
+  if (!s) return '';
+  return s
+    .replace(/\\&/g, '&').replace(/\\'/g, '\'').replace(/\\'(\w)/g, '$1')
+    .replace(/\{\\"\w\}/g, m => m[2]).replace(/\{([^}]+)\}/g, '$1')
+    .replace(/--/g, '–').replace(/~/g, ' ').replace(/\s+/g, ' ').trim();
+}
+
+function highlightMe(authors) {
+  return authors.replace(/(Takayuki Ito)/g, '<strong>$1</strong>');
+}
+
+function escapeHTML(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+let _bibSeq = 0;
+
+function toggleBib(id, btn) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const open = el.hidden;
+  el.hidden = !open;
+  if (btn) btn.classList.toggle('open', open);
+}
+
+async function copyBib(id, btn) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const text = el.querySelector('.bib-pre').textContent;
+  try {
+    await navigator.clipboard.writeText(text);
+  } catch(_) {
+    const r = document.createRange();
+    r.selectNodeContents(el.querySelector('.bib-pre'));
+    const sel = window.getSelection();
+    sel.removeAllRanges(); sel.addRange(r);
+    document.execCommand('copy');
+    sel.removeAllRanges();
+  }
+  const orig = btn.textContent;
+  btn.textContent = 'コピーしました!';
+  setTimeout(() => btn.textContent = orig, 1400);
+}
+
+// ════════════════════════════════════════════════════════════
+//  Venue classification
+// ════════════════════════════════════════════════════════════
+const VENUE_RULES = [
+  { id: 'aaai',  label: 'AAAI',
+    desc: 'AAAI Conference on Artificial Intelligence — 人工知能分野の最難関国際会議。',
+    test: b => /\bAAAI\b/i.test(b) },
+  { id: 'ijcai', label: 'IJCAI',
+    desc: 'International Joint Conference on Artificial Intelligence — 人工知能分野の最難関国際会議。',
+    test: b => /\bIJCAI\b/i.test(b) },
+  { id: 'aamas', label: 'AAMAS',
+    desc: 'International Conference on Autonomous Agents and Multi-Agent Systems — マルチエージェント分野の最難関国際会議。',
+    test: b => /\bAAMAS\b/i.test(b) || /Autonomous Agents and Multi/i.test(b) },
+  { id: 'acl',   label: 'ACL',
+    desc: 'Annual Meeting of the Association for Computational Linguistics — 自然言語処理分野の最難関国際会議。',
+    test: b => /\bACL\b/i.test(b) || /Association for Computational Linguistics/i.test(b) },
+  { id: 'emnlp', label: 'EMNLP',
+    desc: 'Conference on Empirical Methods in Natural Language Processing — 自然言語処理分野の最難関国際会議。',
+    test: b => /\bEMNLP\b/i.test(b) || /Empirical Methods in Natural Language Processing/i.test(b) },
+  { id: 'icml',  label: 'ICML',
+    desc: 'International Conference on Machine Learning — 機械学習分野の最難関国際会議。',
+    test: b => /\bICML\b/i.test(b) || /International Conference on Machine Learning/i.test(b) },
+  { id: 'kdd',   label: 'KDD',
+    desc: 'ACM SIGKDD Conference on Knowledge Discovery and Data Mining — データマイニング分野の最難関国際会議。',
+    test: b => /\bKDD\b/i.test(b) || /\bSIGKDD\b/i.test(b) || /Knowledge Discovery and Data Mining/i.test(b) },
+  { id: 'sigmod', label: 'SIGMOD',
+    desc: 'ACM SIGMOD/PODS Conference — データベース・データマネジメント分野の最難関国際会議。',
+    test: b => /\bSIGMOD\b/i.test(b) || /\bPODS\b/i.test(b) },
+  { id: 'ci',    label: 'ACM CI',
+    desc: 'ACM Collective Intelligence — 集合知・クラウドソーシング分野の主要国際会議。',
+    test: b => /Collective Intelligence/i.test(b) },
+];
+
+function classify(booktitle) {
+  if (!booktitle) return null;
+  if (/\bWorkshop\b/i.test(booktitle)) return null;
+  for (const r of VENUE_RULES) {
+    if (r.test(booktitle)) return r.id;
+  }
+  return null;
+}
+
+// ════════════════════════════════════════════════════════════
+//  Badge builder — extracts award / acceptance rate / paper type
+//  from `award` field, `note` field, and `booktitle` field.
+// ════════════════════════════════════════════════════════════
+function buildBadges(e) {
+  const badges = [];
+  const booktitle = cleanTeX(e.booktitle || '');
+  const noteRaw   = cleanTeX(e.note || '');
+
+  // 1. Award field
+  if (e.award) {
+    badges.push({ kind: 'award', text: '🏆 ' + cleanTeX(e.award) });
+  }
+
+  // 2. Parse note: extract acceptance rate, then handle remainder
+  let note = noteRaw;
+  // Strip leading date-only prefix (e.g., "2024.06.26-29")
+  note = note.replace(/^\d{4}[\.\/]\d{1,2}[\.\/]\d{1,2}(\-\d{1,2})?\s*,?\s*/, '').trim();
+  // Skip if note is just a date
+  if (/^\d{4}[\.\/]\d{1,2}[\.\/]\d{1,2}/.test(note)) note = '';
+
+  // Acceptance rate
+  const rateRe = /acceptance rate\s+([\d.]+\s*%(?:\s*\([^)]*\))?)/i;
+  const rateMatch = note.match(rateRe);
+  if (rateMatch) {
+    badges.push({ kind: 'rate', text: '採択率 ' + rateMatch[1].trim() });
+    note = note.replace(rateRe, '').replace(/^[,;\s]+|[,;\s]+$/g, '').trim();
+  }
+
+  // Featured oral presentation → award-style badge
+  if (/featured oral/i.test(note)) {
+    badges.push({ kind: 'award', text: '🏆 Featured Oral Presentation' });
+    note = note.replace(/accepted as a featured oral presentation/i, '').replace(/featured oral presentation/i, '').replace(/^[,;\s]+|[,;\s]+$/g, '').trim();
+  }
+
+  // Remainder of note (e.g., "Poster", "Short", "full paper, oral and poster presentation")
+  if (note) {
+    // Normalize common labels
+    let label = note;
+    if (/^poster$/i.test(label)) label = 'Poster';
+    else if (/^short$/i.test(label)) label = 'Short Paper';
+    else if (/^student poster$/i.test(label)) label = 'Student Poster';
+    else if (/^poster abstract$/i.test(label)) label = 'Poster Abstract';
+    else if (/^demonstration paper$/i.test(label)) label = 'Demonstration Paper';
+    else if (/^full$/i.test(label)) label = 'Full Paper';
+    // Capitalize first letter for readability
+    label = label.charAt(0).toUpperCase() + label.slice(1);
+    badges.push({ kind: 'note', text: label });
+  }
+
+  // 3. Booktitle-derived tags
+  if (/doctoral consortium/i.test(booktitle) && !badges.some(b => /doctoral/i.test(b.text))) {
+    badges.push({ kind: 'note', text: 'Doctoral Consortium' });
+  }
+  if (/blue sky/i.test(booktitle) && !badges.some(b => /blue sky/i.test(b.text))) {
+    badges.push({ kind: 'note', text: 'Blue Sky Ideas Track' });
+  }
+  if (/position paper/i.test(booktitle) && !badges.some(b => /position/i.test(b.text))) {
+    badges.push({ kind: 'note', text: 'Position Paper Track' });
+  }
+
+  return badges;
+}
+
+// ════════════════════════════════════════════════════════════
+//  Render entry
+// ════════════════════════════════════════════════════════════
+function renderEntry(e) {
+  const title = cleanTeX(e.title || '(タイトルなし)');
+  const authors = highlightMe(cleanTeX(e.author || ''));
+  const venue = cleanTeX(e.booktitle || '');
+  const year = e.year || '';
+  const address = cleanTeX(e.address || '');
+  const pages = e.pages ? `pp. ${cleanTeX(e.pages).replace(/\\textendash|---|--/g, '–')}` : '';
+
+  const venueLine = [venue, address, pages].filter(Boolean).join(', ');
+
+  const allBadges = buildBadges(e);
+  // Split: paper-type notes go as a subtle suffix on the title; awards/rates stay as badges
+  const noteLabels = allBadges.filter(b => b.kind === 'note').map(b => b.text);
+  const prominentBadges = allBadges.filter(b => b.kind !== 'note');
+
+  const titleSuffix = noteLabels.length
+    ? ` <span class="type-suffix">— ${escapeHTML(noteLabels.join(' · '))}</span>`
+    : '';
+
+  const doi = e.doi ? `<span class="badge badge-doi"><a href="https://doi.org/${e.doi}" target="_blank" rel="noopener" title="https://doi.org/${e.doi}">DOI: ${escapeHTML(e.doi)} ↗</a></span>` : '';
+  const url = (!e.doi && e.url) ? `<span class="badge badge-url"><a href="${e.url}" target="_blank" rel="noopener">リンク ↗</a></span>` : '';
+
+  const bibId = `bib-${++_bibSeq}`;
+  const bibBtn = `<button type="button" class="badge badge-bib" onclick="toggleBib('${bibId}', this)">{ } BibTeX</button>`;
+  const bibBlock = `
+    <div class="bib-block" id="${bibId}" hidden>
+      <button type="button" class="bib-copy" onclick="copyBib('${bibId}', this)">コピー</button>
+      <pre class="bib-pre">${escapeHTML(e._raw || '')}</pre>
+    </div>`;
+
+  const badgeHTML = prominentBadges.map(b =>
+    `<span class="badge badge-${b.kind}">${escapeHTML(b.text)}</span>`
+  ).join('') + doi + url + bibBtn;
+
+  return `
+    <div class="entry">
+      <div class="entry-year">${year}</div>
+      <div class="entry-body">
+        <div class="entry-title">${title}${titleSuffix}</div>
+        <div class="entry-authors">${authors}</div>
+        ${venueLine ? `<div class="entry-venue">${venueLine}</div>` : ''}
+        <div class="entry-meta">${badgeHTML}</div>
+        ${bibBlock}
+      </div>
+    </div>`;
+}
+
+// ════════════════════════════════════════════════════════════
+//  Main
+// ════════════════════════════════════════════════════════════
+async function init() {
+  let bibSrc = '';
+  try {
+    const res = await fetch('publications.bib');
+    if (res.ok) bibSrc = await res.text();
+  } catch(_) {}
+
+  if (!bibSrc) {
+    document.getElementById('sections').innerHTML =
+      '<div class="empty"><p>⚠️ publications.bib を読み込めませんでした</p>' +
+      '<small>Web サーバー経由でページを開いてください。</small></div>';
+    return;
+  }
+
+  const all = parseBibTeX(bibSrc).filter(e => e._type === 'inproceedings');
+
+  // Group by venue
+  const buckets = {};
+  VENUE_RULES.forEach(r => buckets[r.id] = []);
+  all.forEach(e => {
+    const cid = classify(cleanTeX(e.booktitle || ''));
+    if (cid) buckets[cid].push(e);
+  });
+
+  // Sort each bucket: year desc, then by key
+  for (const id in buckets) {
+    buckets[id].sort((a, b) => {
+      const ya = parseInt(a.year) || 0, yb = parseInt(b.year) || 0;
+      if (ya !== yb) return yb - ya;
+      return (a._key || '').localeCompare(b._key || '');
+    });
+  }
+
+  // Total count
+  let total = 0;
+  VENUE_RULES.forEach(r => total += buckets[r.id].length);
+
+  // Stats
+  document.getElementById('stats').innerHTML =
+    `<span class="stat-pill total">合計 <span class="num">${total}</span> 件</span>` +
+    VENUE_RULES.map(r =>
+      `<span class="stat-pill">${r.label} <span class="num">${buckets[r.id].length}</span></span>`
+    ).join('');
+
+  // TOC
+  document.getElementById('toc').innerHTML =
+    `<span class="toc-label">目次</span>` +
+    VENUE_RULES.filter(r => buckets[r.id].length > 0).map(r =>
+      `<a href="#${r.id}">${r.label}</a>`
+    ).join('');
+
+  // Sections
+  document.getElementById('sections').innerHTML = VENUE_RULES.map(r => {
+    const items = buckets[r.id];
+    if (items.length === 0) return '';
+    return `
+      <section class="section" id="${r.id}">
+        <div class="section-head">
+          <h2>${r.label}</h2>
+          <span class="count">${items.length} 件</span>
+          <div class="desc">${r.desc}</div>
+        </div>
+        ${items.map(renderEntry).join('')}
+      </section>`;
+  }).join('');
+}
+
+window.addEventListener('scroll', () => {
+  document.getElementById('back-top').classList.toggle('on', scrollY > 400);
+});
+
+init();
+</script>
+</body>
+</html>

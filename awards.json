@@ -1,0 +1,102 @@
+[
+  {
+    "year": "2026",
+    "date": "2026-04-07",
+    "tag": "national",
+    "ja": "<strong>令和8年度 文部科学大臣表彰 科学技術賞（研究部門）</strong>「AIエージェントに基づく合意形成支援システムに関する研究」（伊藤孝行・Rafik Hadfi・Sofia Sahab）",
+    "en": "<strong>Prizes for Science and Technology (Research Category)</strong>, Commendation for Science and Technology by the Minister of MEXT — \"Study on Consensus Support Systems based on AI Agents\" (with Rafik Hadfi &amp; Sofia Sahab)",
+    "link": "https://www.kyoto-u.ac.jp/ja/news/2026-04-08-2",
+    "link_ja": "京都大学ニュース →",
+    "link_en": "KU News →"
+  },
+  {
+    "year": "2025",
+    "tag": "bestpaper",
+    "ja": "<strong>Best Paper Award</strong>、KICSS2025（Sahab et al., \"Conversational AI Agents for Mental Well-Being\"）",
+    "en": "<strong>Best Paper Award</strong>, KICSS2025 — Sahab et al., \"Conversational AI Agents for Mental Well-Being\""
+  },
+  {
+    "year": "2023",
+    "tag": "bestpaper",
+    "ja": "<strong>2023 Gregory Kersten GDN Journal Best Paper Award</strong>（Group Decision and Negotiation Journal, IF=2.648）",
+    "en": "<strong>Gregory Kersten GDN Journal Best Paper Award</strong> — Ito, Hadfi &amp; Suzuki, Group Decision and Negotiation Journal (IF=2.648)"
+  },
+  {
+    "year": "2023",
+    "tag": "society",
+    "ja": "<strong>人工知能学会全国大会 優秀賞</strong>（2023年）",
+    "en": "<strong>JSAI Annual Conference Excellence Award</strong>, Japan Society for Artificial Intelligence (2023)"
+  },
+  {
+    "year": "2022",
+    "tag": "competition",
+    "ja": "<strong>京都大学サマーデザインスクール2022 最優秀賞</strong>（GPT-3と社会システムデザイン）",
+    "en": "<strong>Best Award, Kyoto University Summer Design School 2022</strong> (GPT-3 and Social System Design)"
+  },
+  {
+    "year": "2021",
+    "tag": "competition",
+    "ja": "<strong>国際自動交渉エージェント競技会 ANAC SCML OneShot Track 世界3位</strong>（Yuchen Liu、Rafik Hadfi、伊藤孝行）",
+    "en": "<strong>ANAC SCML OneShot Track — 3rd Place in the World</strong> (Yuchen Liu, Rafik Hadfi, Takayuki Ito)"
+  },
+  {
+    "year": "2020",
+    "tag": "society",
+    "ja": "<strong>人工知能学会 功績賞</strong>",
+    "en": "<strong>JSAI Contribution Award</strong>, Japan Society for Artificial Intelligence"
+  },
+  {
+    "year": "2016",
+    "tag": "society",
+    "ja": "<strong>人工知能学会 功績賞（業績賞）</strong>",
+    "en": "<strong>JSAI Achievement Award</strong>, Japan Society for Artificial Intelligence"
+  },
+  {
+    "year": "2014",
+    "tag": "national",
+    "ja": "<strong>日本学術振興会賞（JSPS Prize）</strong>",
+    "en": "<strong>JSPS Prize</strong>, Japan Society for the Promotion of Science"
+  },
+  {
+    "year": "2013",
+    "tag": "national",
+    "ja": "<strong>文部科学大臣表彰 科学技術賞（研究部門）</strong>「マルチエージェントシステムにおける自動交渉メカニズムの研究とその応用」",
+    "en": "<strong>Prizes for Science and Technology (Research Category)</strong>, Commendation by the Minister of MEXT — \"Study on Automated Negotiation Mechanisms for Multi-Agent Systems\""
+  },
+  {
+    "year": "2010",
+    "tag": "competition",
+    "ja": "<strong>ANAC2010 優勝（世界1位）</strong>、国際自動交渉エージェント競技会 at AAMAS2010",
+    "en": "<strong>1st Place (Winner)</strong>, Automated Negotiating Agent Competition (ANAC2010) at AAMAS2010"
+  },
+  {
+    "year": "2007",
+    "tag": "national",
+    "ja": "<strong>文部科学大臣表彰 若手科学者賞</strong>「マルチエージェントシステムにおける交渉メカニズムの研究」",
+    "en": "<strong>Young Scientists' Prize</strong>, Commendation for Science and Technology by the Minister of MEXT — \"Study on Negotiation Mechanism for Multi-Agent Systems\""
+  },
+  {
+    "year": "2007",
+    "tag": "society",
+    "ja": "<strong>情報処理学会 長尾真記念特別賞</strong>「計算論的メカニズムデザインに基づく協力・交渉メカニズムに関する研究」",
+    "en": "<strong>Nagao Special Researcher Award</strong>, Information Processing Society of Japan — \"On Cooperation and Negotiation Mechanisms based on Computational Mechanism Design\""
+  },
+  {
+    "year": "2006",
+    "tag": "bestpaper",
+    "ja": "<strong>Best Paper Award</strong>、AAMAS2006（553件中1件）— Ito &amp; Parkes、\"Instantiating the Contingent Bids Model of Truthful Interdependent Value Auctions\"",
+    "en": "<strong>Best Paper Award</strong>, AAMAS2006 (1/553 papers) — Ito &amp; Parkes, \"Instantiating the Contingent Bids Model of Truthful Interdependent Value Auctions\""
+  },
+  {
+    "year": "2005",
+    "tag": "bestpaper",
+    "ja": "<strong>ベストペーパー賞</strong>、日本ソフトウェア科学会",
+    "en": "<strong>Best Paper Award</strong>, Japan Society for Software Science and Technology"
+  },
+  {
+    "year": "2004",
+    "tag": "other",
+    "ja": "<strong>IPA 未踏ソフトウェア創造事業 スーパークリエータ賞</strong>",
+    "en": "<strong>Super Creator Award</strong>, IPA Exploratory Software Creation Projects"
+  }
+]

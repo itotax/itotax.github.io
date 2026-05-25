@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Publications — Takayuki Ito</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0f2044;
+      --accent:  #2563eb;
+      --accent-light: #eff6ff;
+      --accent-mid:   #bfdbfe;
+      --text:    #1f2937;
+      --text-sec:#6b7280;
+      --bg:      #ffffff;
+      --bg-sec:  #f9fafb;
+      --border:  #e5e7eb;
+      --radius:  8px;
+      --shadow:  0 1px 3px rgba(0,0,0,.07);
+      --max-w:   900px;
+      --nav-h:   58px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; color: var(--text); background: var(--bg); font-size: 15px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Nav ── */
+    nav {
+      position: sticky; top: 0; z-index: 200;
+      height: var(--nav-h);
+      background: rgba(255,255,255,0.93);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: var(--max-w); margin: 0 auto;
+      padding: 0 1.5rem; height: 100%;
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .nav-back {
+      font-size: .82rem; font-weight: 700;
+      color: var(--primary); white-space: nowrap;
+      padding: .3rem .75rem; border-radius: 6px;
+      background: var(--accent-light); border: 1px solid var(--accent-mid);
+    }
+    .nav-back:hover { background: #dbeafe; text-decoration: none; }
+    .nav-title { font-weight: 600; font-size: .95rem; color: var(--primary); }
+    .nav-title span { font-weight: 400; color: var(--text-sec); font-size: .85rem; margin-left: .5rem; }
+    .lang-pill {
+      margin-left: auto;
+      display: inline-flex; border: 1px solid var(--border);
+      border-radius: 20px; overflow: hidden;
+    }
+    .lang-pill a {
+      font-size: .75rem; font-weight: 700;
+      padding: .22rem .6rem; color: var(--text-sec); transition: all .15s;
+    }
+    .lang-pill a.on { background: var(--accent); color: #fff; }
+    .lang-pill a:hover { text-decoration: none; }
+
+    /* ── Wrap ── */
+    .wrap { max-width: var(--max-w); margin: 0 auto; padding: 2.5rem 1.5rem 5rem; }
+
+    /* ── Controls ── */
+    .controls {
+      display: flex; flex-wrap: wrap; gap: .75rem;
+      align-items: center; margin-bottom: 1.75rem;
+      padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);
+    }
+    .search-box {
+      flex: 1 1 220px;
+      display: flex; align-items: center; gap: .5rem;
+      background: var(--bg-sec); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: .45rem .85rem;
+    }
+    .search-box input {
+      border: none; background: transparent; outline: none;
+      font-size: .875rem; font-family: inherit; width: 100%; color: var(--text);
+    }
+    .search-box input::placeholder { color: var(--text-sec); }
+    .filter-group { display: flex; gap: .35rem; flex-wrap: wrap; }
+    .filter-btn {
+      font-size: .78rem; font-weight: 600;
+      padding: .3rem .75rem; border-radius: 20px;
+      border: 1px solid var(--border); background: var(--bg-sec);
+      color: var(--text-sec); cursor: pointer; transition: all .15s;
+      white-space: nowrap;
+    }
+    .filter-btn:hover  { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
+    .filter-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .year-range { display: flex; align-items: center; gap: .5rem; font-size: .82rem; color: var(--text-sec); }
+    .year-range select {
+      font-size: .82rem; font-family: inherit;
+      padding: .25rem .5rem; border: 1px solid var(--border);
+      border-radius: 6px; background: var(--bg-sec); color: var(--text);
+      cursor: pointer;
+    }
+    .count-bar { font-size: .8rem; color: var(--text-sec); margin-left: auto; white-space: nowrap; }
+
+    /* ── Year Group ── */
+    .year-group { margin-bottom: 2.5rem; }
+    .year-heading {
+      font-size: .78rem; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--text-sec);
+      margin-bottom: .75rem; padding-bottom: .4rem;
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: .5rem;
+    }
+    .year-heading span { font-size: 1rem; font-weight: 700; color: var(--primary); }
+
+    /* ── Entry card ── */
+    .entry {
+      display: flex; gap: .9rem;
+      padding: .85rem .75rem;
+      border-radius: var(--radius);
+      margin-bottom: .5rem;
+      transition: background .12s;
+    }
+    .entry:hover { background: var(--bg-sec); }
+    .entry-badge {
+      flex-shrink: 0; width: 72px;
+      display: flex; flex-direction: column; align-items: center; gap: .3rem; padding-top: .15rem;
+    }
+    .type-dot {
+      width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
+    }
+    .type-label {
+      font-size: .65rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .04em; text-align: center; line-height: 1.3;
+    }
+    /* type colors */
+    .type-article   .type-dot { background: #2563eb; }
+    .type-article   .type-label { color: #2563eb; }
+    .type-inproceedings .type-dot { background: #16a34a; }
+    .type-inproceedings .type-label { color: #16a34a; }
+    .type-domesticconf  .type-dot { background: #ea580c; }
+    .type-domesticconf  .type-label { color: #ea580c; }
+    .type-book      .type-dot { background: #9333ea; }
+    .type-book      .type-label { color: #9333ea; }
+    .type-incollection .type-dot { background: #7c3aed; }
+    .type-incollection .type-label { color: #7c3aed; }
+    .type-patent      .type-dot { background: #dc2626; }
+    .type-patent      .type-label { color: #dc2626; }
+    .type-invitedtalk .type-dot { background: #0891b2; }
+    .type-invitedtalk .type-label { color: #0891b2; }
+    .type-award     .type-dot { background: #ca8a04; }
+    .type-award     .type-label { color: #ca8a04; }
+    .type-misc      .type-dot { background: #d97706; }
+    .type-misc      .type-label { color: #d97706; }
+
+    .entry-body { flex: 1; min-width: 0; }
+    .entry-title {
+      font-size: .925rem; font-weight: 600; color: var(--primary);
+      line-height: 1.45; margin-bottom: .3rem;
+    }
+    .entry-authors { font-size: .83rem; color: var(--text-sec); margin-bottom: .25rem; }
+    .entry-authors strong { color: var(--text); font-weight: 600; }
+    .entry-venue { font-size: .83rem; color: var(--text); font-style: italic; margin-bottom: .35rem; }
+    .entry-meta { display: flex; flex-wrap: wrap; gap: .4rem; align-items: center; }
+    .badge {
+      display: inline-flex; align-items: center; gap: .25rem;
+      font-size: .7rem; font-weight: 600;
+      padding: .18rem .55rem; border-radius: 20px;
+    }
+    .badge-award { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
+    .badge-if    { background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; }
+    .badge-tier  { background: #eff6ff; color: #1e40af; border: 1px solid #bfdbfe; }
+    .badge-doi   { background: #eef2ff; color: #3730a3; border: 1px solid #c7d2fe;
+                   font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+                   font-size: .68rem; letter-spacing: .01em; max-width: 100%; }
+    .badge-doi a { color: inherit; text-decoration: none; }
+    .badge-doi:hover { background: #e0e7ff; border-color: #a5b4fc; }
+    .badge-url   { background: #f8fafc; color: #475569; border: 1px solid #e2e8f0; }
+    .badge-url a { color: inherit; text-decoration: none; }
+    .badge-url:hover { background: #f1f5f9; border-color: #cbd5e1; }
+    .badge-bib {
+      background: #f3f4f6; color: #374151; border: 1px solid #d1d5db;
+      cursor: pointer; font-family: inherit;
+    }
+    .badge-bib:hover { background: #e5e7eb; border-color: #9ca3af; }
+    .badge-bib.open  { background: #1e293b; color: #f1f5f9; border-color: #1e293b; }
+
+    /* ── BibTeX block ── */
+    .bib-block {
+      margin-top: .55rem;
+      background: #1e293b;
+      border-radius: 6px;
+      position: relative;
+    }
+    .bib-copy {
+      position: absolute; top: .45rem; right: .45rem;
+      background: rgba(255,255,255,.10); color: #e2e8f0;
+      border: 1px solid rgba(255,255,255,.20);
+      font-size: .7rem; font-weight: 600; font-family: inherit;
+      padding: .2rem .55rem; border-radius: 4px;
+      cursor: pointer; transition: background .12s;
+    }
+    .bib-copy:hover { background: rgba(255,255,255,.20); }
+    .bib-pre {
+      color: #e2e8f0;
+      font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+      font-size: .72rem; line-height: 1.55;
+      padding: .8rem 1rem; padding-right: 4.5rem;
+      overflow-x: auto; white-space: pre;
+      margin: 0;
+    }
+
+    /* ── Empty state ── */
+    .empty { text-align: center; padding: 4rem 1rem; color: var(--text-sec); }
+    .empty p { font-size: 1.1rem; margin-bottom: .5rem; }
+
+    /* ── Back to top ── */
+    #back-top {
+      position: fixed; bottom: 2rem; right: 1.5rem;
+      background: var(--accent); color: #fff;
+      width: 42px; height: 42px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; box-shadow: 0 4px 12px rgba(37,99,235,.35);
+      opacity: 0; transition: opacity .3s; z-index: 900;
+    }
+    #back-top.on { opacity: 1; }
+    #back-top:hover { background: #1d4ed8; text-decoration: none; }
+
+    /* ── How-to box ── */
+    .howto {
+      background: #fffbeb; border: 1px solid #fde68a;
+      border-radius: var(--radius); padding: .85rem 1.1rem;
+      font-size: .82rem; color: #78350f; margin-bottom: 2rem;
+      display: flex; gap: .6rem; align-items: flex-start;
+    }
+    .howto strong { color: #92400e; }
+
+    @media (max-width: 600px) {
+      .entry-badge { display: none; }
+      .controls { flex-direction: column; align-items: stretch; }
+      .search-box { flex: 0 0 auto; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-back" href="index.html">← Takayuki Ito</a>
+    <span class="nav-title">Publications <span>Takayuki Ito</span></span>
+    <div class="lang-pill">
+      <a href="publications.html" class="on">EN</a>
+      <a href="publications-j.html">JA</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+  <div class="controls">
+    <div class="search-box">
+      <span>🔍</span>
+      <input type="text" id="search" placeholder="Search title, author, venue…" oninput="render()">
+    </div>
+    <div class="filter-group" id="type-filters">
+      <button class="filter-btn active" onclick="setFilter('all',this)">All</button>
+      <button class="filter-btn" onclick="setFilter('article',this)">📰 Journal</button>
+      <button class="filter-btn" onclick="setFilter('inproceedings',this)">🎤 Int'l Conference</button>
+      <button class="filter-btn" onclick="setFilter('domesticconf',this)">🏯 Domestic Conf. / Workshop</button>
+      <button class="filter-btn" onclick="setFilter('invitedtalk',this)">🎙️ Invited Talk</button>
+      <button class="filter-btn" onclick="setFilter('book',this)">📚 Book</button>
+      <button class="filter-btn" onclick="setFilter('patent',this)">🔖 Patent</button>
+      <button class="filter-btn" onclick="setFilter('award',this)">🏆 Award</button>
+    </div>
+    <div class="year-range">
+      From <select id="yr-from" onchange="render()"></select>
+      to   <select id="yr-to"   onchange="render()"></select>
+    </div>
+    <span class="count-bar" id="count-bar"></span>
+  </div>
+
+  <div id="pub-list"></div>
+</div>
+
+<a id="back-top" href="#">↑</a>
+
+<script>
+// ════════════════════════════════════════════════════════════
+//  BibTeX parser (lightweight, no external dependencies)
+// ════════════════════════════════════════════════════════════
+function parseBibTeX(src) {
+  const entries = [];
+  // Strip BibTeX comments (lines starting with %)
+  src = src.replace(/^%.*$/gm, '');
+
+  const re = /@(\w+)\s*\{\s*([^,\s]+)\s*,/g;
+  let m;
+  while ((m = re.exec(src)) !== null) {
+    const type = m[1].toLowerCase();
+    if (['string','preamble','comment'].includes(type)) continue;
+    const key  = m[2];
+    const entryStart = m.index;
+    const start = m.index + m[0].length;
+
+    // Find matching closing brace
+    let depth = 1, i = start;
+    while (i < src.length && depth > 0) {
+      if (src[i] === '{') depth++;
+      else if (src[i] === '}') depth--;
+      i++;
+    }
+    const body = src.slice(start, i - 1);
+    const raw  = src.slice(entryStart, i);
+
+    const entry = { _type: type, _key: key, _raw: raw };
+    // Parse fields: name = {val} or name = "val" or name = number
+    const fre = /(\w+)\s*=\s*(?:\{((?:[^{}]|\{(?:[^{}]|\{[^{}]*\})*\})*)\}|"([^"]*)"|(\d+))/g;
+    let fm;
+    while ((fm = fre.exec(body)) !== null) {
+      const fname = fm[1].toLowerCase();
+      const fval  = (fm[2] ?? fm[3] ?? fm[4] ?? '').trim();
+      entry[fname] = fval.replace(/\s+/g, ' ');
+    }
+    entries.push(entry);
+  }
+  return entries;
+}
+
+// ════════════════════════════════════════════════════════════
+//  Helpers
+// ════════════════════════════════════════════════════════════
+function cleanTeX(s) {
+  if (!s) return '';
+  return s
+    .replace(/\\&/g, '&').replace(/\\'/g, '\'').replace(/\\'(\w)/g, '$1')
+    .replace(/\{\\"\w\}/g, m => m[2]).replace(/\{([^}]+)\}/g, '$1')
+    .replace(/--/g, '–').replace(/~/g, ' ').replace(/\s+/g, ' ').trim();
+}
+
+function highlightMe(authors) {
+  return authors.replace(/(Takayuki Ito)/g, '<strong>$1</strong>');
+}
+
+function venueOf(e) {
+  return cleanTeX(e.journal || e.booktitle || e.howpublished || e.series || e.organization || e.school || e.institution || '');
+}
+
+function labelOf(type) {
+  return {
+    article:'Journal', inproceedings:'Int’l Conf.', domesticconf:'Domestic Conf.',
+    book:'Book', incollection:'Chapter',
+    patent:'Patent', invitedtalk:'Invited Talk', award:'Award',
+    phdthesis:'Thesis', mastersthesis:'Thesis', techreport:'Report',
+    misc:'Other'
+  }[type] || type;
+}
+
+function visualType(e) {
+  if (e._type === 'inproceedings' && (e.category || '').toLowerCase() === 'domestic') {
+    return 'domesticconf';
+  }
+  return e._type || 'misc';
+}
+
+function escapeHTML(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+let _bibSeq = 0;
+
+function toggleBib(id, btn) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const open = el.hidden;
+  el.hidden = !open;
+  if (btn) btn.classList.toggle('open', open);
+}
+
+async function copyBib(id, btn) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const text = el.querySelector('.bib-pre').textContent;
+  try {
+    await navigator.clipboard.writeText(text);
+  } catch(_) {
+    const r = document.createRange();
+    r.selectNodeContents(el.querySelector('.bib-pre'));
+    const sel = window.getSelection();
+    sel.removeAllRanges(); sel.addRange(r);
+    document.execCommand('copy');
+    sel.removeAllRanges();
+  }
+  const orig = btn.textContent;
+  btn.textContent = 'Copied!';
+  setTimeout(() => btn.textContent = orig, 1400);
+}
+
+// ════════════════════════════════════════════════════════════
+//  State
+// ════════════════════════════════════════════════════════════
+let ALL = [];
+let activeFilter = 'all';
+
+function setFilter(f, btn) {
+  activeFilter = f;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  render();
+}
+
+// ════════════════════════════════════════════════════════════
+//  Render
+// ════════════════════════════════════════════════════════════
+function render() {
+  const q    = document.getElementById('search').value.toLowerCase();
+  const yfrom= parseInt(document.getElementById('yr-from').value);
+  const yto  = parseInt(document.getElementById('yr-to').value);
+
+  let filtered = ALL.filter(e => {
+    const year = parseInt(e.year || 0);
+    if (e.year && /^\d{4}$/.test(e.year) && (year < yfrom || year > yto)) return false;
+    const isDomestic = e._type === 'inproceedings' && (e.category || '').toLowerCase() === 'domestic';
+    if (activeFilter === 'award' && e._type !== 'award') return false;
+    if (activeFilter === 'article' && e._type !== 'article') return false;
+    if (activeFilter === 'inproceedings' && (e._type !== 'inproceedings' || isDomestic)) return false;
+    if (activeFilter === 'domesticconf' && !isDomestic) return false;
+    if (activeFilter === 'invitedtalk' && e._type !== 'invitedtalk') return false;
+    if (activeFilter === 'patent' && e._type !== 'patent') return false;
+    if (activeFilter === 'book' && !['book','incollection'].includes(e._type)) return false;
+    if (q) {
+      const blob = [e.title, e.author, e.journal, e.booktitle, e.year, e.award, e.ja, e.en, e.note]
+        .filter(Boolean).join(' ').toLowerCase();
+      if (!blob.includes(q)) return false;
+    }
+    return true;
+  });
+
+  document.getElementById('count-bar').textContent = `${filtered.length} entries`;
+
+  // Group by year descending
+  const byYear = {};
+  filtered.forEach(e => {
+    const y = e.year || '—';
+    if (!byYear[y]) byYear[y] = [];
+    byYear[y].push(e);
+  });
+  const years = Object.keys(byYear).sort((a,b) => b - a);
+
+  const container = document.getElementById('pub-list');
+  if (filtered.length === 0) {
+    container.innerHTML = '<div class="empty"><p>No publications found.</p><small>Try adjusting filters or search.</small></div>';
+    return;
+  }
+
+  container.innerHTML = years.map(y => `
+    <div class="year-group">
+      <div class="year-heading"><span>${y}</span> — ${byYear[y].length} entr${byYear[y].length === 1 ? 'y' : 'ies'}</div>
+      ${byYear[y].map(entryHTML).join('')}
+    </div>
+  `).join('');
+}
+
+function entryHTML(e) {
+  const type    = visualType(e);
+  const year    = e.year || '';
+  const bibId   = `bib-${++_bibSeq}`;
+
+  // ── @award entries: use rich `ja`/`en` body if present, else fall back to title/note.
+  // Match the awards-j.html visual style.
+  if (type === 'award') {
+    const body = e.ja || e.en || cleanTeX(e.title || e.note || '(no title)');
+    const linkLabel = e.link_en || (e.link ? 'Link →' : '');
+    const linkHTML  = e.link ? ` <a href="${e.link}" target="_blank" rel="noopener">${linkLabel}</a>` : '';
+    const urlHTML   = (!e.link && e.url) ? ` <a href="${e.url}" target="_blank" rel="noopener">Link ↗</a>` : '';
+    return `
+    <div class="entry type-${type}">
+      <div class="entry-badge">
+        <div class="type-dot"></div>
+        <div class="type-label">${labelOf(type)}</div>
+      </div>
+      <div class="entry-body">
+        <div class="entry-title" style="font-weight:500;line-height:1.55">🏆 ${body}${linkHTML}${urlHTML}</div>
+        <div class="entry-meta">
+          <button type="button" class="badge badge-bib" onclick="toggleBib('${bibId}', this)">{ } BibTeX</button>
+        </div>
+        <div class="bib-block" id="${bibId}" hidden>
+          <button type="button" class="bib-copy" onclick="copyBib('${bibId}', this)">Copy</button>
+          <pre class="bib-pre">${escapeHTML(e._raw || '')}</pre>
+        </div>
+      </div>
+    </div>`;
+  }
+
+  const title   = cleanTeX(e.title || '(no title)');
+  const authors = highlightMe(cleanTeX(e.author || ''));
+  const venue   = venueOf(e);
+  const award   = cleanTeX(e.award || '');
+  const ifval   = e.if   ? `IF ${e.if}` : '';
+  const tier    = cleanTeX(e.tier || '');
+  const doi     = e.doi  ? `<a href="https://doi.org/${e.doi}" target="_blank" rel="noopener" title="https://doi.org/${e.doi}">DOI: ${escapeHTML(e.doi)} ↗</a>` : '';
+  const url     = e.url  ? `<a href="${e.url}" target="_blank" rel="noopener">Link ↗</a>` : '';
+  const note    = cleanTeX(e.note || '');
+
+  return `
+  <div class="entry type-${type}">
+    <div class="entry-badge">
+      <div class="type-dot"></div>
+      <div class="type-label">${labelOf(type)}</div>
+    </div>
+    <div class="entry-body">
+      <div class="entry-title">${title}</div>
+      <div class="entry-authors">${authors}</div>
+      ${venue ? `<div class="entry-venue">${venue}${year ? ', ' + year : ''}</div>` : ''}
+      <div class="entry-meta">
+        ${award ? `<span class="badge badge-award">🏆 ${award}</span>` : ''}
+        ${ifval ? `<span class="badge badge-if">${ifval}</span>` : ''}
+        ${tier  ? `<span class="badge badge-tier">${tier}</span>` : ''}
+        ${doi   ? `<span class="badge badge-doi">${doi}</span>` : ''}
+        ${url   ? `<span class="badge badge-url">${url}</span>` : ''}
+        <button type="button" class="badge badge-bib" onclick="toggleBib('${bibId}', this)">{ } BibTeX</button>
+        ${note  ? `<span style="font-size:.72rem;color:var(--text-sec)">${note}</span>` : ''}
+      </div>
+      <div class="bib-block" id="${bibId}" hidden>
+        <button type="button" class="bib-copy" onclick="copyBib('${bibId}', this)">Copy</button>
+        <pre class="bib-pre">${escapeHTML(e._raw || '')}</pre>
+      </div>
+    </div>
+  </div>`;
+}
+
+// ════════════════════════════════════════════════════════════
+//  Init: load publications.bib
+// ════════════════════════════════════════════════════════════
+async function init() {
+  let bibSrc = '';
+  try {
+    const res = await fetch('publications.bib');
+    if (res.ok) bibSrc = await res.text();
+  } catch(e) {}
+
+  if (!bibSrc) {
+    document.getElementById('pub-list').innerHTML =
+      '<div class="empty"><p>⚠️ Could not load publications.bib</p>' +
+      '<small>Open this page via a web server, or open the file directly in a browser that allows local file access.</small></div>';
+    return;
+  }
+
+  ALL = parseBibTeX(bibSrc).sort((a,b) => (parseInt(b.year)||0) - (parseInt(a.year)||0));
+
+  // Populate year selects
+  const years = [...new Set(ALL.map(e => e.year).filter(Boolean))].sort();
+  const minY  = years[0] || '1990';
+  const maxY  = years[years.length-1] || String(new Date().getFullYear());
+
+  const fromSel = document.getElementById('yr-from');
+  const toSel   = document.getElementById('yr-to');
+  for (let y = parseInt(minY); y <= parseInt(maxY); y++) {
+    fromSel.innerHTML += `<option value="${y}">${y}</option>`;
+    toSel.innerHTML   += `<option value="${y}">${y}</option>`;
+  }
+  fromSel.value = minY;
+  toSel.value   = maxY;
+
+  render();
+}
+
+// Back to top
+window.addEventListener('scroll', () => {
+  document.getElementById('back-top').classList.toggle('on', scrollY > 400);
+});
+
+init();
+</script>
+</body>
+</html>

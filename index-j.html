@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>伊藤孝行 — 京都大学</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    /* ===== CSS Variables ===== */
+    :root {
+      --primary:       #0f2044;
+      --accent:        #2563eb;
+      --accent-hover:  #1d4ed8;
+      --accent-light:  #eff6ff;
+      --accent-mid:    #bfdbfe;
+      --text:          #1f2937;
+      --text-sec:      #6b7280;
+      --bg:            #ffffff;
+      --bg-sec:        #f9fafb;
+      --border:        #e5e7eb;
+      --radius:        10px;
+      --shadow:        0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.05);
+      --shadow-md:     0 4px 12px rgba(0,0,0,.08);
+      --max-w:         960px;
+      --nav-h:         62px;
+    }
+
+    /* ===== Reset ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Sans JP', 'Inter', system-ui, -apple-system, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.8;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ===== Navigation ===== */
+    nav {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 200;
+      height: var(--nav-h);
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .nav-brand {
+      font-weight: 700;
+      font-size: .95rem;
+      color: var(--primary);
+      letter-spacing: -.01em;
+      white-space: nowrap;
+    }
+    .nav-brand span { font-weight: 400; color: var(--text-sec); font-size: .82rem; margin-left: .5rem; }
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: .15rem;
+      list-style: none;
+    }
+    .nav-menu a {
+      font-size: .82rem;
+      font-weight: 500;
+      color: var(--text-sec);
+      padding: .35rem .65rem;
+      border-radius: 6px;
+      transition: color .15s, background .15s;
+      white-space: nowrap;
+    }
+    .nav-menu a:hover { color: var(--accent); background: var(--accent-light); text-decoration: none; }
+    .lang-pill {
+      display: inline-flex;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      margin-left: .75rem;
+    }
+    .lang-pill a {
+      font-size: .75rem;
+      font-weight: 700;
+      padding: .22rem .6rem;
+      color: var(--text-sec);
+      transition: all .15s;
+    }
+    .lang-pill a.on { background: var(--accent); color: #fff; }
+    .lang-pill a:hover { text-decoration: none; }
+
+    /* ===== Wrapper ===== */
+    .wrap {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* ===== Hero ===== */
+    #hero {
+      padding-top: calc(var(--nav-h) + 4rem);
+      padding-bottom: 3.5rem;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 3.5rem;
+      align-items: start;
+    }
+    /* Photo hover swap */
+    .photo-wrap {
+      position: relative;
+      width: 200px;
+      height: 280px;
+      cursor: pointer;
+    }
+    .hero-photo,
+    .hero-photo-alt {
+      width: 200px;
+      height: 280px;
+      border-radius: 12px;
+      object-fit: cover;
+      object-position: top center;
+      border: 3px solid var(--bg);
+      box-shadow: 0 0 0 1px var(--border), var(--shadow-md);
+      position: absolute;
+      top: 0; left: 0;
+      transition: opacity .6s ease;
+    }
+    .hero-photo-alt {
+      opacity: 0;
+    }
+    .photo-wrap:hover .hero-photo { opacity: 0; }
+    .photo-wrap:hover .hero-photo-alt { opacity: 1; }
+    /* Tooltip */
+    .photo-tooltip {
+      position: absolute;
+      bottom: -2.4rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--primary);
+      color: #fff;
+      font-size: .78rem;
+      font-weight: 600;
+      padding: .3rem .8rem;
+      border-radius: 20px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .2s ease, bottom .2s ease;
+    }
+    .photo-tooltip::before {
+      content: '';
+      position: absolute;
+      top: -5px; left: 50%;
+      transform: translateX(-50%);
+      border: 5px solid transparent;
+      border-top: none;
+      border-bottom-color: var(--primary);
+    }
+    .photo-wrap:hover .photo-tooltip { opacity: 1; bottom: -2.8rem; }
+    .hero-name {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: -.02em;
+      line-height: 1.2;
+      margin-bottom: .3rem;
+    }
+    .hero-degree {
+      font-size: .88rem;
+      color: var(--text-sec);
+      margin-bottom: 1.1rem;
+    }
+    .hero-pos {
+      font-size: 1rem;
+      line-height: 1.85;
+      margin-bottom: 1.25rem;
+    }
+    .hero-pos strong { color: var(--primary); }
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .45rem;
+      margin-bottom: 1.6rem;
+    }
+    .tag {
+      font-size: .75rem;
+      font-weight: 500;
+      background: var(--accent-light);
+      color: var(--accent);
+      padding: .25rem .7rem;
+      border-radius: 20px;
+      border: 1px solid var(--accent-mid);
+    }
+    .hero-btns { display: flex; flex-wrap: wrap; gap: .6rem; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .5rem 1.1rem;
+      border-radius: var(--radius);
+      font-size: .875rem;
+      font-weight: 500;
+      transition: all .15s;
+      text-decoration: none !important;
+    }
+    .btn-fill { background: var(--accent); color: #fff !important; }
+    .btn-fill:hover { background: var(--accent-hover); }
+    .btn-outline {
+      background: var(--bg-sec);
+      color: var(--text) !important;
+      border: 1px solid var(--border);
+    }
+    .btn-outline:hover { background: var(--border); }
+
+    /* ===== Sections ===== */
+    section {
+      padding: 3rem 0;
+      border-top: 1px solid var(--border);
+    }
+    .sec-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      letter-spacing: -.01em;
+      display: flex;
+      align-items: center;
+      gap: .55rem;
+    }
+    .sec-title::before {
+      content: '';
+      width: 4px;
+      height: 1.15em;
+      background: var(--accent);
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+
+    /* ===== Career Table ===== */
+    .career-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .9rem;
+    }
+    .career-table tr { border-bottom: 1px solid var(--border); }
+    .career-table tr:last-child { border-bottom: none; }
+    .career-table td {
+      padding: .65rem .5rem;
+      vertical-align: top;
+      line-height: 1.65;
+    }
+    .career-table td:first-child {
+      white-space: nowrap;
+      color: var(--text-sec);
+      font-size: .82rem;
+      padding-right: 1.5rem;
+      min-width: 180px;
+    }
+
+    /* ===== Research ===== */
+    .keywords { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .kw {
+      font-size: .83rem;
+      padding: .3rem .8rem;
+      border-radius: 20px;
+      background: var(--bg-sec);
+      border: 1px solid var(--border);
+      color: var(--text);
+      transition: all .15s;
+      cursor: default;
+    }
+    .kw:hover { background: var(--accent-light); border-color: var(--accent-mid); color: var(--accent); }
+    .research-links { margin-top: 1.25rem; display: flex; gap: .5rem; flex-wrap: wrap; }
+
+    /* ===== Awards ===== */
+    .awards { display: flex; flex-direction: column; gap: .7rem; }
+    .award {
+      display: grid;
+      grid-template-columns: 52px 1fr;
+      gap: 1rem;
+      background: var(--bg-sec);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: var(--radius);
+      padding: .9rem 1rem;
+      align-items: start;
+    }
+    .award-yr {
+      font-size: .78rem;
+      font-weight: 700;
+      color: var(--accent);
+      padding-top: .1rem;
+    }
+    .award-body { font-size: .9rem; line-height: 1.65; }
+    .award-body strong { color: var(--primary); }
+
+    /* ===== News ===== */
+    .news-feed { display: flex; flex-direction: column; }
+    .news-row {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      gap: 1rem;
+      padding: .85rem 0;
+      border-bottom: 1px solid var(--border);
+      align-items: baseline;
+    }
+    .news-row:last-child { border-bottom: none; }
+    .news-dt {
+      font-size: .8rem;
+      font-weight: 600;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+    .news-body { font-size: .9rem; line-height: 1.7; }
+
+    /* ===== Contact ===== */
+    .contact-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+    }
+    .contact-block h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: .75rem;
+    }
+    .contact-block p { font-size: .9rem; line-height: 1.9; }
+    code {
+      font-family: 'Menlo', 'Consolas', monospace;
+      font-size: .85em;
+      background: var(--bg-sec);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: .1em .35em;
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.75rem 1.5rem;
+      text-align: center;
+      font-size: .8rem;
+      color: var(--text-sec);
+    }
+    footer a { color: var(--text-sec); }
+    footer a:hover { color: var(--accent); }
+
+    /* ===== Animations ===== */
+    @keyframes up { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+    .fade-up { animation: up .55s ease both; }
+    .delay-1 { animation-delay: .1s; }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 680px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 1.75rem; text-align: center; }
+      .photo-wrap { margin-left: auto; margin-right: auto; }
+      .hero-tags, .hero-btns { justify-content: center; }
+      .hero-name { font-size: 1.8rem; }
+      .nav-menu { display: none; }
+      .contact-cols { grid-template-columns: 1fr; gap: 1.5rem; }
+      .news-row { grid-template-columns: 1fr; gap: .2rem; }
+      .award { grid-template-columns: 1fr; gap: .25rem; }
+      .career-table td:first-child { white-space: normal; min-width: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ====== Navigation ====== -->
+<nav aria-label="サイトナビゲーション">
+  <div class="nav-inner">
+    <span class="nav-brand">伊藤 孝行 <span>京都大学</span></span>
+    <div style="display:flex;align-items:center;">
+      <ul class="nav-menu">
+        <li><a href="#about">略歴</a></li>
+        <li><a href="#research">研究</a></li>
+        <li><a href="#awards">受賞</a></li>
+        <li><a href="#news">お知らせ</a></li>
+        <li><a href="#contact">連絡先</a></li>
+        <li><a href="publications-j.html">論文一覧</a></li>
+        <li><a href="publications-top-confs-j.html">難関国際会議</a></li>
+        <li><a href="activity-j.html">学会活動</a></li>
+      </ul>
+      <div class="lang-pill">
+        <a href="index.html">EN</a>
+        <a href="index-j.html" class="on">JA</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ====== Hero ====== -->
+<div class="wrap">
+  <div id="hero">
+    <div class="hero-grid">
+      <div class="fade-up">
+        <div class="photo-wrap">
+          <img class="hero-photo" src="./ito20210307.jpeg" alt="伊藤孝行">
+          <img class="hero-photo-alt" src="./ito20210307-u.jpeg" alt="お茶です">
+          <div class="photo-tooltip">烏龍茶です！ 🍵</div>
+        </div>
+      </div>
+      <div class="fade-up delay-1">
+        <h1 class="hero-name">伊藤 孝行</h1>
+        <p class="hero-degree">博士（工学）</p>
+        <div class="hero-pos">
+          <strong>教授</strong><br>
+          <a href="http://www.kyoto-u.ac.jp" target="_blank" rel="noopener">京都大学</a>大学院 情報学研究科<br>
+          社会情報学専攻　社会情報ネットワーク講座　合意情報学分野<br>
+          総合研究7号館 424号室
+        </div>
+        <div class="hero-btns">
+          <a href="CV.pdf" class="btn btn-fill">📄 履歴書（CV）</a>
+          <a href="http://www.agent.soc.i.kyoto-u.ac.jp/" target="_blank" rel="noopener" class="btn btn-outline">🔬 研究室ページ</a>
+          <a href="publications-j.html" class="btn btn-outline">📚 論文・業績一覧</a>
+          <a href="publications-top-confs-j.html" class="btn btn-outline">🏆 難関国際会議とACM CI</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== News ====== -->
+  <section id="news">
+    <h2 class="sec-title">お知らせ</h2>
+    <div class="news-feed" id="news-feed">
+      <div style="color:var(--text-sec);font-size:.85rem;padding:.5rem 0;">読み込み中…</div>
+    </div>
+    <div style="margin-top:1.25rem;">
+      <a href="news-j.html" class="btn btn-outline">お知らせの全一覧 →</a>
+    </div>
+  </section>
+
+  <script src="common/js/news-merge.js"></script>
+  <script>
+  (async function loadNews() {
+    try {
+      const all = await window.loadMergedNews();
+      const fmt = iso => {
+        const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(iso || '');
+        return m ? `${m[1]}年${parseInt(m[2])}月${parseInt(m[3])}日` : (iso || '');
+      };
+      const feed = document.getElementById('news-feed');
+      feed.innerHTML = all.slice(0, 5).map(e => {
+        const link = e.link ? ` <a href="${e.link}" target="_blank" rel="noopener">${e.link_ja || 'リンク →'}</a>` : '';
+        return `
+        <div class="news-row">
+          <span class="news-dt">${fmt(e.date)}</span>
+          <div class="news-body">${e.ja || e.en || ''}${link}</div>
+        </div>`;
+      }).join('') || '<div style="color:var(--text-sec);font-size:.85rem;">お知らせはまだありません。</div>';
+    } catch(_) {}
+  })();
+  </script>
+
+  <!-- ====== About / Career ====== -->
+  <section id="about">
+    <h2 class="sec-title">略歴</h2>
+    <table class="career-table">
+      <tbody>
+        <tr><td>1972年5月1日</td><td>愛知県（現・北名古屋市）生まれ</td></tr>
+        <tr><td>1995年3月</td><td>名古屋工業大学 工学部 知能情報システム学科 卒業</td></tr>
+        <tr><td>1997年3月</td><td>同大学院 工学研究科 電気情報工学専攻 博士前期課程 修了</td></tr>
+        <tr><td>1999年1月</td><td><a href="http://www.jsps.go.jp/" target="_blank" rel="noopener">日本学術振興会（JSPS）</a>特別研究員（DC2）採用</td></tr>
+        <tr><td>2000年3月</td><td>同大学院 博士後期課程 修了、博士（工学）取得</td></tr>
+        <tr><td>2000年4月〜2001年1月</td><td><a href="http://www.usc.edu" target="_blank" rel="noopener">南カリフォルニア大学</a> 情報科学研究所（USC/ISI）、Milind Tambe教授（現ハーバード大学）研究グループにて客員研究員</td></tr>
+        <tr><td>2001年4月〜2003年3月</td><td><a href="http://www.jaist.ac.jp" target="_blank" rel="noopener">北陸先端科学技術大学院大学</a> 知識科学教育研究センター 助教授</td></tr>
+        <tr><td>2003年4月〜2006年3月</td><td>名古屋工業大学大学院 工学研究科 情報工学専攻 助教授</td></tr>
+        <tr><td>2005年3月〜2006年2月</td><td><a href="http://www.harvard.edu" target="_blank" rel="noopener">ハーバード大学</a> Division of Engineering and Applied Science、David C. Parkes教授研究グループ 客員研究員</td></tr>
+        <tr><td>2005年9月〜2006年2月</td><td><a href="http://www.mit.edu" target="_blank" rel="noopener">MIT</a> Center for Coordination Science（現 Center for Collective Intelligence）、Thomas Malone教授研究グループ 客員研究員</td></tr>
+        <tr><td>2006年4月〜2014年3月</td><td>名古屋工業大学大学院 工学研究科 准教授</td></tr>
+        <tr><td>2008年9月〜2010年3月</td><td>MIT Center for Collective Intelligence、Thomas Malone教授・Mark Klein博士研究グループ 客員研究員</td></tr>
+        <tr><td>2014年4月〜2020年9月</td><td>名古屋工業大学大学院 工学研究科 教授</td></tr>
+        <tr><td>2020年10月〜現在</td><td><strong>京都大学大学院 情報学研究科 社会情報学専攻 教授</strong></td></tr>
+        <tr><td>2022年9月〜2025年8月</td><td>University of Wollongong（オーストラリア）Honorary Professor</td></tr>
+        <tr><td>2023年10月〜現在</td><td>日本学術会議 連携会員</td></tr>
+        <tr><td>2024年10月〜現在</td><td>広州大学（中国）Adjunct Professor</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ====== Research ====== -->
+  <section id="research">
+    <h2 class="sec-title">研究テーマ</h2>
+    <p style="margin-bottom:1.25rem; font-size:.95rem; line-height:1.9;">
+      背景：人工知能（AI）、分散AI、マルチエージェントシステム<br>
+      <strong>最近ずっと考え続けている疑問：</strong>「人々はなぜ合意形成できるのか？」「合意とは何だ？」
+    </p>
+    <div class="keywords">
+      <span class="kw">マルチエージェントシステム</span>
+      <span class="kw">自動交渉</span>
+      <span class="kw">コレクティブインテリジェンス</span>
+      <span class="kw">クラウドインテリジェンス</span>
+      <span class="kw">合意形成支援</span>
+      <span class="kw">グループ意思決定支援</span>
+      <span class="kw">計算論的メカニズムデザイン</span>
+      <span class="kw">ゲーム理論</span>
+      <span class="kw">オークション理論</span>
+      <span class="kw">インテリジェントエージェント</span>
+      <span class="kw">分散人工知能</span>
+      <span class="kw">電子商取引</span>
+      <span class="kw">情報経済学</span>
+      <span class="kw">LLMエージェント</span>
+    </div>
+    <div class="research-links">
+      <a href="ResearchStatement2020.html" class="btn btn-outline">研究概要 2020</a>
+      <a href="researchstatement-j2018.html" class="btn btn-outline">研究概要 2018</a>
+      <a href="ResearchStatement2016.html" class="btn btn-outline">研究概要 2016</a>
+      <a href="research-j.html" class="btn btn-outline">研究概要 2009</a>
+    </div>
+  </section>
+
+  <!-- ====== Awards ====== -->
+  <section id="awards">
+    <h2 class="sec-title">受賞歴（抜粋）</h2>
+    <div class="awards" id="awards-feed">
+      <div style="color:var(--text-sec);font-size:.85rem;padding:.5rem 0;">読み込み中…</div>
+    </div>
+    <div style="margin-top:1.25rem;">
+      <a href="awards-j.html" class="btn btn-outline">受賞歴の全一覧 →</a>
+    </div>
+  </section>
+
+  <script>
+  (async function loadAwards() {
+    try {
+      const res = await fetch('awards.json');
+      if (!res.ok) return;
+      const all = await res.json();
+      const yearOf = e => e.year || (e.date || '').slice(0,4) || '—';
+      all.sort((a,b) => {
+        const ya = yearOf(a), yb = yearOf(b);
+        if (yb !== ya) return yb.localeCompare(ya);
+        return (b.date || '').localeCompare(a.date || '');
+      });
+      const feed = document.getElementById('awards-feed');
+      feed.innerHTML = all.slice(0, 6).map(e => {
+        const link = e.link ? ` <a href="${e.link}" target="_blank" rel="noopener">${e.link_ja || 'リンク →'}</a>` : '';
+        return `
+        <div class="award">
+          <span class="award-yr">${yearOf(e)}</span>
+          <div class="award-body">${e.ja || e.en || ''}${link}</div>
+        </div>`;
+      }).join('') || '<div style="color:var(--text-sec);font-size:.85rem;">受賞情報はまだありません。</div>';
+    } catch(_) {}
+  })();
+  </script>
+
+  <!-- ====== Contact ====== -->
+  <section id="contact">
+    <h2 class="sec-title">連絡先</h2>
+    <div class="contact-cols">
+      <div class="contact-block">
+        <h3>所在地</h3>
+        <p>
+          〒606-8501<br>
+          京都市左京区吉田本町<br>
+          京都大学大学院 情報学研究科<br>
+          社会情報学専攻 社会情報ネットワーク講座<br>
+          合意情報学分野<br>
+          <br>
+          総合研究7号館 424号室
+        </p>
+      </div>
+      <div class="contact-block">
+        <h3>お問い合わせ</h3>
+        <p>
+          TEL: 075-753-4821（直通）<br>
+          TEL（Mobile）: 080-8393-2632<br>
+          FAX: 075-753-4820（直通）<br>
+          <br>
+          Email: <code>ito [at] i.kyoto-u.ac.jp</code><br>
+          <br>
+          <a href="http://www.agent.soc.i.kyoto-u.ac.jp/" target="_blank" rel="noopener">🔬 研究室ホームページ</a><br>
+          <a href="CV.pdf">📄 CV（PDF）ダウンロード</a>
+        </p>
+      </div>
+    </div>
+  </section>
+</div><!-- /wrap -->
+
+<footer>
+  <p>伊藤 孝行 &mdash; 京都大学大学院 情報学研究科 教授 &nbsp;&middot;&nbsp; <a href="index.html">English page</a> &nbsp;&middot;&nbsp; <a href="http://www.agent.soc.i.kyoto-u.ac.jp/" target="_blank" rel="noopener">研究室ページ</a></p>
+</footer>
+
+</body>
+</html>

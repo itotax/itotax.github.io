@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Takayuki Ito — Kyoto University</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;1,14..32,400&display=swap" rel="stylesheet">
+  <style>
+    /* ===== CSS Variables ===== */
+    :root {
+      --primary:       #0f2044;
+      --accent:        #2563eb;
+      --accent-hover:  #1d4ed8;
+      --accent-light:  #eff6ff;
+      --accent-mid:    #bfdbfe;
+      --text:          #1f2937;
+      --text-sec:      #6b7280;
+      --bg:            #ffffff;
+      --bg-sec:        #f9fafb;
+      --border:        #e5e7eb;
+      --radius:        10px;
+      --shadow:        0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.05);
+      --shadow-md:     0 4px 12px rgba(0,0,0,.08);
+      --max-w:         960px;
+      --nav-h:         62px;
+    }
+
+    /* ===== Reset ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.7;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ===== Navigation ===== */
+    nav {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 200;
+      height: var(--nav-h);
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .nav-brand {
+      font-weight: 700;
+      font-size: .95rem;
+      color: var(--primary);
+      letter-spacing: -.02em;
+      white-space: nowrap;
+    }
+    .nav-brand span { font-weight: 400; color: var(--text-sec); font-size: .85rem; margin-left: .4rem; }
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: .15rem;
+      list-style: none;
+    }
+    .nav-menu a {
+      font-size: .82rem;
+      font-weight: 500;
+      color: var(--text-sec);
+      padding: .35rem .65rem;
+      border-radius: 6px;
+      transition: color .15s, background .15s;
+      white-space: nowrap;
+    }
+    .nav-menu a:hover { color: var(--accent); background: var(--accent-light); text-decoration: none; }
+    .lang-pill {
+      display: inline-flex;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      margin-left: .75rem;
+    }
+    .lang-pill a {
+      font-size: .75rem;
+      font-weight: 700;
+      padding: .22rem .6rem;
+      color: var(--text-sec);
+      transition: all .15s;
+    }
+    .lang-pill a.on { background: var(--accent); color: #fff; }
+    .lang-pill a:hover { text-decoration: none; }
+
+    /* ===== Wrapper ===== */
+    .wrap {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* ===== Hero ===== */
+    #hero {
+      padding-top: calc(var(--nav-h) + 4rem);
+      padding-bottom: 3.5rem;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 3.5rem;
+      align-items: start;
+    }
+    /* Photo hover swap */
+    .photo-wrap {
+      position: relative;
+      width: 200px;
+      height: 280px;
+      cursor: pointer;
+    }
+    .hero-photo,
+    .hero-photo-alt {
+      width: 200px;
+      height: 280px;
+      border-radius: 12px;
+      object-fit: cover;
+      object-position: top center;
+      border: 3px solid var(--bg);
+      box-shadow: 0 0 0 1px var(--border), var(--shadow-md);
+      position: absolute;
+      top: 0; left: 0;
+      transition: opacity .6s ease;
+    }
+    .hero-photo-alt {
+      opacity: 0;
+    }
+    .photo-wrap:hover .hero-photo { opacity: 0; }
+    .photo-wrap:hover .hero-photo-alt { opacity: 1; }
+    /* Tooltip */
+    .photo-tooltip {
+      position: absolute;
+      bottom: -2.4rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--primary);
+      color: #fff;
+      font-size: .78rem;
+      font-weight: 600;
+      padding: .3rem .8rem;
+      border-radius: 20px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .2s ease, bottom .2s ease;
+    }
+    .photo-tooltip::before {
+      content: '';
+      position: absolute;
+      top: -5px; left: 50%;
+      transform: translateX(-50%);
+      border: 5px solid transparent;
+      border-top: none;
+      border-bottom-color: var(--primary);
+    }
+    .photo-wrap:hover .photo-tooltip { opacity: 1; bottom: -2.8rem; }
+    .hero-name {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: -.03em;
+      line-height: 1.15;
+      margin-bottom: .3rem;
+    }
+    .hero-degree {
+      font-size: .88rem;
+      color: var(--text-sec);
+      margin-bottom: 1.1rem;
+    }
+    .hero-pos {
+      font-size: 1rem;
+      line-height: 1.65;
+      margin-bottom: 1.25rem;
+    }
+    .hero-pos strong { color: var(--primary); }
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .45rem;
+      margin-bottom: 1.6rem;
+    }
+    .tag {
+      font-size: .75rem;
+      font-weight: 500;
+      background: var(--accent-light);
+      color: var(--accent);
+      padding: .25rem .7rem;
+      border-radius: 20px;
+      border: 1px solid var(--accent-mid);
+    }
+    .hero-btns { display: flex; flex-wrap: wrap; gap: .6rem; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .5rem 1.1rem;
+      border-radius: var(--radius);
+      font-size: .875rem;
+      font-weight: 500;
+      transition: all .15s;
+      text-decoration: none !important;
+    }
+    .btn-fill { background: var(--accent); color: #fff !important; }
+    .btn-fill:hover { background: var(--accent-hover); }
+    .btn-outline {
+      background: var(--bg-sec);
+      color: var(--text) !important;
+      border: 1px solid var(--border);
+    }
+    .btn-outline:hover { background: var(--border); }
+
+    /* ===== Sections ===== */
+    section {
+      padding: 3rem 0;
+      border-top: 1px solid var(--border);
+    }
+    .sec-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      letter-spacing: -.02em;
+      display: flex;
+      align-items: center;
+      gap: .55rem;
+    }
+    .sec-title::before {
+      content: '';
+      width: 4px;
+      height: 1.15em;
+      background: var(--accent);
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+
+    /* ===== About ===== */
+    .about-text { max-width: 820px; line-height: 1.85; color: var(--text); }
+    .about-text p + p { margin-top: 1rem; }
+    .about-text em { font-style: normal; font-weight: 600; color: var(--primary); }
+
+    /* ===== Research ===== */
+    .keywords { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .kw {
+      font-size: .83rem;
+      padding: .3rem .8rem;
+      border-radius: 20px;
+      background: var(--bg-sec);
+      border: 1px solid var(--border);
+      color: var(--text);
+      transition: all .15s;
+      cursor: default;
+    }
+    .kw:hover { background: var(--accent-light); border-color: var(--accent-mid); color: var(--accent); }
+    .research-links { margin-top: 1.25rem; display: flex; gap: .5rem; flex-wrap: wrap; }
+
+    /* ===== Awards ===== */
+    .awards { display: flex; flex-direction: column; gap: .7rem; }
+    .award {
+      display: grid;
+      grid-template-columns: 52px 1fr;
+      gap: 1rem;
+      background: var(--bg-sec);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: var(--radius);
+      padding: .9rem 1rem;
+      align-items: start;
+    }
+    .award-yr {
+      font-size: .78rem;
+      font-weight: 700;
+      color: var(--accent);
+      padding-top: .1rem;
+    }
+    .award-body { font-size: .9rem; line-height: 1.6; }
+    .award-body strong { color: var(--primary); }
+
+    /* ===== News ===== */
+    .news-feed { display: flex; flex-direction: column; }
+    .news-row {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      gap: 1rem;
+      padding: .85rem 0;
+      border-bottom: 1px solid var(--border);
+      align-items: baseline;
+    }
+    .news-row:last-child { border-bottom: none; }
+    .news-dt {
+      font-size: .8rem;
+      font-weight: 600;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+    .news-body { font-size: .9rem; line-height: 1.65; }
+
+    /* ===== Contact ===== */
+    .contact-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+    }
+    .contact-block h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: .75rem;
+    }
+    .contact-block p { font-size: .9rem; line-height: 1.9; }
+    code {
+      font-family: 'Menlo', 'Consolas', monospace;
+      font-size: .85em;
+      background: var(--bg-sec);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: .1em .35em;
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.75rem 1.5rem;
+      text-align: center;
+      font-size: .8rem;
+      color: var(--text-sec);
+    }
+    footer a { color: var(--text-sec); }
+    footer a:hover { color: var(--accent); }
+
+    /* ===== Animations ===== */
+    @keyframes up { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+    .fade-up { animation: up .55s ease both; }
+    .delay-1 { animation-delay: .1s; }
+    .delay-2 { animation-delay: .2s; }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 680px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 1.75rem; text-align: center; }
+      .photo-wrap { margin-left: auto; margin-right: auto; }
+      .hero-tags, .hero-btns { justify-content: center; }
+      .hero-name { font-size: 1.8rem; }
+      .nav-menu { display: none; }
+      .contact-cols { grid-template-columns: 1fr; gap: 1.5rem; }
+      .news-row { grid-template-columns: 1fr; gap: .2rem; }
+      .award { grid-template-columns: 1fr; gap: .25rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ====== Navigation ====== -->
+<nav aria-label="Site navigation">
+  <div class="nav-inner">
+    <span class="nav-brand">Takayuki Ito <span>Kyoto University</span></span>
+    <div style="display:flex;align-items:center;">
+      <ul class="nav-menu">
+        <li><a href="#about">About</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#awards">Awards</a></li>
+        <li><a href="#news">News</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="publications-top-confs.html">Top Confs</a></li>
+        <li><a href="activity.html">Activities</a></li>
+      </ul>
+      <div class="lang-pill">
+        <a href="index.html" class="on">EN</a>
+        <a href="index-j.html">JA</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ====== Hero ====== -->
+<div class="wrap">
+  <div id="hero">
+    <div class="hero-grid">
+      <div class="fade-up">
+        <div class="photo-wrap">
+          <img class="hero-photo" src="./ito20210307.jpeg" alt="Takayuki Ito">
+          <img class="hero-photo-alt" src="./ito20210307-ue.jpeg" alt="お茶です">
+          <div class="photo-tooltip">Tea! ☕</div>
+        </div>
+      </div>
+      <div class="fade-up delay-1">
+        <h1 class="hero-name">Takayuki&nbsp;Ito</h1>
+        <p class="hero-degree">Doctor of Engineering</p>
+        <div class="hero-pos">
+          <strong>Professor</strong><br>
+          Department of Social Informatics, Graduate School of Informatics<br>
+          Computer Science Course, Department of Informatics, Faculty of Engineering<br>
+          <a href="http://www.kyoto-u.ac.jp" target="_blank" rel="noopener">Kyoto University</a> &nbsp;·&nbsp; Room 424, Building No. 7
+        </div>
+        <div class="hero-btns">
+          <a href="CV.pdf" class="btn btn-fill">📄 Curriculum Vitae</a>
+          <a href="http://www.agent.soc.i.kyoto-u.ac.jp/" target="_blank" rel="noopener" class="btn btn-outline">🔬 Lab Homepage</a>
+          <a href="publications.html" class="btn btn-outline">📚 Full Publications</a>
+          <a href="publications-top-confs.html" class="btn btn-outline">🏆 Top-Tier Confs &amp; ACM CI</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== News ====== -->
+  <section id="news">
+    <h2 class="sec-title">Recent News</h2>
+    <div class="news-feed" id="news-feed">
+      <div style="color:var(--text-sec);font-size:.85rem;padding:.5rem 0;">Loading…</div>
+    </div>
+    <div style="margin-top:1.25rem;">
+      <a href="news.html" class="btn btn-outline">All news →</a>
+    </div>
+  </section>
+
+  <script src="common/js/news-merge.js"></script>
+  <script>
+  (async function loadNews() {
+    try {
+      const all = await window.loadMergedNews();
+      const M = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+      const fmt = iso => {
+        const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(iso || '');
+        return m ? `${M[parseInt(m[2])-1]} ${parseInt(m[3])}, ${m[1]}` : (iso || '');
+      };
+      const feed = document.getElementById('news-feed');
+      feed.innerHTML = all.slice(0, 5).map(e => {
+        const link = e.link ? ` <a href="${e.link}" target="_blank" rel="noopener">${e.link_en || 'Link →'}</a>` : '';
+        return `
+        <div class="news-row">
+          <span class="news-dt">${fmt(e.date)}</span>
+          <div class="news-body">${e.en || e.ja || ''}${link}</div>
+        </div>`;
+      }).join('') || '<div style="color:var(--text-sec);font-size:.85rem;">No news yet.</div>';
+    } catch(_) {}
+  })();
+  </script>
+
+  <!-- ====== About ====== -->
+  <section id="about">
+    <h2 class="sec-title">About</h2>
+    <div class="about-text fade-up">
+      <p>Dr. Takayuki Ito is Professor of Kyoto University. He received the B.E., M.E., and Doctor of Engineering from the Nagoya Institute of Technology in 1995, 1997, and 2000, respectively. From 1999 to 2001, he was a research fellow of the Japan Society for the Promotion of Science (JSPS). From 2000 to 2001, he was a visiting researcher at USC/ISI (University of Southern California / Information Sciences Institute).</p>
+      <p>From April 2001 to March 2003, he was an associate professor at Japan Advanced Institute of Science and Technology (JAIST). From 2004 to September 2020, he was at Nagoya Institute of Technology, becoming a full professor in 2014. Since October 2020, he is a Professor at Kyoto University.</p>
+      <p>From 2005 to 2006, he was a visiting researcher at Harvard University (Division of Engineering and Applied Science) and at the Center for Coordination Science, MIT Sloan School of Management. From 2008 to 2010, he was a visiting researcher at the Center for Collective Intelligence, MIT Sloan School of Management.</p>
+      <p>He is a board member of IFAAMAS, Executive Committee Member of IEEE Computer Society Technical Committee on Intelligent Informatics, and has served as PC-Chair of AAMAS2013, PRIMA2009, and General Chair of PRIMA2014. He is a senior member of ACM and IEEE.</p>
+      <p><em>Core Research Question:</em> "Why can people reach consensus?" and "What is consensus?"</p>
+    </div>
+  </section>
+
+  <!-- ====== Research ====== -->
+  <section id="research">
+    <h2 class="sec-title">Research Interests</h2>
+    <div class="keywords">
+      <span class="kw">Multi-Agent Systems</span>
+      <span class="kw">Automated Negotiation</span>
+      <span class="kw">Collective Intelligence</span>
+      <span class="kw">Crowd Intelligence</span>
+      <span class="kw">Consensus Building</span>
+      <span class="kw">Group Decision Support</span>
+      <span class="kw">Computational Mechanism Design</span>
+      <span class="kw">Game Theory</span>
+      <span class="kw">Auction Theory</span>
+      <span class="kw">Intelligent Agents</span>
+      <span class="kw">Distributed Artificial Intelligence</span>
+      <span class="kw">Agent-mediated Electronic Commerce</span>
+      <span class="kw">Information Economics</span>
+      <span class="kw">LLM Agents</span>
+      <span class="kw">Reasoning under Uncertainty</span>
+    </div>
+    <div class="research-links">
+      <a href="ResearchStatement2016.html" class="btn btn-outline">Research Statement 2016</a>
+      <a href="ResearchStatement.html" class="btn btn-outline">Research Statement</a>
+      <a href="https://warp.ndl.go.jp/info:ndljp/pid/12367425/www.jsps.go.jp/j-bilat/fos_ja/data/jishi_13/19_Ito_Takayuki.pdf" target="_blank" rel="noopener" class="btn btn-outline">Summary of Computational MD</a>
+    </div>
+  </section>
+
+  <!-- ====== Awards ====== -->
+  <section id="awards">
+    <h2 class="sec-title">Selected Awards</h2>
+    <div class="awards" id="awards-feed">
+      <div style="color:var(--text-sec);font-size:.85rem;padding:.5rem 0;">Loading…</div>
+    </div>
+    <div style="margin-top:1.25rem;">
+      <a href="awards.html" class="btn btn-outline">All awards →</a>
+    </div>
+  </section>
+
+  <script>
+  (async function loadAwards() {
+    try {
+      const res = await fetch('awards.json');
+      if (!res.ok) return;
+      const all = await res.json();
+      const yearOf = e => e.year || (e.date || '').slice(0,4) || '—';
+      all.sort((a,b) => {
+        const ya = yearOf(a), yb = yearOf(b);
+        if (yb !== ya) return yb.localeCompare(ya);
+        return (b.date || '').localeCompare(a.date || '');
+      });
+      const feed = document.getElementById('awards-feed');
+      feed.innerHTML = all.slice(0, 6).map(e => {
+        const link = e.link ? ` <a href="${e.link}" target="_blank" rel="noopener">${e.link_en || 'Link →'}</a>` : '';
+        return `
+        <div class="award">
+          <span class="award-yr">${yearOf(e)}</span>
+          <div class="award-body">${e.en || e.ja || ''}${link}</div>
+        </div>`;
+      }).join('') || '<div style="color:var(--text-sec);font-size:.85rem;">No awards yet.</div>';
+    } catch(_) {}
+  })();
+  </script>
+
+  <!-- ====== Contact ====== -->
+  <section id="contact">
+    <h2 class="sec-title">Contact</h2>
+    <div class="contact-cols">
+      <div class="contact-block">
+        <h3>Address</h3>
+        <p>
+          Prof. Takayuki Ito, Ph.D.<br>
+          Department of Social Informatics<br>
+          Graduate School of Informatics<br>
+          Kyoto University<br>
+          Yoshida-Honmachi, Kyoto 606-8501, Japan<br>
+          <br>
+          Room 424, Building No. 7
+        </p>
+      </div>
+      <div class="contact-block">
+        <h3>Get in Touch</h3>
+        <p>
+          TEL: +81-75-753-4821 (Direct)<br>
+          FAX: +81-75-753-4820 (Direct)<br>
+          <br>
+          Email: <code>ito [at] i.kyoto-u.ac.jp</code><br>
+          <br>
+          <a href="http://www.agent.soc.i.kyoto-u.ac.jp/" target="_blank" rel="noopener">🔬 Lab Homepage</a><br>
+          <a href="CV.pdf">📄 Download CV (PDF)</a>
+        </p>
+      </div>
+    </div>
+  </section>
+</div><!-- /wrap -->
+
+<footer>
+  <p>Takayuki Ito &mdash; Professor, Kyoto University &nbsp;&middot;&nbsp; <a href="index-j.html">日本語ページ</a> &nbsp;&middot;&nbsp; <a href="http://www.agent.soc.i.kyoto-u.ac.jp/" target="_blank" rel="noopener">Lab Homepage</a></p>
+</footer>
+
+</body>
+</html>
