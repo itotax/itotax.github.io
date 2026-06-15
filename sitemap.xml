@@ -3,17 +3,17 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
   <url>
-    <loc>https://takayuki-ito.com/index.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://takayuki-ito.com/index.html"/>
+    <loc>https://takayuki-ito.com/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://takayuki-ito.com/"/>
     <xhtml:link rel="alternate" hreflang="ja" href="https://takayuki-ito.com/index-j.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://takayuki-ito.com/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://takayuki-ito.com/"/>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://takayuki-ito.com/index-j.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://takayuki-ito.com/index.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://takayuki-ito.com/"/>
     <xhtml:link rel="alternate" hreflang="ja" href="https://takayuki-ito.com/index-j.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://takayuki-ito.com/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://takayuki-ito.com/"/>
     <priority>1.0</priority>
   </url>
 

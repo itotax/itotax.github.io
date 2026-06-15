@@ -1,5 +1,39 @@
 # 壊れたリンク修正記録
 
+---
+
+## 追記: 2026-06-15 レガシー退役・死んだ参照除去・研究概要パリティ
+
+### 1. レガシークラスタの完全削除（孤立 noindex ページ）
+モダンサイトからリンクされていない（互いに参照し合うのみ）ことを確認のうえ削除:
+`menu.html` / `menu-j.html` / `selfintro.html` / `selfintro-j.html` / `selfintro-j-modern.html` / `selfintro-c.html` / `top-j.html`
+
+→ 2026-06-06 時点で「未対応」としていた残り35件の壊れリンクは、その大半がこれらのページ上にあったため一括解消。
+
+### 2. 孤立レガシーアセットの削除
+削除ページ専用だった資産（現存HTMLからの参照ゼロを確認）を削除:
+`javascript/`（prototype.js, effects.js, lightwindow.js）/ `Scripts/` / `css/default.css` / `css/lightwindow.css` / `common/swf/`（Flash 一式）/ `common/js/beautifulJapanese.js`
+
+### 3. 現役ページの死んだ外部参照を除去
+- `activity.html`: 動かない `code.jquery.com/jquery-latest.js`（タイポ `tupe`）と空コメントを除去（jQuery 未使用）
+- `research-j.html`: 廃止された `google-analytics.com/urchin.js` 旧トラッカーを除去（GA4 へ一本化済み）
+- `lecture-j.html`: Flash フォント置換スクリプト（`replaceFonts` / `*.swf`）を除去、旧 JAIST/nitech メールを現行 `ito (at) i.kyoto-u.ac.jp` に更新
+
+### 4. ResearchStatement 日英パリティの確立
+命名規約を統一（EN=`ResearchStatementYYYY.html` / JA=`researchstatement-jYYYY.html`、2009 JA のみ既存 URL `research-j.html` を維持）。
+- `ResearchStatement2020.html`（中身は日本語だった）→ `researchstatement-j2020.html` にリネーム
+- 不足版を翻訳して新規作成: `ResearchStatement2020.html`(EN) / `ResearchStatement2018.html`(EN) / `researchstatement-j2016.html`(JA)
+- 全4年分（2009/2016/2018/2020）で日英ペアが揃い、各ページに相互の言語トグル + ホームリンクを設置
+- `researchstatement-j2018.html` の `<title>` 誤り（"Research Statement 2016"）を修正
+- `index.html`(EN) の研究概要リンクに 2020/2018 を追加、`index-j.html`(JA) は 2020/2016 を日本語版へ向け直し
+
+### 5. SEO 整合
+`index.html` の canonical をルート `https://takayuki-ito.com/` に変更したのに合わせ、index 双方の hreflang(en/x-default) と og:url、`sitemap.xml` の該当 `<loc>`/hreflang もルート URL に統一。
+
+→ 結果: 全現存 HTML の内部参照リンク切れ **0 件**。
+
+---
+
 調査日: 2026-06-06
 対象: `publications.bib` および全 HTML ファイルの参照リンク
 

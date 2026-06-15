@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L4QF5K46LC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-L4QF5K46LC');
+</script>
+<title>Research Statement 2018 — Takayuki Ito</title>
+<style>
+  :root{--primary:#0f2044;--accent:#2563eb;--text:#1f2937;}
+  body{font-family:'Inter','Noto Sans JP',system-ui,-apple-system,sans-serif;line-height:1.8;color:var(--text);max-width:820px;margin:0 auto;padding:20px 22px 80px;}
+  .topbar{display:flex;gap:14px;align-items:center;font-size:.9rem;border-bottom:1px solid #e5e7eb;padding-bottom:12px;margin-bottom:28px;}
+  .topbar a{color:var(--accent);text-decoration:none;}
+  .topbar a:hover{text-decoration:underline;}
+  h1{font-size:1.5rem;color:var(--primary);margin:.2em 0;}
+  h2{font-size:1.15rem;color:var(--primary);font-weight:600;margin:.2em 0 .2em;}
+  .sub{color:#475569;margin:0 0 1.6em;}
+  p{margin:1em 0;}
+</style>
+</head>
+<body>
+<div class="topbar"><a href="index.html">← Home</a><span>·</span><a href="researchstatement-j2018.html">日本語 (Japanese)</a></div>
+
+<h1>Research Statement 2018</h1>
+<h2>Creating a large-scale consensus-building support system based on agent technology</h2>
+<p class="sub">Professor Takayuki Ito, Nagoya Institute of Technology</p>
+
+<p>In this research, I realize a system that builds the consensus of crowds over the Internet. Through SNS such as Twitter and Facebook, it has become possible to collect the opinions of tens of thousands, or even millions, of people over the Internet. There is a possibility of skillfully consolidating these opinions and forming the consensus of millions of people. If large-scale consensus can be formed, decision-making by a large number of people—which was previously impossible—becomes possible. However, because the scale is so large, it is difficult to do this by hand. Therefore, in this research, using artificial-intelligence programs called agents, I create a system that efficiently collects the opinions of a large number of people and forms consensus.</p>
+
+<p>This research makes it possible for an extremely large number of people (for example, more than 10,000) to discuss online and form consensus efficiently—something that was previously impossible. As a result, even without repeating large-scale discussions that demand time, place, and effort, people can efficiently reach an agreement, or together search for proposals on which they can agree. Thanks to this effect, for example, the number of unproductive and meaningless meetings can be drastically reduced, and face-to-face meetings can be devoted solely to genuinely productive discussion.</p>
+
+<p>When trying to build consensus, what problems have you encountered? Have you ever had the experience of failing—thinking "it might have gone well if I hadn't said that," or "I should have done it this way"? To avoid such failures, just as flight simulators are used to practice flying an aircraft, there are automated-negotiation simulations for practicing negotiation with various counterparts. However, the agreements obtained from existing automated-negotiation simulations are products of compromise. This is because automated-negotiation simulations can only search for an agreement within conditions given in advance. Likewise, with a flight simulator one can only practice piloting with maps and aircraft that are given in advance.</p>
+
+<p>Consensus building requires a more creative perspective. Without a creative perspective, in situations of conflict, no matter how long negotiation or discussion continues, the conflict remains and no better agreement can be found. When a discussion cannot reach agreement, it is necessary not merely to talk about the proposals that currently exist, but to create new proposals through discussion and thereby create a consensus. For that, it is necessary to incorporate opinions from more people into the discussion. For example, when discussing where to build a new power plant in town planning, no resident would want such a huge facility built in their own neighborhood, and the discussion becomes confrontational. If, however, a creative proposal that was not in the original discussion can be obtained—such as "instead of building the power plant, provide free electricity to the residents nearby"—it becomes possible to reach an agreement.</p>
+
+<p>As systems that support the aggregation of crowd ideas and question-answering, there are Innocentive, Quora, and others, but they focus mainly on generating ideas and do not target support for consensus building based on opinions and preferences. For example, when deciding a travel destination, merely listing many candidate places one wants to go does not lead to an agreement. In addition to supporting the generation of many ideas, it is necessary to turn ideas into agreement proposals based on preferences and opinions about those ideas.</p>
+
+<p>As a system for supporting crowd deliberation, there is Deliberatorium. However, in this system, the crowd must develop the deliberation based on a prescribed structure and cannot deliberate freely in natural language. When deliberating based on a prescribed structure, every user must deeply understand that structure. In existing research, in order to properly develop deliberation in Deliberatorium, participants are forced to proceed according to the structure. For example, in free description one can also make remarks such as jokes to encourage participants to speak, but in Deliberatorium this is not possible.</p>
+
+<p>In the 1990s, consensus-building support systems using case-based reasoning of artificial intelligence, such as PERSUADER and JUDGE, were developed, but they support consensus building in specific domains and are not aimed at a large number of people over the Internet.</p>
+
+<p>Therefore, in this research, I target crowds over the Internet and realize a system that forms consensus based on the opinions and preferences of the crowd. As shown in the example above, for instance, when deciding a travel destination, merely listing many candidate places does not lead to agreement. In addition to generating many ideas, it is necessary to turn ideas into agreement proposals based on preferences and opinions about those ideas. And to form crowd consensus, I newly create a facilitator agent that mediates crowd discussion on a large scale and at high speed and leads to more creative consensus.</p>
+
+<p>The facilitator agent uses a problem-solving structuring method inspired by IBIS—one of the facilitation techniques—to extract the problem-solving structure within a discussion while facilitating; that is, by extracting the problem-solving structure on a large scale and at high speed, it leads to creative consensus (patent pending).</p>
+
+<p>As a method for extracting the structure of a discussion itself, there is Argumentation Mining, but most of that research extracts the structure of logical argument; even if extraction succeeds, what is in conflict remains in conflict, and reaching agreement is considered difficult. To form consensus, it is insufficient merely to extract the structure of the current discussion; it is important to simultaneously extract the problem-solving structure and to form creative agreement proposals while interacting with the crowd. Therefore, in this research, based on a new consensus-structure representation method inspired by IBIS—a representative methodology of creative facilitation—I develop a facilitator agent program that mediates discussion and leads to creative consensus (structures) by extracting the problem-solving structure.</p>
+
+<p>To grasp the structure within text-based discussion, the facilitator agent program extracts the problem-solving structure using highly optimized methods such as bidirectional RNNs and CNNs in deep learning. The extracted structure becomes a graph in which issues, ideas, pros, and cons are nodes, connected by links representing the relationships among the nodes. Using this graph, a facilitation-graph search algorithm efficiently and comprehensively searches for and forms consensus. The measures of efficiency for reaching agreement and of the comprehensiveness of the agreement are new evaluation measures for consensus proposed in this research project.</p>
+
+<p>The effectiveness of this system is being verified through social experiments in Nagoya City and Hamamatsu.</p>
+
+</body>
+</html>
