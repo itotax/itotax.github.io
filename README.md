@@ -59,6 +59,7 @@
   publications.bib      … BibTeX（News生成にも使用、`accepted={YYYY-MM-DD}` フィールド）
   news.json             … News手動エントリ（bibkeyでbibと重複排除）
   awards.json           … 受賞データ
+  activity.json         … 学会活動データ（日英1本化、EN/JA両ページが参照）
   FIXES.md              … 保守・修正履歴
   README.md             … 本ドキュメント
   *.pdf (16)            … CV、受賞状、新聞掲載スキャン等
@@ -83,7 +84,7 @@ oldfiles/               … アーカイブ（過去の論文・画像。サイ�
 
 ## 5. データ駆動コンテンツ（重要：更新方法）
 
-**News と 受賞は HTML を直接編集しない。** クライアント側で生成される。
+**News・受賞・学会活動は HTML を直接編集しない。** クライアント側で生成される。
 
 ### News の更新
 News は2系統をマージして表示（`common/js/news-merge.js`）:
@@ -92,6 +93,19 @@ News は2系統をマージして表示（`common/js/news-merge.js`）:
 
 ### 受賞の更新
 `awards.json` に追記。`year` / `tag` / `ja` / `en` / 任意で `link`（`link_en`・`link_ja` で言語別リンク文言可）。年降順で表示、トップページは上位6件。
+
+### 学会活動の更新
+`activity.json` を編集。日英で内容が重複していた旧 `activity.html` / `activity-j.html` を
+2026-07-27 に1本化し、両ページとも同じ JSON をレンダリングする方式にした。構造は3ブロック:
+
+- `standing[]` … 継続的な役職（学会理事・運営委員・編集委員・研究助成機関など）。
+  `period`（表示用の期間文字列）/ `tag` / `en` / `ja`。年次リストには重複掲載しない。
+- `activities[]` … 年次別の会議・委員会活動。`year`（数値）/ `tag` / `en` / `ja`。
+- `reviewing[]` … 査読・ゲストエディタの誌名（言語非依存の文字列配列）。
+
+`tag` は `chair` / `spc` / `pc` / `editor` / `steering` / `other` の6種。
+表示順は 年降順 → tag順（chair→spc→steering→pc→editor→other）→ 本文順。
+`en` / `ja` は簡単なインラインHTML（`<strong>` 等）を含められる。
 
 ### 論文の更新
 `publications.bib` を編集。PDFは `papers/` に置き、bib の `url={papers/xxx.pdf}` で参照。
