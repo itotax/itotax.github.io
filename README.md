@@ -54,7 +54,7 @@
 /                       … 全HTMLページ、データファイル、ルート資産
   CNAME                 … 独自ドメイン設定
   robots.txt            … 全許可 + sitemap参照
-  sitemap.xml           … 10 URL（モダン版のみ掲載、hreflang付き）
+  sitemap.xml           … 12 URL（モダン版のみ掲載、hreflang付き）
   favicon.svg, apple-touch-icon.png
   publications.bib      … BibTeX（News生成にも使用、`accepted={YYYY-MM-DD}` フィールド）
   news.json             … News手動エントリ（bibkeyでbibと重複排除）
@@ -116,7 +116,8 @@ News は2系統をマージして表示（`common/js/news-merge.js`）:
 
 - 各モダンページに meta description / canonical / hreflang(en/ja/x-default) / OG / Twitter Card を完備。
 - **トップの canonical はサイトルート** `https://takayuki-ito.com/`（`index.html` 自身）。これに合わせて `index.html`・`index-j.html` の hreflang(en/x-default)・og:url、および `sitemap.xml` の該当 `<loc>`/hreflang もルートURLに統一済み。
-- `sitemap.xml` 掲載は**モダン版10ページのみ**。ResearchStatement・activity・lecture は意図的に非掲載（インデックス方針）。
+- `sitemap.xml` 掲載は**モダン版12ページのみ**。activity は2026-07-27のモダン化に伴い掲載に変更。
+  ResearchStatement・lecture は意図的に非掲載（インデックス方針）。
 - `robots.txt` は全許可 + sitemap 参照。
 
 ---
