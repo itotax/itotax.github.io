@@ -14,7 +14,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Professional Activity — Takayuki Ito</title>
-  <meta name="description" content="Professional and academic service of Takayuki Ito, Professor at Kyoto University — conference chairs, steering committees, editorial boards and program committees from 2000 to 2027.">
+  <meta name="description" content="Selected professional and academic service of Takayuki Ito, Professor at Kyoto University — conference chairs, steering committees, editorial boards and program committees from 2000 to 2027.">
   <link rel="canonical" href="https://takayuki-ito.com/activity.html">
   <link rel="alternate" hreflang="en" href="https://takayuki-ito.com/activity.html">
   <link rel="alternate" hreflang="ja" href="https://takayuki-ito.com/activity-j.html">
@@ -211,11 +211,15 @@
       background: var(--bg-sec); color: var(--text-sec);
     }
 
-    .note {
-      margin-top: 1.25rem; font-size: .8rem; color: var(--text-sec);
-      background: var(--bg-sec); border: 1px dashed var(--border);
-      border-radius: var(--radius); padding: .7rem .95rem;
+    .callout {
+      display: flex; gap: .65rem; align-items: flex-start;
+      margin-bottom: 1.25rem; padding: .8rem 1rem;
+      font-size: .85rem; line-height: 1.65; color: var(--text);
+      background: var(--accent-light); border: 1px solid var(--accent-mid);
+      border-left: 3px solid var(--accent); border-radius: var(--radius);
     }
+    .callout .ico { font-size: .95rem; line-height: 1.5; }
+    .callout strong { color: var(--primary); font-weight: 700; }
     .empty { text-align: center; padding: 4rem 1rem; color: var(--text-sec); }
     .empty p { font-size: 1.1rem; margin-bottom: .5rem; }
 
@@ -256,8 +260,8 @@
 
   <header class="hero">
     <h1>Professional Activity</h1>
-    <p class="lede">Academic and professional service — conference organization, steering committees,
-      editorial boards and program committees.</p>
+    <p class="lede">A selection of academic and professional service — conference organization,
+      steering committees, editorial boards and program committees.</p>
     <div class="stats" id="stats"></div>
   </header>
 
@@ -271,9 +275,15 @@
 
   <section class="section">
     <div class="section-head">
-      <h2>By Year</h2>
+      <h2>Selected Activities by Year</h2>
       <small>conference and committee service</small>
     </div>
+    <p class="callout">
+      <span class="ico">⚑</span>
+      <span><strong>Selected roles only.</strong> In addition to those itemized below, every year
+        involves organizing and committee work for many further international conferences and
+        workshops that are not listed here.</span>
+    </p>
     <div class="controls">
       <div class="search-box">
         <span>🔍</span>
@@ -283,7 +293,6 @@
       <span class="count-bar" id="count-bar"></span>
     </div>
     <div id="timeline"></div>
-    <p class="note">Plus many other conference and workshop organizing roles not listed individually.</p>
   </section>
 
   <section class="section">
@@ -321,7 +330,7 @@ const T = {
   items:     n => `${n} item${n === 1 ? '' : 's'}`,
   roles:     'standing roles',
   span:      'years of service',
-  listed:    'listed activities',
+  listed:    'selected activities',
   none:      'No activities found.',
   loadfail:  'Could not load activity.json',
   loadhint:  'Open this page via a web server.'
