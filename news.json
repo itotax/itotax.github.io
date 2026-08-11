@@ -1,4 +1,19 @@
 [
+  {
+    "date": "2026-08-10",
+    "tag": "talk",
+    "ja": "🎤 招待講演：<strong>北名古屋市 市制施行20周年記念式典</strong>「まちづくり宣言」にて「D-Agreeとは何か？」を発表しました（名古屋芸術大学アートスクエア大ホール）。",
+    "en": "🎤 Invited talk: \"What is D-Agree?\" presented in the Machizukuri (Town Development) Declaration session of the <strong>Kitanagoya City 20th Anniversary Ceremony</strong>, Aichi, Japan.",
+    "link": "https://www.city.kitanagoya.lg.jp/shisei/seisaku/1005293/1006785/1007288/1007206.html",
+    "link_ja": "北名古屋市 →",
+    "link_en": "Kitanagoya City →"
+  },
+  {
+    "date": "2026-08-03",
+    "tag": "talk",
+    "ja": "🎤 招待講演：「AIエージェントによる合意形成 ～世界平和をもたらす研究の最前線～」を<strong>京都中央信用金庫</strong> 中信京都駅八条ロビル 共創施設「オープニングイベント」のオープニングセミナーで発表しました（京都市南区）。",
+    "en": "🎤 Invited talk: \"Consensus Building by AI Agents: The Frontier of Research toward World Peace\" at the opening seminar for the new co-creation facility of <strong>Kyoto Chuo Shinkin Bank</strong> (Chushin Kyoto Station Hachijo Robiru), Kyoto, Japan."
+  },
 	{
     "date": "2026-05-17",
     "tag": "paper",
