@@ -87,9 +87,16 @@ oldfiles/               … アーカイブ（過去の論文・画像。サイ�
 **News・受賞・学会活動は HTML を直接編集しない。** クライアント側で生成される。
 
 ### News の更新
-News は2系統をマージして表示（`common/js/news-merge.js`）:
-1. **論文採択**: `publications.bib` の各エントリに `accepted = {YYYY-MM-DD}` フィールドを追加すると、その論文が自動的にNewsに出る。
-2. **手動エントリ**（受賞・メディア等）: `news.json` に追記。`bibkey` を指定すると bib 側と重複排除される。各エントリは `date` / `tag` / `ja` / `en`（必要に応じ `link`）を持つ。
+News は3系統をマージして表示（`common/js/news-merge.js`）:
+1. **論文採択**: `publications.bib` の各エントリに `accepted = {YYYY-MM-DD}` フィールドを追加すると、その論文が自動的にNewsに出る（tag=`paper`、本文は「論文採択：/Paper accepted:」）。
+2. **招待講演**: `@invitedtalk` エントリに `newsdate = {YYYY-MM-DD}`（講演日）を追加すると自動的にNewsに出る（tag=`talk`）。
+   - 日本語本文は `note` から自動生成される（役割プレフィクスを残し、著者名と末尾の日付を除去）。文言を変えたい場合のみ `news-ja` で上書き。
+   - **`news-en` は実質必須**。bib の note は国内講演だと日本語のみで、無い場合は英語Newsページにも日本語が出るため。
+   - エントリに `url =` があれば News からリンクされる。
+   - 掲載範囲は「Newsが扱っている時期」に合わせる方針。古い講演まで一括で出すとNewsが講演一覧になってしまうため、`newsdate` は該当時期の講演にだけ付ける（過去分は論文一覧の招待講演フィルタで参照）。
+3. **手動エントリ**（受賞・メディア等）: `news.json` に追記。`bibkey` を指定すると bib 側と重複排除される。各エントリは `date` / `tag` / `ja` / `en`（必要に応じ `link`）を持つ。
+
+`tag` は `paper` / `award` / `talk` / `media` / `other` の5種（news.html 側にフィルタと配色あり）。
 
 ### 受賞の更新
 `awards.json` に追記。`year` / `tag` / `ja` / `en` / 任意で `link`（`link_en`・`link_ja` で言語別リンク文言可）。年降順で表示、トップページは上位6件。
