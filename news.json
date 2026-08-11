@@ -1,12 +1,12 @@
 [
-	{
+  {
     "date": "2026-05-17",
     "tag": "paper",
     "bibkey": "gao2026kdd",
     "ja": "論文採択：Tianyou Gao and Takayuki Ito. On Optimizing Route-Responsive Urban Tree Placement in City-Scale Pedestrian Networks. In Proceedings of the 32nd ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD), 2026. August 9-13, 2026. Jeju, Korea. (accepted!)",
     "en": "Paper Accepted: Tianyou Gao and Takayuki Ito. On Optimizing Route-Responsive Urban Tree Placement in City-Scale Pedestrian Networks. In Proceedings of the 32nd ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD), 2026. August 9-13, 2026. Jeju, Korea. (accepted!)"
   },
-	{
+  {
     "date": "2026-05-01",
     "tag": "paper",
     "ja": "論文採択：Zengqing Wu and Run Peng and Takayuki Ito and Makoto Onizuka and Chuan Xiao, {LLM}-Based Social Simulations Require a Boundary, Forty-third International Conference on Machine Learning (ICML2026), Position Paper Track, 2026",
@@ -49,24 +49,28 @@
     "date": "2026-03-27",
     "tag": "paper",
     "ja": "論文採択：Dong &amp; Ito, \"From Consensus Theory to LLM Agents: Practical Consensus-Building for Multi-Issue Negotiation,\" <em>Expert Systems with Applications</em>（IF=7.5、JCR Q1）",
-    "en": "Paper accepted: Dong &amp; Ito, \"From Consensus Theory to LLM Agents,\" <em>Expert Systems with Applications</em> (IF=7.5, JCR Q1)."
+    "en": "Paper accepted: Dong &amp; Ito, \"From Consensus Theory to LLM Agents,\" <em>Expert Systems with Applications</em> (IF=7.5, JCR Q1).",
+    "important": true
   },
   {
     "date": "2026-02-24",
     "tag": "paper",
     "ja": "論文採択：Si &amp; Ito, \"Adaptive conformity promotes cooperation within structured populations,\" <em>Chaos: An Interdisciplinary Journal of Nonlinear Science</em>（AIP、IF=3.2、JCR Q1）",
-    "en": "Paper accepted: Si &amp; Ito, \"Adaptive conformity promotes cooperation within structured populations,\" <em>Chaos</em> (AIP, IF=3.2, JCR Q1)."
+    "en": "Paper accepted: Si &amp; Ito, \"Adaptive conformity promotes cooperation within structured populations,\" <em>Chaos</em> (AIP, IF=3.2, JCR Q1).",
+    "important": true
   },
   {
     "date": "2026-02-23",
     "tag": "paper",
     "ja": "論文採択：Dong &amp; Ito, \"Multi-agent Systems and Credibility-based Advanced Scoring Mechanism in Fact-checking,\" <em>Scientific Reports</em>（JCR Q1）",
-    "en": "Paper accepted: Dong &amp; Ito, \"Multi-agent Systems and Credibility-based Advanced Scoring Mechanism in Fact-checking,\" <em>Scientific Reports</em> (JCR Q1)."
+    "en": "Paper accepted: Dong &amp; Ito, \"Multi-agent Systems and Credibility-based Advanced Scoring Mechanism in Fact-checking,\" <em>Scientific Reports</em> (JCR Q1).",
+    "important": true
   },
   {
     "date": "2026-01-19",
     "tag": "paper",
     "ja": "論文採択：Haqbeen, Sahab &amp; Ito, \"Facilitating Student Engagement and Learning Outcomes with GPT-based Chatbots\"、<em>IEICE Journal</em> 特集号",
-    "en": "Paper accepted: Haqbeen, Sahab &amp; Ito, \"Facilitating Student Engagement … with GPT-based Chatbots,\" <em>IEICE Journal</em>, Special Issue on ICT for a Hyperconnected Society."
+    "en": "Paper accepted: Haqbeen, Sahab &amp; Ito, \"Facilitating Student Engagement … with GPT-based Chatbots,\" <em>IEICE Journal</em>, Special Issue on ICT for a Hyperconnected Society.",
+    "important": true
   }
 ]

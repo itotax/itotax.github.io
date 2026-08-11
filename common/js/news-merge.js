@@ -108,6 +108,7 @@
       tag:  'paper',
       ja,
       en,
+      important: rankOf(e, venue),
       _bibkey: e._key,
     };
   }
@@ -153,9 +154,56 @@
     const en = `🎤 ${overrideEn ? cleanTeX(overrideEn)
                    : (overrideJa ? cleanTeX(overrideJa) : derived)}`;
 
-    const item = { date: e.newsdate, tag: 'talk', ja, en, _bibkey: e._key };
+    const item = {
+      date: e.newsdate,
+      tag: 'talk',
+      ja,
+      en,
+      important: (e.newsrank || '').toLowerCase() === 'top',
+      _bibkey: e._key,
+    };
     if (e.url) item.link = e.url;
     return item;
+  }
+
+  // ── Front-page retention policy ────────────────────────────
+  // The top page keeps major results visible for a year, while
+  // everything else rolls off after about a month. The full list
+  // always remains on news.html / news-j.html.
+  const FRONT_PAGE = {
+    max:            10,   // 最大表示件数
+    importantDays:  365,  // 難関国際会議・難関論文誌・受賞の掲載期間
+    otherDays:      31,   // その他（一般の論文採択・招待講演など）
+    minItems:       5,    // 期間で絞った結果が少なすぎる場合の下限
+  };
+
+  // 難関国際会議：publications-top-confs.html の VENUE_RULES と同じ範囲
+  const TOP_CONF = /\b(AAAI|IJCAI|AAMAS|ACL|EMNLP|ICML|KDD|SIGKDD|SIGMOD|PODS)\b|Autonomous Agents and Multi|Association for Computational Linguistics|Empirical Methods in Natural Language Processing|International Conference on Machine Learning|Knowledge Discovery and Data Mining|Collective Intelligence/i;
+
+  const JP_CHARS = /[ぁ-んァ-ヶ一-龥]/;
+
+  function isTopConf(text) {
+    if (!text) return false;
+    if (/\bWorkshop\b/i.test(text)) return false;   // ワークショップは対象外
+    return TOP_CONF.test(text);
+  }
+
+  // 英文論文誌の論文はすべて重要扱い。和文誌の除外は lang={ja} と
+  // 誌名の日本語文字の両方で判定する（bib 上では両者が一致している）。
+  function isEnglishJournal(e) {
+    if (e._type !== 'article') return false;
+    const journal = e.journal || '';
+    if (!journal) return false;
+    if ((e.lang || '').toLowerCase() === 'ja') return false;
+    return !JP_CHARS.test(journal);
+  }
+
+  // bib 側は `newsrank = {top}` / `{normal}` で自動判定を上書きできる
+  function rankOf(e, venue) {
+    const r = (e.newsrank || '').toLowerCase();
+    if (r === 'top') return true;
+    if (r === 'normal') return false;
+    return isEnglishJournal(e) || isTopConf(venue);
   }
 
   function bibNewsItems(entries) {
@@ -180,11 +228,49 @@
     const [fromBib, fromJson] = await Promise.all([bibPromise, jsonPromise]);
 
     const suppressed = new Set(fromBib.map(e => e._bibkey));
-    const filteredJson = fromJson.filter(e => !(e.bibkey && suppressed.has(e.bibkey)));
+    const filteredJson = fromJson
+      .filter(e => !(e.bibkey && suppressed.has(e.bibkey)))
+      .map(e => ({
+        ...e,
+        // news.json は "important": true / false で明示指定する。指定が無い
+        // 場合は受賞を重要扱いとし、それ以外は本文から難関会議名のみ判定する
+        // （手書き本文からは論文誌かどうかを確実に判定できないため、英文誌の
+        //   エントリには "important": true を明記すること）。
+        important: typeof e.important === 'boolean'
+          ? e.important
+          : (e.tag === 'award' || isTopConf(e.en || e.ja || '')),
+      }));
 
     return [...fromBib, ...filteredJson]
       .sort((a, b) => (b.date || '').localeCompare(a.date || ''));
   }
 
+  // Front-page selection: important items for a year, the rest for a
+  // month, capped at FRONT_PAGE.max. `items` must already be sorted
+  // newest-first (loadMergedNews returns them that way).
+  function selectFrontPageNews(items, now) {
+    const today = now || new Date();
+    const ageDays = iso => {
+      const t = Date.parse(iso);
+      return isNaN(t) ? Infinity : (today - t) / 86400000;
+    };
+
+    const kept = items.filter(e =>
+      ageDays(e.date) <= (e.important ? FRONT_PAGE.importantDays : FRONT_PAGE.otherDays));
+
+    // 静かな時期でも見出しが空にならないよう、最低件数までは直近から補う
+    if (kept.length < FRONT_PAGE.minItems) {
+      const seen = new Set(kept);
+      for (const e of items) {
+        if (kept.length >= FRONT_PAGE.minItems) break;
+        if (!seen.has(e)) { kept.push(e); seen.add(e); }
+      }
+      kept.sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+    }
+
+    return kept.slice(0, FRONT_PAGE.max);
+  }
+
   window.loadMergedNews = loadMergedNews;
+  window.selectFrontPageNews = selectFrontPageNews;
 })();

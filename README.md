@@ -98,6 +98,37 @@ News は3系統をマージして表示（`common/js/news-merge.js`）:
 
 `tag` は `paper` / `award` / `talk` / `media` / `other` の5種（news.html 側にフィルタと配色あり）。
 
+#### トップページの掲載ポリシー
+
+`news.html` / `news-j.html` は**全件**を表示するが、トップページの「お知らせ」欄は
+`selectFrontPageNews()`（`news-merge.js`）で新しい順に絞り込む。設定は同ファイル先頭の
+`FRONT_PAGE` 定数（`max` / `importantDays` / `otherDays` / `minItems`）で変更できる。
+
+| 種別 | 掲載期間 |
+|------|----------|
+| **重要**（英文論文誌・難関国際会議・受賞） | 365日 |
+| その他（和文誌・一般の国際会議・招待講演など） | 31日 |
+
+最大10件。期間で絞った結果が5件を下回る場合のみ、見出しが空にならないよう直近から補う。
+
+**重要判定**（`rankOf()`）:
+
+1. **英文論文誌はすべて重要**。`@article` かつ `lang` が `ja` でなく、誌名に日本語文字を
+   含まないものを英文誌とみなす（`isEnglishJournal()`）。bib の @article 152件は
+   `lang={ja}` の72件と和文誌名の72件が完全に一致しているため、この2条件で確実に分離できる。
+   和文誌（人工知能学会論文誌・情報処理学会論文誌など）は通常扱い。
+2. **難関国際会議**は誌名・会議名の正規表現 `TOP_CONF` で判定。範囲は
+   `publications-top-confs.html` の `VENUE_RULES` と同じ
+   （AAAI / IJCAI / AAMAS / ACL / EMNLP / ICML / KDD / SIGMOD / ACM CI、Workshop は除外）。
+   **両者は独立した定義なので、難関会議の範囲を変えるときは2箇所とも直すこと。**
+3. **受賞**（`tag: award`）は重要扱い。
+
+判定を個別に上書きしたい場合:
+- bib エントリ: `newsrank = {top}` または `{normal}`
+- `news.json`: `"important": true` / `false`。手書きの本文からは論文誌かどうかを確実に
+  判定できないため、**英文論文誌の手動エントリには `"important": true` を明記すること**
+  （無指定の場合は受賞と難関会議名のみ自動で重要扱いになる）。
+
 ### 受賞の更新
 `awards.json` に追記。`year` / `tag` / `ja` / `en` / 任意で `link`（`link_en`・`link_ja` で言語別リンク文言可）。年降順で表示、トップページは上位6件。
 

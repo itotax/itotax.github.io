@@ -471,7 +471,7 @@
         return m ? `${M[parseInt(m[2])-1]} ${parseInt(m[3])}, ${m[1]}` : (iso || '');
       };
       const feed = document.getElementById('news-feed');
-      feed.innerHTML = all.slice(0, 5).map(e => {
+      feed.innerHTML = window.selectFrontPageNews(all).map(e => {
         const link = e.link ? ` <a href="${e.link}" target="_blank" rel="noopener">${e.link_en || 'Link →'}</a>` : '';
         return `
         <div class="news-row">
