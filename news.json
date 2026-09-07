@@ -1,5 +1,12 @@
 [
   {
+    "date": "2026-09-03",
+    "tag": "talk",
+    "ja": "🎤 研究会発表：「創造の民主化と現場制約の多様性 ～ 生成AI時代の学術出版における市民参加の計算論的検討 ～」を<strong>電子情報通信学会 合意と共創研究会（Consen）</strong>で発表しました（伊藤孝行・奥原俊、北九州学術研究都市、FIT2026併催）。",
+    "en": "🎤 Research-meeting talk: \"Democratization of Creation and the Diversity of Field Constraints: A Computational Study of Citizen Participation in Academic Publishing in the Generative-AI Era\" at the <strong>Consensus and Co-creation Technical Committee (Consen), IEICE</strong> (Ito &amp; Okuhara; Kitakyushu, co-located with FIT2026).",
+    "link": "https://ken.ieice.org/ken/program/index.php?tgid=IEICE-Consen"
+  },
+  {
     "date": "2026-05-17",
     "tag": "paper",
     "bibkey": "gao2026kdd",
