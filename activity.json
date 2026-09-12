@@ -69,6 +69,7 @@
     { "year": 2027, "tag": "chair", "en": "IJCAI 2027 — Local Arrangements Committee Chair", "ja": "IJCAI 2027 — ローカルアレンジメント委員長" },
     { "year": 2027, "tag": "spc",   "en": "AAMAS 2027 — Area Chair", "ja": "AAMAS 2027 — エリアチェア" },
     { "year": 2027, "tag": "spc",   "en": "AAAI 2027 — Senior Program Committee Member", "ja": "AAAI 2027 — シニアプログラム委員" },
+    { "year": 2027, "tag": "pc",    "en": "IAAI-27 — Program Committee Member (39th Annual Conference on Innovative Applications of Artificial Intelligence)", "ja": "IAAI-27 — プログラム委員（第39回 Innovative Applications of Artificial Intelligence 会議）" },
 
     { "year": 2026, "tag": "steering", "en": "IJCAI-ECAI 2026 — Advisory Committee Member", "ja": "IJCAI-ECAI 2026 — アドバイザリ委員" },
     { "year": 2026, "tag": "spc",      "en": "IJCAI-ECAI 2026 — Senior Program Committee Member", "ja": "IJCAI-ECAI 2026 — シニアプログラム委員" },
