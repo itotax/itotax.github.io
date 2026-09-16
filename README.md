@@ -129,6 +129,12 @@ News は3系統をマージして表示（`common/js/news-merge.js`）:
   判定できないため、**英文論文誌の手動エントリには `"important": true` を明記すること**
   （無指定の場合は受賞と難関会議名のみ自動で重要扱いになる）。
 
+### トップページ「主な論文」（Selected Papers）
+`index.html` / `index-j.html` の `<section id="papers">`（お知らせの直下）に**静的HTML**で記述。
+JSON駆動ではないので、追加・変更は両ファイルを直接編集する（`.paper` ブロックを1件分コピー）。
+各件は venue・年・受賞バッジ（任意）・タイトル（DOI/PDFリンク）・著者・2〜3文の説明・リンクボタンで構成。
+2026-09-16 時点で4件（Communications Psychology 2024、GDN 2021、IJCAI 2007、AAMAS 2006）。
+
 ### 受賞の更新
 `awards.json` に追記。`year` / `tag` / `ja` / `en` / 任意で `link`（`link_en`・`link_ja` で言語別リンク文言可）。年降順で表示、トップページは上位6件。
 

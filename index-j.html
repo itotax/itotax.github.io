@@ -339,6 +339,40 @@
     .award-body { font-size: .9rem; line-height: 1.65; }
     .award-body strong { color: var(--primary); }
 
+    /* ===== Selected Papers ===== */
+    .papers { display: flex; flex-direction: column; gap: .8rem; }
+    .paper {
+      background: var(--bg-sec);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 1rem 1.15rem;
+      transition: box-shadow .15s;
+    }
+    .paper:hover { box-shadow: var(--shadow-md); }
+    .paper-meta {
+      display: flex; flex-wrap: wrap; align-items: center; gap: .45rem;
+      margin-bottom: .35rem; font-size: .78rem; color: var(--text-sec);
+    }
+    .paper-venue { font-weight: 700; color: var(--accent); }
+    .paper-award {
+      font-size: .68rem; font-weight: 700; letter-spacing: .03em;
+      padding: .12rem .55rem; border-radius: 20px;
+      background: #fef3c7; color: #92400e; border: 1px solid #fde68a;
+    }
+    .paper-title { font-size: .98rem; font-weight: 600; color: var(--primary); line-height: 1.45; }
+    .paper-title a { color: inherit; }
+    .paper-authors { font-size: .83rem; color: var(--text-sec); margin-top: .25rem; }
+    .paper-desc { font-size: .88rem; line-height: 1.75; margin-top: .55rem; }
+    .paper-links { margin-top: .6rem; display: flex; gap: .4rem; flex-wrap: wrap; }
+    .paper-links a {
+      font-size: .76rem; font-weight: 600;
+      padding: .18rem .65rem; border-radius: 20px;
+      border: 1px solid var(--border); background: var(--bg); color: var(--text);
+      text-decoration: none !important; transition: all .15s;
+    }
+    .paper-links a:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
+
     /* ===== News ===== */
     .news-feed { display: flex; flex-direction: column; }
     .news-row {
@@ -422,6 +456,7 @@
         <li><a href="#research">研究</a></li>
         <li><a href="#awards">受賞</a></li>
         <li><a href="#news">お知らせ</a></li>
+        <li><a href="#papers">主な論文</a></li>
         <li><a href="#contact">連絡先</a></li>
         <li><a href="publications-j.html">論文一覧</a></li>
         <li><a href="publications-top-confs-j.html">難関国際会議</a></li>
@@ -498,6 +533,60 @@
     } catch(_) {}
   })();
   </script>
+
+  <!-- ====== Selected Papers ====== -->
+  <section id="papers">
+    <h2 class="sec-title">主な論文</h2>
+    <div class="papers">
+
+      <div class="paper">
+        <div class="paper-meta">
+          <span class="paper-venue">Communications Psychology（Nature Portfolio）</span><span>·</span><span>2024</span>
+        </div>
+        <div class="paper-title"><a href="https://doi.org/10.1038/s44271-024-00070-z" target="_blank" rel="noopener">E-contact Facilitated by Conversational Agents Reduces Interethnic Prejudice and Anxiety in Afghanistan</a></div>
+        <div class="paper-authors">Sofia Sahab, Jawad Haqbeen, Rafik Hadfi, Takayuki Ito, Richard Imade, Susumu Ohnuma, Takuya Hasegawa</div>
+        <p class="paper-desc">アフガニスタンにおいて、異なる民族の参加者が会話型AIエージェントのファシリテーションのもとでオンライン議論を行うフィールド実験を実施。参加後に民族間の偏見と不安が低減することを示し、AIが仲介するオンライン接触（e-contact）が紛争影響下の社会における和解を支援しうることを実証した論文です。</p>
+        <div class="paper-links"><a href="https://doi.org/10.1038/s44271-024-00070-z" target="_blank" rel="noopener">DOI ↗</a></div>
+      </div>
+
+      <div class="paper">
+        <div class="paper-meta">
+          <span class="paper-venue">Group Decision and Negotiation</span><span>·</span><span>2021</span>
+          <span class="paper-award">2023 Gregory Kersten GDN Journal Best Paper Award</span>
+        </div>
+        <div class="paper-title"><a href="https://doi.org/10.1007/s10726-021-09765-8" target="_blank" rel="noopener">An Agent that Facilitates Crowd Discussion: A Crowd Discussion Support System based on an Automated Facilitation Agent</a></div>
+        <div class="paper-authors">Takayuki Ito, Rafik Hadfi, Shota Suzuki</div>
+        <p class="paper-desc">大規模なオンライン議論を生産的に保つ「自動ファシリテーションエージェント」を提案。議論の論点構造を読み取り、論点・アイデア・根拠の投稿を促すファシリテーション発言を自動で行います。実際の市民議論に導入された実績を持ち、AIが群衆の合意形成を支援できることを示した論文です。</p>
+        <div class="paper-links"><a href="https://doi.org/10.1007/s10726-021-09765-8" target="_blank" rel="noopener">DOI ↗</a></div>
+      </div>
+
+      <div class="paper">
+        <div class="paper-meta">
+          <span class="paper-venue">IJCAI 2007</span><span>·</span><span>Hyderabad, India, pp. 1347–1352</span>
+        </div>
+        <div class="paper-title"><a href="papers/itota-ijcai2007.pdf" target="_blank" rel="noopener">Multi-issue Negotiation Protocol for Agents: Exploring Nonlinear Utility Spaces</a></div>
+        <div class="paper-authors">Takayuki Ito, Mark Klein, Hiromitsu Hattori</div>
+        <p class="paper-desc">複数の論点が相互依存し、効用が非線形になる交渉問題を対象に、従来の線形手法では扱えない状況に対応する交渉プロトコルを提案。各エージェントが自身の効用空間から高効用の領域を探索して入札し、仲介者が社会的厚生を最大化する組合せを求めます。ACAN・ANAC につながる「複雑な自動交渉」研究の出発点となった論文です。</p>
+        <div class="paper-links"><a href="papers/itota-ijcai2007.pdf" target="_blank" rel="noopener">PDF ↗</a></div>
+      </div>
+
+      <div class="paper">
+        <div class="paper-meta">
+          <span class="paper-venue">AAMAS 2006</span><span>·</span><span>pp. 1151–1158</span>
+          <span class="paper-award">Best Paper Award</span>
+        </div>
+        <div class="paper-title"><a href="https://doi.org/10.1145/1160633.1160842" target="_blank" rel="noopener">Instantiating the Contingent Bids Model of Truthful Interdependent Value Auctions</a></div>
+        <div class="paper-authors">Takayuki Ito, David Parkes</div>
+        <p class="paper-desc">入札者の評価値が他の入札者の私的情報に依存する「相互依存価値オークション」を対象に、Contingent Bids モデルを具体的かつ計算可能なオークション設計として実現し、正直な入札が支配戦略となることを示した論文。理論モデルを実用的なメカニズム設計へ橋渡ししました。投稿553件の中から最優秀論文賞に選ばれています。</p>
+        <div class="paper-links"><a href="https://doi.org/10.1145/1160633.1160842" target="_blank" rel="noopener">DOI ↗</a><a href="papers/itota-aamas2006-interdependent.pdf" target="_blank" rel="noopener">PDF ↗</a></div>
+      </div>
+
+    </div>
+    <div style="margin-top:1.25rem;display:flex;gap:.6rem;flex-wrap:wrap;">
+      <a href="publications-j.html" class="btn btn-outline">論文・業績一覧 →</a>
+      <a href="publications-top-confs-j.html" class="btn btn-outline">難関国際会議の論文 →</a>
+    </div>
+  </section>
 
   <!-- ====== About / Career ====== -->
   <section id="about">

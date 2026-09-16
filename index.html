@@ -323,6 +323,40 @@
     .award-body { font-size: .9rem; line-height: 1.6; }
     .award-body strong { color: var(--primary); }
 
+    /* ===== Selected Papers ===== */
+    .papers { display: flex; flex-direction: column; gap: .8rem; }
+    .paper {
+      background: var(--bg-sec);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 1rem 1.15rem;
+      transition: box-shadow .15s;
+    }
+    .paper:hover { box-shadow: var(--shadow-md); }
+    .paper-meta {
+      display: flex; flex-wrap: wrap; align-items: center; gap: .45rem;
+      margin-bottom: .35rem; font-size: .78rem; color: var(--text-sec);
+    }
+    .paper-venue { font-weight: 700; color: var(--accent); }
+    .paper-award {
+      font-size: .68rem; font-weight: 700; letter-spacing: .03em;
+      padding: .12rem .55rem; border-radius: 20px;
+      background: #fef3c7; color: #92400e; border: 1px solid #fde68a;
+    }
+    .paper-title { font-size: .98rem; font-weight: 600; color: var(--primary); line-height: 1.45; }
+    .paper-title a { color: inherit; }
+    .paper-authors { font-size: .83rem; color: var(--text-sec); margin-top: .25rem; }
+    .paper-desc { font-size: .88rem; line-height: 1.75; margin-top: .55rem; }
+    .paper-links { margin-top: .6rem; display: flex; gap: .4rem; flex-wrap: wrap; }
+    .paper-links a {
+      font-size: .76rem; font-weight: 600;
+      padding: .18rem .65rem; border-radius: 20px;
+      border: 1px solid var(--border); background: var(--bg); color: var(--text);
+      text-decoration: none !important; transition: all .15s;
+    }
+    .paper-links a:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
+
     /* ===== News ===== */
     .news-feed { display: flex; flex-direction: column; }
     .news-row {
@@ -406,6 +440,7 @@
         <li><a href="#research">Research</a></li>
         <li><a href="#awards">Awards</a></li>
         <li><a href="#news">News</a></li>
+        <li><a href="#papers">Papers</a></li>
         <li><a href="#contact">Contact</a></li>
         <li><a href="publications.html">Publications</a></li>
         <li><a href="publications-top-confs.html">Top Confs</a></li>
@@ -482,6 +517,60 @@
     } catch(_) {}
   })();
   </script>
+
+  <!-- ====== Selected Papers ====== -->
+  <section id="papers">
+    <h2 class="sec-title">Selected Papers</h2>
+    <div class="papers">
+
+      <div class="paper">
+        <div class="paper-meta">
+          <span class="paper-venue">Communications Psychology (Nature Portfolio)</span><span>·</span><span>2024</span>
+        </div>
+        <div class="paper-title"><a href="https://doi.org/10.1038/s44271-024-00070-z" target="_blank" rel="noopener">E-contact Facilitated by Conversational Agents Reduces Interethnic Prejudice and Anxiety in Afghanistan</a></div>
+        <div class="paper-authors">Sofia Sahab, Jawad Haqbeen, Rafik Hadfi, Takayuki Ito, Richard Imade, Susumu Ohnuma, Takuya Hasegawa</div>
+        <p class="paper-desc">A field study in Afghanistan in which members of different ethnic groups took part in online discussions facilitated by a conversational AI agent. Participants showed reduced interethnic prejudice and intergroup anxiety afterwards, providing evidence that AI-facilitated e-contact can support reconciliation in a conflict-affected society.</p>
+        <div class="paper-links"><a href="https://doi.org/10.1038/s44271-024-00070-z" target="_blank" rel="noopener">DOI ↗</a></div>
+      </div>
+
+      <div class="paper">
+        <div class="paper-meta">
+          <span class="paper-venue">Group Decision and Negotiation</span><span>·</span><span>2021</span>
+          <span class="paper-award">2023 Gregory Kersten GDN Journal Best Paper Award</span>
+        </div>
+        <div class="paper-title"><a href="https://doi.org/10.1007/s10726-021-09765-8" target="_blank" rel="noopener">An Agent that Facilitates Crowd Discussion: A Crowd Discussion Support System based on an Automated Facilitation Agent</a></div>
+        <div class="paper-authors">Takayuki Ito, Rafik Hadfi, Shota Suzuki</div>
+        <p class="paper-desc">Introduces an automated facilitation agent that keeps large-scale online discussions productive: it reads the evolving argument structure of a debate and posts facilitation messages that encourage participants to add issues, ideas, and reasons. The system has been deployed in real civic discussions, showing how AI can help crowds reach consensus.</p>
+        <div class="paper-links"><a href="https://doi.org/10.1007/s10726-021-09765-8" target="_blank" rel="noopener">DOI ↗</a></div>
+      </div>
+
+      <div class="paper">
+        <div class="paper-meta">
+          <span class="paper-venue">IJCAI 2007</span><span>·</span><span>Hyderabad, India, pp. 1347–1352</span>
+        </div>
+        <div class="paper-title"><a href="papers/itota-ijcai2007.pdf" target="_blank" rel="noopener">Multi-issue Negotiation Protocol for Agents: Exploring Nonlinear Utility Spaces</a></div>
+        <div class="paper-authors">Takayuki Ito, Mark Klein, Hiromitsu Hattori</div>
+        <p class="paper-desc">Proposes a negotiation protocol for agents whose preferences over multiple interdependent issues form nonlinear utility spaces, where classical linear negotiation methods break down. Agents sample high-utility regions of their own space and submit them as bids, and a mediator searches for combinations that maximize social welfare. This work launched the “complex automated negotiation” research line behind ACAN and ANAC.</p>
+        <div class="paper-links"><a href="papers/itota-ijcai2007.pdf" target="_blank" rel="noopener">PDF ↗</a></div>
+      </div>
+
+      <div class="paper">
+        <div class="paper-meta">
+          <span class="paper-venue">AAMAS 2006</span><span>·</span><span>pp. 1151–1158</span>
+          <span class="paper-award">Best Paper Award</span>
+        </div>
+        <div class="paper-title"><a href="https://doi.org/10.1145/1160633.1160842" target="_blank" rel="noopener">Instantiating the Contingent Bids Model of Truthful Interdependent Value Auctions</a></div>
+        <div class="paper-authors">Takayuki Ito, David Parkes</div>
+        <p class="paper-desc">Addresses auctions with interdependent values, where a bidder’s valuation depends on information held privately by other bidders. Building on the contingent-bids model, the paper gives a concrete, computationally tractable auction design in which truthful bidding remains a dominant strategy, bringing this theoretical model into practical mechanism design. Selected as Best Paper out of 553 submissions.</p>
+        <div class="paper-links"><a href="https://doi.org/10.1145/1160633.1160842" target="_blank" rel="noopener">DOI ↗</a><a href="papers/itota-aamas2006-interdependent.pdf" target="_blank" rel="noopener">PDF ↗</a></div>
+      </div>
+
+    </div>
+    <div style="margin-top:1.25rem;display:flex;gap:.6rem;flex-wrap:wrap;">
+      <a href="publications.html" class="btn btn-outline">All publications →</a>
+      <a href="publications-top-confs.html" class="btn btn-outline">Top-tier conference papers →</a>
+    </div>
+  </section>
 
   <!-- ====== About ====== -->
   <section id="about">
