@@ -492,7 +492,7 @@ function entryHTML(e) {
     const body = e.ja || cleanTeX(e.title || e.note || '(タイトルなし)');
     const linkLabel = e.link_ja || (e.link ? 'リンク →' : '');
     const linkHTML  = e.link ? ` <a href="${e.link}" target="_blank" rel="noopener">${linkLabel}</a>` : '';
-    const urlHTML   = (!e.link && e.url) ? ` <a href="${e.url}" target="_blank" rel="noopener">リンク ↗</a>` : '';
+    const urlHTML   = (e.url && e.url !== e.link) ? ` <a href="${e.url}" target="_blank" rel="noopener">リンク ↗</a>` : '';
     return `
     <div class="entry type-${type}">
       <div class="entry-badge">
