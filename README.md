@@ -66,7 +66,7 @@
   *.jpg/.jpeg (15)      … プロフィール写真、受賞・メディア写真
 common/js/
   news-merge.js         … News生成スクリプト（唯一の現役共通JS）
-papers/  (64 PDF)       … 論文PDF
+papers/  (54 PDF)       … 論文PDF（全件が bib の url= から参照されている）
 oldfiles/               … アーカイブ（過去の論文・画像。サイトからは原則未参照）
 ```
 
@@ -153,6 +153,8 @@ JSON駆動ではないので、追加・変更は両ファイルを直接編集�
 
 ### 論文の更新
 `publications.bib` を編集。PDFは `papers/` に置き、bib の `url={papers/xxx.pdf}` で参照。
+`url` が `.pdf` で終わる場合、論文一覧では「PDF ↗」バッジとして表示される（難関国際会議ページでは DOI があっても併記）。
+2026-09-25 に未参照だった52本を該当エントリへ紐付け、内容が同一の重複10本（`jsai94/96/97/98`・`ipsj95/96/97/98-1`・`icmas-poster`・`ieaaie-poster`。`itota-` 付きの同名版を残した）を削除した。
 
 ---
 

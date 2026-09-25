@@ -520,7 +520,7 @@ function entryHTML(e) {
   const ifval   = e.if   ? `IF ${e.if}` : '';
   const tier    = cleanTeX(e.tier || '');
   const doi     = e.doi  ? `<a href="https://doi.org/${e.doi}" target="_blank" rel="noopener" title="https://doi.org/${e.doi}">DOI: ${escapeHTML(e.doi)} ↗</a>` : '';
-  const url     = e.url  ? `<a href="${e.url}" target="_blank" rel="noopener">Link ↗</a>` : '';
+  const url     = e.url  ? `<a href="${e.url}" target="_blank" rel="noopener">${/\.pdf$/i.test(e.url) ? 'PDF' : 'Link'} ↗</a>` : '';
   const note    = cleanTeX(e.note || '');
 
   return `

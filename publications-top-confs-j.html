@@ -496,7 +496,8 @@ function renderEntry(e) {
     : '';
 
   const doi = e.doi ? `<span class="badge badge-doi"><a href="https://doi.org/${e.doi}" target="_blank" rel="noopener" title="https://doi.org/${e.doi}">DOI: ${escapeHTML(e.doi)} ↗</a></span>` : '';
-  const url = (!e.doi && e.url) ? `<span class="badge badge-url"><a href="${e.url}" target="_blank" rel="noopener">リンク ↗</a></span>` : '';
+  const isPdf = /\.pdf$/i.test(e.url || '');
+  const url = (e.url && (!e.doi || isPdf)) ? `<span class="badge badge-url"><a href="${e.url}" target="_blank" rel="noopener">${isPdf ? 'PDF' : 'リンク'} ↗</a></span>` : '';
 
   const bibId = `bib-${++_bibSeq}`;
   const bibBtn = `<button type="button" class="badge badge-bib" onclick="toggleBib('${bibId}', this)">{ } BibTeX</button>`;
