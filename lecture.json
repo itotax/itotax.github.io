@@ -1,0 +1,362 @@
+{
+  "institutions": {
+    "kyoto": {
+      "ja": "京都大学",
+      "en": "Kyoto University",
+      "period": "2020年10月〜"
+    },
+    "nitech": {
+      "ja": "名古屋工業大学",
+      "en": "Nagoya Institute of Technology",
+      "period": "2003年4月〜2020年9月"
+    },
+    "jaist": {
+      "ja": "北陸先端科学技術大学院大学",
+      "en": "JAIST",
+      "period": "2001年4月〜2003年3月"
+    }
+  },
+  "years": [
+    {
+      "fy": 2026,
+      "label": "令和8年度",
+      "inst": "kyoto",
+      "courses": [
+        { "name": "Multiagent Systems (in English)", "target": "社会情報学専攻", "term": "後期" },
+        { "name": "情報学概論（人工知能のパート）", "target": "情報学科計算機科学コース", "term": "前期" },
+        { "name": "アルゴリズムとデータ構造", "target": "情報学科計算機科学コース2年", "term": "後期" },
+        { "name": "ソフトウェア工学", "target": "情報学科計算機科学コース3年", "term": "後期" },
+        { "name": "情報システム実習", "target": "社会情報学専攻", "term": "前期" },
+        { "name": "インフォメーションデザイン論", "target": "デザイン学", "term": "前期" },
+        { "name": "統合複合科目", "target": "デザイン学", "term": "前期" }
+      ],
+      "more": true
+    },
+    {
+      "fy": 2025,
+      "label": "令和7年度",
+      "inst": "kyoto",
+      "courses": [
+        { "name": "Multiagent Systems (in English)", "target": "社会情報学コース", "term": "後期" },
+        { "name": "計算機科学概論（人工知能のパート）", "target": "全学共通", "term": "前期" },
+        { "name": "プログラミング入門（Python）", "target": "情報学科計算機科学コース", "term": "前期" },
+        { "name": "ソフトウェア工学", "target": "情報学科計算機科学コース", "term": "後期" },
+        { "name": "情報システム実習", "target": "社会情報学専攻", "term": "前期" },
+        { "name": "インフォメーションデザイン論", "target": "デザイン学" }
+      ],
+      "more": true
+    },
+    {
+      "fy": 2024,
+      "label": "令和6年度",
+      "inst": "kyoto",
+      "courses": [
+        { "name": "Multiagent Systems (in English)", "target": "社会情報学専攻", "term": "後期" },
+        { "name": "計算機科学概論（人工知能のパート）", "target": "全学共通", "term": "前期" },
+        { "name": "プログラミング入門（Python）", "target": "情報学科計算機科学コース", "term": "前期" },
+        { "name": "ソフトウェア工学", "target": "情報学科計算機科学コース", "term": "後期" },
+        { "name": "情報システム実習", "target": "社会情報学専攻", "term": "前期" },
+        { "name": "インフォメーションデザイン論", "target": "デザイン学" }
+      ],
+      "more": true
+    },
+    {
+      "fy": 2023,
+      "label": "令和5年度",
+      "inst": "kyoto",
+      "courses": [
+        { "name": "Multiagent Systems (in English)", "target": "社会情報学専攻", "term": "後期" },
+        { "name": "計算機科学概論（人工知能のパート）", "target": "全学共通", "term": "前期" },
+        { "name": "プログラミング入門（Python）", "target": "情報学科計算機科学コース", "term": "前期" },
+        { "name": "ソフトウェア工学", "target": "情報学科計算機コース", "term": "後期" },
+        { "name": "情報システム設計実習", "target": "社会情報学専攻", "term": "前期" },
+        { "name": "インフォメーションデザイン論", "target": "デザイン学" }
+      ],
+      "more": true
+    },
+    {
+      "fy": 2022,
+      "label": "令和4年度",
+      "inst": "kyoto",
+      "courses": [
+        { "name": "Multiagent Systems (in English)", "target": "社会情報学専攻", "term": "後期" },
+        { "name": "計算機科学概論（人工知能のパート）", "target": "全学共通", "term": "前期" },
+        { "name": "プログラミング入門（Python）", "target": "情報学科計算機科学コース", "term": "前期" },
+        { "name": "ソフトウェア工学", "target": "情報学科計算機科学コース", "term": "後期" },
+        { "name": "情報システム設計実習", "target": "社会情報学専攻", "term": "前期" },
+        { "name": "インフォメーションデザイン論", "target": "デザイン学" }
+      ],
+      "more": true
+    },
+    {
+      "fy": 2021,
+      "label": "令和3年度",
+      "inst": "kyoto",
+      "courses": [
+        { "name": "情報システム設計論（マルチエージェント、コレクティブインテリジェンス、情報システム設計）", "target": "社会情報学専攻", "term": "前期" },
+        { "name": "計算機科学概論（人工知能のパート）", "target": "全学共通", "term": "前期" },
+        { "name": "プログラミング入門（Python）", "target": "情報学科計算機科学コース", "term": "前期" },
+        { "name": "ソフトウェア工学", "target": "情報学科計算機科学コース", "term": "後期" },
+        { "name": "情報システム設計実習", "target": "社会情報学専攻", "term": "前期" },
+        { "name": "インフォメーションデザイン論", "target": "デザインスクール" },
+        { "name": "社会情報学専攻PBL/FBL", "target": "社会情報学専攻" }
+      ],
+      "more": true
+    },
+    {
+      "fy": 2020,
+      "label": "令和2年度",
+      "inst": "nitech",
+      "courses": [
+        { "name": "マルチエージェントシステム", "target": "情報工学科3年", "term": "前期" },
+        { "name": "ソフトウェア工学", "target": "情報工学科3年", "term": "前期" }
+      ],
+      "more": true,
+      "notes": [
+        "10月より京都大学に異動"
+      ]
+    },
+    {
+      "fy": 2019,
+      "label": "平成31年度（令和元年度）",
+      "inst": "nitech",
+      "courses": [
+        { "name": "マルチエージェントシステム特論", "target": "情報工学専攻1年", "term": "第3ターム" },
+        { "name": "マルチエージェントシステム", "target": "情報工学科3年", "term": "前期" },
+        { "name": "ソフトウェア工学", "target": "情報工学科3年", "term": "前期" },
+        { "name": "プログラミングⅠ", "target": "情報工学科1年", "term": "後期" },
+        { "name": "産業戦略事例研究", "target": "社会工学専攻", "term": "前期・後期" }
+      ],
+      "more": true
+    },
+    {
+      "fy": 2018,
+      "label": "平成30年度",
+      "inst": "nitech",
+      "courses": [
+        { "name": "マルチエージェントシステム特論", "target": "情報工学専攻1年", "term": "第3ターム" },
+        { "name": "マルチエージェントシステム", "target": "情報工学科3年", "term": "前期" },
+        { "name": "ソフトウェア工学", "target": "情報工学科3年", "term": "前期" },
+        { "name": "プログラミングⅠ", "target": "情報工学科1年", "term": "後期" },
+        { "name": "産業戦略事例研究", "target": "社会工学専攻", "term": "前期・後期" }
+      ],
+      "more": true
+    },
+    {
+      "fy": 2017,
+      "label": "平成29年度",
+      "inst": "nitech",
+      "courses": [
+        { "name": "マルチエージェントシステム特論", "target": "情報工学専攻1年", "term": "第3ターム" },
+        { "name": "マルチエージェントシステム", "target": "情報工学科3年", "term": "前期" },
+        { "name": "ソフトウェアアーキテクチャ", "target": "情報工学科3年", "term": "前期" },
+        { "name": "プログラミングⅠ", "target": "情報工学科1年", "term": "後期" },
+        { "name": "産業戦略事例研究", "target": "社会工学専攻", "term": "前期・後期" },
+        { "name": "未来医療デザイン特論", "target": "未来医療コース", "term": "前期", "detail": "1講義" }
+      ],
+      "more": true
+    },
+    {
+      "fy": 2016,
+      "label": "平成28年度",
+      "inst": "nitech",
+      "courses": [
+        { "name": "マルチエージェントシステム特論", "target": "情報工学専攻1年", "term": "第3ターム" },
+        { "name": "マルチエージェントシステム", "target": "情報工学科3年", "term": "前期" },
+        { "name": "プログラミングⅠ", "target": "情報工学科1年", "term": "後期" },
+        { "name": "産業戦略事例研究", "target": "社会工学専攻", "term": "前期・後期" },
+        { "name": "未来医療デザイン特論", "target": "未来医療コース", "term": "前期", "detail": "1講義" }
+      ],
+      "more": true
+    },
+    {
+      "fy": 2015,
+      "label": "平成27年度",
+      "inst": "nitech",
+      "courses": [
+        { "name": "知能処理アルゴリズム論", "target": "情報工学科3年", "term": "前期" },
+        { "name": "プログラミングⅠ", "target": "情報工学科1年", "term": "前期" },
+        { "name": "情報技術Ⅰ", "target": "情報工学科1年", "term": "前期" },
+        { "name": "情報社会論", "target": "工学部リベラルアーツ1年", "term": "前期" },
+        { "name": "電子情報コアテクノロジー特論演習", "target": "産業戦略工学専攻", "term": "後期" },
+        { "name": "事例研究", "target": "産業戦略工学専攻", "term": "前期・後期" },
+        { "name": "未来医療デザイン特論", "target": "未来医療コース", "term": "前期", "detail": "1講義" },
+        { "name": "スマートIT", "target": "高度EJコース", "term": "前期", "detail": "4講義" },
+        { "name": "コミュニティ創成工学", "target": "工学部1年", "term": "前期", "detail": "1講義" }
+      ],
+      "more": true
+    },
+    {
+      "fy": 2014,
+      "label": "平成26年度",
+      "inst": "nitech",
+      "courses": [
+        { "name": "知能処理アルゴリズム論", "target": "情報工学科3年", "term": "前期" },
+        { "name": "プログラミングⅠ", "target": "情報工学科1年", "term": "前期" },
+        { "name": "情報技術Ⅰ", "target": "情報工学科1年", "term": "前期" },
+        { "name": "情報社会論", "target": "工学部リベラルアーツ1年", "term": "前期" },
+        { "name": "電子情報コアテクノロジー特論演習", "target": "産業戦略工学専攻", "term": "後期" },
+        { "name": "事例研究", "target": "産業戦略工学専攻", "term": "前期・後期" },
+        { "name": "未来医療デザイン特論", "target": "未来医療コース", "term": "前期", "detail": "1講義" },
+        { "name": "スマートIT", "target": "高度EJコース", "term": "前期", "detail": "4講義" },
+        { "name": "コミュニティ創成工学", "target": "工学部1年", "term": "前期", "detail": "1講義" }
+      ],
+      "more": true
+    },
+    {
+      "fy": 2013,
+      "label": "平成25年度",
+      "inst": "nitech",
+      "courses": [
+        { "name": "知能処理アルゴリズム論", "target": "情報工学科3年", "term": "前期" },
+        { "name": "情報技術Ⅰ", "target": "情報工学科1年", "term": "前期" },
+        { "name": "プログラミングⅠ", "target": "情報工学科1年", "term": "前期" },
+        { "name": "スマートIT", "target": "高度EJコース", "term": "前期" },
+        { "name": "電子情報コアテクノロジー特論演習", "target": "産業戦略工学専攻", "term": "後期" },
+        { "name": "事例研究など", "target": "産業戦略工学専攻", "term": "前期・後期" }
+      ],
+      "more": true
+    },
+    {
+      "fy": 2012,
+      "label": "平成24年度",
+      "inst": "nitech",
+      "courses": [
+        { "name": "知能処理アルゴリズム論", "target": "情報工学科3年", "term": "前期" },
+        { "name": "情報技術Ⅰ", "target": "情報工学科1年", "term": "前期" },
+        { "name": "プログラミングⅠ", "target": "情報工学科1年", "term": "前期" },
+        { "name": "電子情報コアテクノロジー特論演習", "target": "産業戦略工学専攻", "term": "後期" },
+        { "name": "事例研究など", "target": "産業戦略工学専攻", "term": "前期・後期" }
+      ],
+      "more": true
+    },
+    {
+      "fy": 2011,
+      "label": "平成23年度",
+      "inst": "nitech",
+      "courses": [
+        { "name": "知能処理アルゴリズム論", "target": "情報工学科3年", "term": "前期" },
+        { "name": "情報技術Ⅰ", "target": "情報工学科1年", "term": "前期" },
+        { "name": "プログラミングⅠ", "target": "情報工学科1年", "term": "前期" },
+        { "name": "電子情報コアテクノロジー特論演習", "target": "産業戦略工学専攻", "term": "後期" },
+        { "name": "事例研究など", "target": "産業戦略工学専攻", "term": "前期・後期" }
+      ],
+      "more": true
+    },
+    {
+      "fy": 2010,
+      "label": "平成22年度",
+      "inst": "nitech",
+      "courses": [
+        { "name": "知能処理アルゴリズム論", "target": "情報工学科3年", "term": "前期" },
+        { "name": "情報技術Ⅰ", "target": "情報工学科1年", "term": "前期" },
+        { "name": "プログラミングⅠ", "target": "情報工学科1年", "term": "前期" },
+        { "name": "電子情報コアテクノロジー特論演習", "target": "産業戦略工学専攻", "term": "後期", "detail": "「RubyでWebアプリを作る」" },
+        { "name": "事例研究など", "target": "産業戦略工学専攻", "term": "前期・後期" }
+      ],
+      "more": true
+    },
+    {
+      "fy": 2009,
+      "label": "平成21年度",
+      "inst": "nitech",
+      "courses": [
+        { "name": "電子情報コアテクノロジー特論演習", "target": "産業戦略工学専攻", "term": "後期" }
+      ],
+      "notes": [
+        "文部科学省大学国際化加速プログラムにて、マサチューセッツ工科大学客員研究員（前期）"
+      ]
+    },
+    {
+      "fy": 2008,
+      "label": "平成20年度",
+      "inst": "nitech",
+      "courses": [
+        { "name": "知能処理アルゴリズム論", "target": "情報工学科3年", "term": "前期" },
+        { "name": "情報技術Ⅰ", "target": "情報工学科1年", "term": "前期" },
+        { "name": "プログラミングⅠ", "target": "情報工学科1年", "term": "前期" },
+        { "name": "電子情報コアテクノロジー特論演習", "target": "産業戦略工学専攻", "term": "後期" },
+        { "name": "事例研究など", "target": "産業戦略工学専攻", "term": "前期・後期" }
+      ],
+      "more": true
+    },
+    {
+      "fy": 2007,
+      "label": "平成19年度",
+      "inst": "nitech",
+      "courses": [
+        { "name": "知能処理アルゴリズム論", "target": "情報工学科3年", "term": "前期" },
+        { "name": "情報技術Ⅰ", "target": "情報工学科1年", "term": "前期" },
+        { "name": "プログラミングⅠ", "target": "情報工学科1年", "term": "前期" },
+        { "name": "電子情報コアテクノロジー特論演習", "target": "産業戦略工学専攻", "term": "後期" },
+        { "name": "事例研究など", "target": "産業戦略工学専攻", "term": "前期・後期" }
+      ],
+      "more": true
+    },
+    {
+      "fy": 2006,
+      "label": "平成18年度",
+      "inst": "nitech",
+      "courses": [
+        { "name": "知能処理アルゴリズム論", "target": "情報工学科3年", "term": "前期" },
+        { "name": "情報技術Ⅰ", "target": "情報工学科1年", "term": "前期" },
+        { "name": "プログラミングⅠ", "target": "情報工学科1年", "term": "前期" },
+        { "name": "情報技術Ⅱ", "target": "情報工学科1年", "term": "後期" },
+        { "name": "プログラミングⅡ", "target": "情報工学科1年", "term": "後期" },
+        { "name": "計算機工学Ⅱ", "target": "情報工学科3年", "term": "後期" },
+        { "name": "電子情報コアテクノロジー特論演習", "target": "産業戦略工学専攻", "term": "後期" },
+        { "name": "事例研究など", "target": "産業戦略工学専攻", "term": "前期・後期" }
+      ],
+      "more": true
+    },
+    {
+      "fy": 2005,
+      "label": "平成17年度",
+      "inst": "nitech",
+      "courses": [],
+      "notes": [
+        "文部科学省海外先進教育研究実践支援プログラムにて、ハーバード大学及びマサチューセッツ工科大学客員研究員"
+      ]
+    },
+    {
+      "fy": 2004,
+      "label": "平成16年度",
+      "inst": "nitech",
+      "courses": [
+        { "name": "計算機アーキテクチャ論", "target": "知能情報システム教育類3年" },
+        { "name": "プログラミングI", "target": "情報工学科1年 l（エル）クラス" },
+        { "name": "プログラミングI", "target": "情報工学科1年 nクラス" },
+        { "name": "情報技術I", "target": "情報工学科1年" },
+        { "name": "知能システム構成特論", "target": "情報工学専攻1年" }
+      ],
+      "more": true
+    },
+    {
+      "fy": 2003,
+      "label": "平成15年度",
+      "inst": "nitech",
+      "courses": [
+        { "name": "計算機アーキテクチャ論", "target": "知能情報システム教育類3年" },
+        { "name": "コンピュータシステム論", "target": "知能情報システム教育類2年" },
+        { "name": "知識システム構成特論", "target": "大学院 情報工学専攻1年" }
+      ]
+    },
+    {
+      "fy": 2002,
+      "label": "平成14年度",
+      "inst": "jaist",
+      "courses": [
+        { "name": "知識ベース方法論A", "target": "大学院 博士前期課程" },
+        { "name": "知識システム論", "target": "大学院 博士前期課程" }
+      ]
+    },
+    {
+      "fy": 2001,
+      "label": "平成13年度",
+      "inst": "jaist",
+      "courses": [
+        { "name": "次世代知識システム特論", "target": "大学院 博士後期課程" }
+      ]
+    }
+  ]
+}
