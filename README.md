@@ -66,7 +66,10 @@
   *.pdf (7)             … CV、受賞状・業績紹介、講演チラシ等（全件がページまたは bib から参照）
   *.jpg/.jpeg (9)       … プロフィール写真（Web用縮小版＋OG画像）、受賞写真
 common/js/
-  news-merge.js         … News生成スクリプト（唯一の現役共通JS）
+  news-merge.js         … News生成スクリプト
+  site-nav.js           … 共通ナビの動作（ドロップダウン・ハンバーガー・scroll-spy）
+common/css/
+  site-nav.css          … 共通ナビのスタイル
 papers/  (54 PDF)       … 論文PDF（全件が bib の url= から参照されている）
 oldfiles/               … アーカイブ（.gitignore 対象で非公開・ローカル保管のみ。media/ に新聞記事スキャン、photos/ に旧写真）
 ```
@@ -75,16 +78,21 @@ oldfiles/               … アーカイブ（.gitignore 対象で非公開・�
 
 ## 4. スタイル・技術規約
 
-- 共通CSSファイルは持たず、各HTMLにインライン `<style>`。
+- スタイルは各HTMLのインライン `<style>` が基本（例外はナビの `common/css/site-nav.css` のみ）。
 - CSS変数: `--primary:#0f2044`（濃紺）、`--accent:#2563eb`（青）、`--text:#1f2937`。
 - フォント: Inter + Noto Sans JP（Google Fonts）。
-- レスポンシブ: 680px ブレークポイント（トップのナビのみ 920px で切替、下記）。
-- **トップページのナビ**（`index.html` / `index-j.html` の `nav.site-nav`）:
-  ページ内セクション6項目（お知らせ〜連絡先）を横並びにし、表示中のセクションをスクロールに合わせて強調表示（scroll-spy）。
-  他ページへのリンクは「ページ / Pages ▾」ドロップダウンにまとめる（アイコン＋説明付き）。
-  920px 以下はハンバーガーメニューになり、同じ2グループをパネル表示する。
-  **サブページを追加したら、両 index の `.nav-dropdown` に1行追加する**。
-  サブページ（論文一覧など）は従来どおり「← 伊藤孝行」の戻るボタン型ナビ。
+- レスポンシブ: 680px ブレークポイント（ナビのみ 920px で切替、下記）。
+- **ナビゲーション（全モダンページ共通）**: スタイルは `common/css/site-nav.css`、動作は `common/js/site-nav.js` に集約
+  （サイトで唯一の共通CSS）。マークアップ `<nav class="site-nav">` は各ページに静的HTMLで記述する。
+  - **トップページ**（`index.html` / `index-j.html`）: ページ内セクション6項目（お知らせ〜連絡先）を横並びにし、
+    表示中のセクションを強調表示（scroll-spy）。他ページは「ページ / Pages ▾」ドロップダウン（`.nav-dropdown`、アイコン＋説明付き）。
+    ナビは `position: fixed`（ページ側で上書き）。
+  - **サブページ**（論文一覧・難関国際会議・お知らせ・受賞歴・学会活動・担当講義）: サイトの各ページを横並び
+    （`.nav-menu--pages`）にし、表示中のページに `aria-current="page"` を付けて下線表示。ナビは `position: sticky`。
+  - 920px 以下はハンバーガーメニューになり、パネル表示（ページはアイコン付きカード）。
+  - **サブページを追加したら**: 両 index の `.nav-dropdown` と、全サブページの `.nav-menu--pages` に1行ずつ追加する。
+  - 研究概要（ResearchStatement 系8ページ）は文書ページのため対象外（← Home と言語トグルのみ）。
+- サブページの見出しは各ページ先頭の `<h1>`（`.page-hero` / `.hero` / `.page-title`）。
 - フレームワーク・jQuery・ビルドツールはすべて不使用（レガシー資産は2026-06-15に撤去済み）。
 
 ---

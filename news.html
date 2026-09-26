@@ -30,6 +30,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="common/css/site-nav.css">
   <style>
     :root {
       --primary: #0f2044;
@@ -52,40 +53,13 @@
     a:hover { text-decoration: underline; }
 
     /* ── Nav ── */
-    nav {
-      position: sticky; top: 0; z-index: 200;
-      height: var(--nav-h);
-      background: rgba(255,255,255,0.93);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-inner {
-      max-width: var(--max-w); margin: 0 auto;
-      padding: 0 1.5rem; height: 100%;
-      display: flex; align-items: center; gap: 1rem;
-    }
-    .nav-back {
-      font-size: .82rem; font-weight: 700;
-      color: var(--primary); white-space: nowrap;
-      padding: .3rem .75rem; border-radius: 6px;
-      background: var(--accent-light); border: 1px solid var(--accent-mid);
-    }
-    .nav-back:hover { background: #dbeafe; text-decoration: none; }
-    .nav-title { font-weight: 600; font-size: .95rem; color: var(--primary); }
-    .nav-title span { font-weight: 400; color: var(--text-sec); font-size: .85rem; margin-left: .5rem; }
-    .lang-pill {
-      margin-left: auto;
-      display: inline-flex; border: 1px solid var(--border);
-      border-radius: 20px; overflow: hidden;
-    }
-    .lang-pill a {
-      font-size: .75rem; font-weight: 700;
-      padding: .22rem .6rem; color: var(--text-sec); transition: all .15s;
-    }
-    .lang-pill a.on { background: var(--accent); color: #fff; }
-    .lang-pill a:hover { text-decoration: none; }
 
     .wrap { max-width: var(--max-w); margin: 0 auto; padding: 2.5rem 1.5rem 5rem; }
+    /* ---------- page header ---------- */
+    .page-hero { margin-bottom: 1.75rem; }
+    .page-hero h1 { font-size: 1.75rem; font-weight: 700; color: var(--primary); letter-spacing: -.01em; line-height: 1.4; }
+    .page-hero .lede { color: var(--text-sec); font-size: .92rem; margin-top: .4rem; max-width: 46em; }
+    @media (max-width: 600px) { .page-hero h1 { font-size: 1.35rem; } }
 
     /* ── Controls ── */
     .controls {
@@ -175,18 +149,35 @@
 </head>
 <body>
 
-<nav>
+<nav class="site-nav" aria-label="Site navigation">
   <div class="nav-inner">
-    <a class="nav-back" href="index.html">← Takayuki Ito</a>
-    <span class="nav-title">News <span>Takayuki Ito</span></span>
-    <div class="lang-pill">
-      <a href="news.html" class="on">EN</a>
-      <a href="news-j.html">JA</a>
+    <a class="nav-brand" href="index.html">Takayuki Ito <span>Kyoto University</span></a>
+    <div class="nav-right">
+      <ul class="nav-menu nav-menu--pages" id="nav-menu">
+        <li class="nav-label">Pages</li>
+        <li><a href="index.html"><span class="dd-ico">🏠</span><span><span class="dd-title">Home</span><span class="dd-sub">Top page</span></span></a></li>
+        <li><a href="publications.html"><span class="dd-ico">📚</span><span><span class="dd-title">Publications</span><span class="dd-sub">Full list with BibTeX</span></span></a></li>
+        <li><a href="publications-top-confs.html"><span class="dd-ico">🏆</span><span><span class="dd-title">Top Confs</span><span class="dd-sub">AAAI · IJCAI · AAMAS · ACL · ACM CI …</span></span></a></li>
+        <li><a href="news.html" aria-current="page"><span class="dd-ico">📰</span><span><span class="dd-title">News</span><span class="dd-sub">All announcements</span></span></a></li>
+        <li><a href="awards.html"><span class="dd-ico">🎖️</span><span><span class="dd-title">Awards</span><span class="dd-sub">Complete list of awards</span></span></a></li>
+        <li><a href="activity.html"><span class="dd-ico">🤝</span><span><span class="dd-title">Activities</span><span class="dd-sub">Conference &amp; society service</span></span></a></li>
+        <li><a href="lecture.html"><span class="dd-ico">🎓</span><span><span class="dd-title">Teaching</span><span class="dd-sub">Courses by academic year</span></span></a></li>
+      </ul>
+      <div class="lang-pill">
+        <a href="news.html" class="on">EN</a>
+        <a href="news-j.html">JA</a>
+      </div>
+      <button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav-menu"><span></span><span></span><span></span></button>
     </div>
   </div>
 </nav>
+<div class="nav-backdrop" aria-hidden="true"></div>
 
 <div class="wrap">
+  <header class="page-hero">
+    <h1>News</h1>
+    <p class="lede">Paper acceptances, awards, invited talks and media coverage.</p>
+  </header>
   <div class="controls">
     <div class="search-box">
       <span>🔍</span>
@@ -294,5 +285,6 @@ window.addEventListener('scroll', () => {
 
 init();
 </script>
+<script src="common/js/site-nav.js"></script>
 </body>
 </html>
