@@ -30,7 +30,7 @@
 | News | `news.html` | `news-j.html` |
 | 受賞歴 | `awards.html` | `awards-j.html` |
 | 学会活動 | `activity.html` | `activity-j.html` |
-| 担当講義 | — | `lecture-j.html`（日本語のみ。`lecture.json` 駆動） |
+| 担当講義 | `lecture.html` | `lecture-j.html` |
 
 ### 研究概要（ResearchStatement、4年分・日英ペア完備）
 
@@ -60,7 +60,7 @@
   news.json             … News手動エントリ（bibkeyでbibと重複排除）
   awards.json           … 受賞データ
   activity.json         … 学会活動データ（日英1本化、EN/JA両ページが参照）
-  lecture.json          … 担当講義データ（年度別、lecture-j.html が参照）
+  lecture.json          … 担当講義データ（年度別＋英訳辞書、lecture.html / lecture-j.html が参照）
   FIXES.md              … 保守・修正履歴
   README.md             … 本ドキュメント
   *.pdf (7)             … CV、受賞状・業績紹介、講演チラシ等（全件がページまたは bib から参照）
@@ -83,7 +83,7 @@ oldfiles/               … アーカイブ（.gitignore 対象で非公開・�
   ページ内セクション6項目（お知らせ〜連絡先）を横並びにし、表示中のセクションをスクロールに合わせて強調表示（scroll-spy）。
   他ページへのリンクは「ページ / Pages ▾」ドロップダウンにまとめる（アイコン＋説明付き）。
   920px 以下はハンバーガーメニューになり、同じ2グループをパネル表示する。
-  **サブページを追加したら、両 index の `.nav-dropdown` に1行追加する**（日本語のみのページは JA 側だけ）。
+  **サブページを追加したら、両 index の `.nav-dropdown` に1行追加する**。
   サブページ（論文一覧など）は従来どおり「← 伊藤孝行」の戻るボタン型ナビ。
 - フレームワーク・jQuery・ビルドツールはすべて不使用（レガシー資産は2026-06-15に撤去済み）。
 
@@ -161,7 +161,9 @@ JSON駆動ではないので、追加・変更は両ファイルを直接編集�
 ### 担当講義の更新
 `lecture.json` の `years[]` 先頭に年度を追加する（`fy`（西暦年度）/ `label`（和暦表記）/ `inst`（`kyoto` / `nitech` / `jaist`）/ `courses[]`）。
 各科目は `name` / `target`（対象）/ `term`（`前期`・`後期`・`前期・後期`・`第3ターム` など、無ければ省略）/ 任意で `detail`。
-「他」がある年度は `"more": true`、客員研究員などの注記は `notes[]`。ページ上部の「Now teaching」には最新年度が自動で表示される。
+「他」がある年度は `"more": true`、客員研究員などの注記は `notes[]`、英語で実施する科目は `"english": true`（「英語で実施 / Taught in English」バッジ）。ページ上部の「Now teaching」には最新年度が自動で表示される。
+
+英語版（`lecture.html`）は、データ本体（日本語）を `lecture.json` 末尾の `en` 辞書で英訳して表示する（`courses` / `targets` / `terms` / `details` / `notes` の各辞書は「日本語 → 英語」の対応表）。**新しい科目名・対象・注記を追加したら、`en` の該当辞書にも1行追加する**（未登録の語は英語ページに日本語のまま出る）。同じ科目は何年分あっても辞書登録は1回でよい。
 
 ### 論文の更新
 `publications.bib` を編集。PDFは `papers/` に置き、bib の `url={papers/xxx.pdf}` で参照。

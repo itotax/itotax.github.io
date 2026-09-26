@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-L4QF5K46LC"></script>
@@ -13,17 +13,17 @@
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>担当講義 — 伊藤孝行</title>
-  <meta name="description" content="京都大学 情報学研究科 教授 伊藤孝行の担当講義。京都大学・名古屋工業大学・北陸先端科学技術大学院大学での担当科目を年度別に掲載。">
-  <link rel="canonical" href="https://takayuki-ito.com/lecture-j.html">
+  <title>Teaching — Takayuki Ito</title>
+  <meta name="description" content="Courses taught by Takayuki Ito, Professor at the Graduate School of Informatics, Kyoto University — at Kyoto University, Nagoya Institute of Technology, and JAIST, listed by academic year.">
+  <link rel="canonical" href="https://takayuki-ito.com/lecture.html">
   <link rel="alternate" hreflang="en" href="https://takayuki-ito.com/lecture.html">
   <link rel="alternate" hreflang="ja" href="https://takayuki-ito.com/lecture-j.html">
   <link rel="alternate" hreflang="x-default" href="https://takayuki-ito.com/lecture.html">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="担当講義 — 伊藤孝行">
-  <meta property="og:description" content="京都大学・名古屋工業大学・北陸先端科学技術大学院大学での担当科目（年度別）。">
+  <meta property="og:title" content="Teaching — Takayuki Ito">
+  <meta property="og:description" content="Courses taught at Kyoto University, Nagoya Institute of Technology, and JAIST, by academic year.">
   <meta property="og:image" content="https://takayuki-ito.com/ito20210307.jpeg">
-  <meta property="og:url" content="https://takayuki-ito.com/lecture-j.html">
+  <meta property="og:url" content="https://takayuki-ito.com/lecture.html">
   <meta name="twitter:card" content="summary">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -52,7 +52,7 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: 'Inter', 'Noto Sans JP', system-ui, sans-serif;
+      font-family: 'Inter', system-ui, sans-serif;
       color: var(--text); background: var(--bg);
       font-size: 15px; line-height: 1.8; -webkit-font-smoothing: antialiased;
     }
@@ -288,11 +288,11 @@
 
 <nav>
   <div class="nav-inner">
-    <a class="nav-back" href="index-j.html">← 伊藤孝行</a>
-    <span class="nav-title">担当講義 <span>伊藤孝行</span></span>
+    <a class="nav-back" href="index.html">← Takayuki Ito</a>
+    <span class="nav-title">Teaching <span>Takayuki Ito</span></span>
     <div class="lang-pill">
-      <a href="lecture.html">EN</a>
-      <a href="lecture-j.html" class="on">JA</a>
+      <a href="lecture.html" class="on">EN</a>
+      <a href="lecture-j.html">JA</a>
     </div>
   </div>
 </nav>
@@ -300,8 +300,8 @@
 <div class="wrap">
 
   <header class="hero">
-    <h1>担当講義</h1>
-    <p class="lede">京都大学・名古屋工業大学・北陸先端科学技術大学院大学で担当した主な講義科目を年度別にまとめています。</p>
+    <h1>Teaching</h1>
+    <p class="lede">Main courses taught at Kyoto University, Nagoya Institute of Technology, and the Japan Advanced Institute of Science and Technology (JAIST), by academic year. The Japanese academic year starts in April; course titles are English renderings of the official Japanese names.</p>
     <div class="stats" id="stats"></div>
   </header>
 
@@ -309,13 +309,13 @@
 
   <section class="section">
     <div class="section-head">
-      <h2>年度別の担当科目</h2>
-      <small>主なもの</small>
+      <h2>Courses by Academic Year</h2>
+      <small>Selected</small>
     </div>
     <div class="controls">
       <div class="search-box">
         <span>🔍</span>
-        <input type="text" id="search" placeholder="科目名・対象・年度で検索…" oninput="render()">
+        <input type="text" id="search" placeholder="Search by course, audience, or year…" oninput="render()">
       </div>
       <div class="filter-group" id="inst-filters"></div>
       <span class="count-bar" id="count-bar"></span>
@@ -328,7 +328,7 @@
 <a id="back-top" href="#">↑</a>
 
 <script>
-const LANG = 'ja';
+const LANG = 'en';
 
 const T = {
   ja: {

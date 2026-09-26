@@ -3,17 +3,20 @@
     "kyoto": {
       "ja": "京都大学",
       "en": "Kyoto University",
-      "period": "2020年10月〜"
+      "period": "2020年10月〜",
+      "period_en": "Oct 2020 –"
     },
     "nitech": {
       "ja": "名古屋工業大学",
       "en": "Nagoya Institute of Technology",
-      "period": "2003年4月〜2020年9月"
+      "period": "2003年4月〜2020年9月",
+      "period_en": "Apr 2003 – Sep 2020"
     },
     "jaist": {
       "ja": "北陸先端科学技術大学院大学",
-      "en": "JAIST",
-      "period": "2001年4月〜2003年3月"
+      "en": "Japan Advanced Institute of Science and Technology (JAIST)",
+      "period": "2001年4月〜2003年3月",
+      "period_en": "Apr 2001 – Mar 2003"
     }
   },
   "years": [
@@ -22,7 +25,7 @@
       "label": "令和8年度",
       "inst": "kyoto",
       "courses": [
-        { "name": "Multiagent Systems (in English)", "target": "社会情報学専攻", "term": "後期" },
+        { "name": "Multiagent Systems", "target": "社会情報学専攻", "term": "後期", "english": true },
         { "name": "情報学概論（人工知能のパート）", "target": "情報学科計算機科学コース", "term": "前期" },
         { "name": "アルゴリズムとデータ構造", "target": "情報学科計算機科学コース2年", "term": "後期" },
         { "name": "ソフトウェア工学", "target": "情報学科計算機科学コース3年", "term": "後期" },
@@ -37,7 +40,7 @@
       "label": "令和7年度",
       "inst": "kyoto",
       "courses": [
-        { "name": "Multiagent Systems (in English)", "target": "社会情報学コース", "term": "後期" },
+        { "name": "Multiagent Systems", "target": "社会情報学コース", "term": "後期", "english": true },
         { "name": "計算機科学概論（人工知能のパート）", "target": "全学共通", "term": "前期" },
         { "name": "プログラミング入門（Python）", "target": "情報学科計算機科学コース", "term": "前期" },
         { "name": "ソフトウェア工学", "target": "情報学科計算機科学コース", "term": "後期" },
@@ -51,7 +54,7 @@
       "label": "令和6年度",
       "inst": "kyoto",
       "courses": [
-        { "name": "Multiagent Systems (in English)", "target": "社会情報学専攻", "term": "後期" },
+        { "name": "Multiagent Systems", "target": "社会情報学専攻", "term": "後期", "english": true },
         { "name": "計算機科学概論（人工知能のパート）", "target": "全学共通", "term": "前期" },
         { "name": "プログラミング入門（Python）", "target": "情報学科計算機科学コース", "term": "前期" },
         { "name": "ソフトウェア工学", "target": "情報学科計算機科学コース", "term": "後期" },
@@ -65,7 +68,7 @@
       "label": "令和5年度",
       "inst": "kyoto",
       "courses": [
-        { "name": "Multiagent Systems (in English)", "target": "社会情報学専攻", "term": "後期" },
+        { "name": "Multiagent Systems", "target": "社会情報学専攻", "term": "後期", "english": true },
         { "name": "計算機科学概論（人工知能のパート）", "target": "全学共通", "term": "前期" },
         { "name": "プログラミング入門（Python）", "target": "情報学科計算機科学コース", "term": "前期" },
         { "name": "ソフトウェア工学", "target": "情報学科計算機コース", "term": "後期" },
@@ -79,7 +82,7 @@
       "label": "令和4年度",
       "inst": "kyoto",
       "courses": [
-        { "name": "Multiagent Systems (in English)", "target": "社会情報学専攻", "term": "後期" },
+        { "name": "Multiagent Systems", "target": "社会情報学専攻", "term": "後期", "english": true },
         { "name": "計算機科学概論（人工知能のパート）", "target": "全学共通", "term": "前期" },
         { "name": "プログラミング入門（Python）", "target": "情報学科計算機科学コース", "term": "前期" },
         { "name": "ソフトウェア工学", "target": "情報学科計算機科学コース", "term": "後期" },
@@ -93,7 +96,7 @@
       "label": "令和3年度",
       "inst": "kyoto",
       "courses": [
-        { "name": "情報システム設計論（マルチエージェント、コレクティブインテリジェンス、情報システム設計）", "target": "社会情報学専攻", "term": "前期" },
+        { "name": "情報システム設計論（マルチエージェント、コレクティブインテリジェンス、情報システム設計）", "target": "社会情報学専攻", "term": "前期", "english": true },
         { "name": "計算機科学概論（人工知能のパート）", "target": "全学共通", "term": "前期" },
         { "name": "プログラミング入門（Python）", "target": "情報学科計算機科学コース", "term": "前期" },
         { "name": "ソフトウェア工学", "target": "情報学科計算機科学コース", "term": "後期" },
@@ -358,5 +361,90 @@
         { "name": "次世代知識システム特論", "target": "大学院 博士後期課程" }
       ]
     }
-  ]
+  ],
+  "en": {
+    "courses": {
+      "Multiagent Systems": "Multiagent Systems",
+      "アルゴリズムとデータ構造": "Algorithms and Data Structures",
+      "インフォメーションデザイン論": "Information Design",
+      "コミュニティ創成工学": "Community Creation Engineering",
+      "コンピュータシステム論": "Computer Systems",
+      "スマートIT": "Smart IT",
+      "ソフトウェアアーキテクチャ": "Software Architecture",
+      "ソフトウェア工学": "Software Engineering",
+      "プログラミングI": "Programming I",
+      "プログラミングⅠ": "Programming I",
+      "プログラミングⅡ": "Programming II",
+      "プログラミング入門（Python）": "Introduction to Programming (Python)",
+      "マルチエージェントシステム": "Multi-Agent Systems",
+      "マルチエージェントシステム特論": "Advanced Multi-Agent Systems",
+      "事例研究": "Case Studies",
+      "事例研究など": "Case Studies, etc.",
+      "情報システム実習": "Information Systems Practicum",
+      "情報システム設計実習": "Information Systems Design Practicum",
+      "情報システム設計論（マルチエージェント、コレクティブインテリジェンス、情報システム設計）": "Information Systems Design (Multi-Agent Systems, Collective Intelligence, Information Systems Design)",
+      "情報学概論（人工知能のパート）": "Introduction to Informatics (Artificial Intelligence part)",
+      "情報技術I": "Information Technology I",
+      "情報技術Ⅰ": "Information Technology I",
+      "情報技術Ⅱ": "Information Technology II",
+      "情報社会論": "Information Society",
+      "未来医療デザイン特論": "Advanced Topics in Future Medical Design",
+      "次世代知識システム特論": "Advanced Next-Generation Knowledge Systems",
+      "産業戦略事例研究": "Case Studies in Industrial Strategy",
+      "知能システム構成特論": "Advanced Intelligent System Architecture",
+      "知能処理アルゴリズム論": "Intelligent Processing Algorithms",
+      "知識システム構成特論": "Advanced Knowledge System Architecture",
+      "知識システム論": "Knowledge Systems",
+      "知識ベース方法論A": "Knowledge Base Methodology A",
+      "社会情報学専攻PBL/FBL": "Social Informatics PBL/FBL",
+      "統合複合科目": "Integrated Interdisciplinary Course",
+      "計算機アーキテクチャ論": "Computer Architecture",
+      "計算機工学Ⅱ": "Computer Engineering II",
+      "計算機科学概論（人工知能のパート）": "Introduction to Computer Science (Artificial Intelligence part)",
+      "電子情報コアテクノロジー特論演習": "Advanced Seminar on Core Electronic and Information Technologies"
+    },
+    "targets": {
+      "デザインスクール": "Kyoto University Design School",
+      "デザイン学": "Graduate Program in Design",
+      "全学共通": "University-wide (liberal arts and sciences)",
+      "大学院 博士前期課程": "Graduate, master's program",
+      "大学院 博士後期課程": "Graduate, doctoral program",
+      "大学院 情報工学専攻1年": "Graduate, Computer Science and Engineering, 1st year",
+      "工学部1年": "Faculty of Engineering, 1st year",
+      "工学部リベラルアーツ1年": "Faculty of Engineering liberal arts, 1st year",
+      "情報学科計算機コース": "Undergraduate, Computer Science Course",
+      "情報学科計算機科学コース": "Undergraduate, Computer Science Course",
+      "情報学科計算機科学コース2年": "Undergraduate, Computer Science Course, 2nd year",
+      "情報学科計算機科学コース3年": "Undergraduate, Computer Science Course, 3rd year",
+      "情報工学専攻1年": "Graduate, Computer Science and Engineering, 1st year",
+      "情報工学科1年": "Undergraduate, Computer Science and Engineering, 1st year",
+      "情報工学科1年 l（エル）クラス": "Undergraduate, Computer Science and Engineering, 1st year (class L)",
+      "情報工学科1年 nクラス": "Undergraduate, Computer Science and Engineering, 1st year (class N)",
+      "情報工学科3年": "Undergraduate, Computer Science and Engineering, 3rd year",
+      "未来医療コース": "Future Medicine Course",
+      "産業戦略工学専攻": "Graduate, Techno-Business Administration",
+      "知能情報システム教育類2年": "Undergraduate, Intelligence and Computer Science, 2nd year",
+      "知能情報システム教育類3年": "Undergraduate, Intelligence and Computer Science, 3rd year",
+      "社会工学専攻": "Graduate, Social Engineering",
+      "社会情報学コース": "Graduate, Social Informatics",
+      "社会情報学専攻": "Graduate, Social Informatics",
+      "高度EJコース": "Advanced EJ Course"
+    },
+    "terms": {
+      "前期": "1st sem.",
+      "後期": "2nd sem.",
+      "前期・後期": "Full year",
+      "第3ターム": "Term 3"
+    },
+    "details": {
+      "1講義": "1 lecture",
+      "4講義": "4 lectures",
+      "「RubyでWebアプリを作る」": "“Building Web Apps with Ruby”"
+    },
+    "notes": {
+      "10月より京都大学に異動": "Moved to Kyoto University in October 2020",
+      "文部科学省大学国際化加速プログラムにて、マサチューセッツ工科大学客員研究員（前期）": "Visiting researcher at MIT under the MEXT university internationalization program (1st semester)",
+      "文部科学省海外先進教育研究実践支援プログラムにて、ハーバード大学及びマサチューセッツ工科大学客員研究員": "Visiting researcher at Harvard University and MIT under the MEXT overseas education and research program"
+    }
+  }
 }
