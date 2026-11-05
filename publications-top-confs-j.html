@@ -538,6 +538,9 @@ async function init() {
     buckets[id].sort((a, b) => {
       const ya = parseInt(a.year) || 0, yb = parseInt(b.year) || 0;
       if (ya !== yb) return yb - ya;
+      // newest acceptance date first; undated entries keep their key order
+      const da = a.accepted || a.acceptdate || '', db = b.accepted || b.acceptdate || '';
+      if (da !== db) return db.localeCompare(da);
       return (a._key || '').localeCompare(b._key || '');
     });
   }

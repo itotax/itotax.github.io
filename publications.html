@@ -301,6 +301,15 @@
 // ════════════════════════════════════════════════════════════
 //  BibTeX parser (lightweight, no external dependencies)
 // ════════════════════════════════════════════════════════════
+// Within a year: newest acceptance date first (`accepted`, or the sort-only
+// `acceptdate`); entries without a date follow in their existing order.
+const acceptDateOf = e => e.accepted || e.acceptdate || '';
+function byYearThenAccepted(a, b) {
+  const ya = parseInt(a.year) || 0, yb = parseInt(b.year) || 0;
+  if (ya !== yb) return yb - ya;
+  return acceptDateOf(b).localeCompare(acceptDateOf(a));
+}
+
 function parseBibTeX(src) {
   const entries = [];
   // Strip BibTeX comments (lines starting with %)
@@ -558,7 +567,7 @@ async function init() {
     return;
   }
 
-  ALL = parseBibTeX(bibSrc).sort((a,b) => (parseInt(b.year)||0) - (parseInt(a.year)||0));
+  ALL = parseBibTeX(bibSrc).sort(byYearThenAccepted);
 
   // Populate year selects
   const years = [...new Set(ALL.map(e => e.year).filter(Boolean))].sort();
