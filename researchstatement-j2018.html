@@ -1,6 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-L4QF5K46LC"></script>
 <script>
@@ -13,10 +14,47 @@
 
 <meta http-equiv="content-type" content="text/html;charset=utf-8" />
 <title>研究概要 2018 — 伊藤孝行</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="common/css/site-nav.css">
+<style>
+  /* shared nav (common/css/site-nav.css) needs these tokens; the page keeps its own typography */
+  :root{--primary:#0f2044;--accent:#2563eb;--accent-light:#eff6ff;--accent-mid:#bfdbfe;--text:#1f2937;--text-sec:#6b7280;--bg-sec:#f9fafb;--border:#e5e7eb;--max-w:900px;--nav-h:58px;}
+  body{max-width:none !important;margin:0 !important;padding:0 !important;}
+  .rs-wrap{max-width:820px;margin:0 auto;padding:20px 22px 80px;}
+  nav.site-nav{font-family:'Inter','Noto Sans JP',system-ui,-apple-system,sans-serif;}
+  nav.site-nav ul{margin:0;padding:0;list-style:none;}
+  nav.site-nav a{text-decoration:none;}
+</style>
 </head>
 
 <body>
-<div style="margin-bottom:18px;font-size:.9rem;"><a href="index.html" style="color:#2563eb;text-decoration:none;">← ホーム</a> · <a href="ResearchStatement2018.html" style="color:#2563eb;text-decoration:none;">English</a></div>
+<nav class="site-nav" aria-label="Site navigation">
+  <div class="nav-inner">
+    <a class="nav-brand" href="index-j.html">伊藤 孝行 <span>京都大学</span></a>
+    <div class="nav-right">
+      <ul class="nav-menu nav-menu--pages" id="nav-menu">
+        <li class="nav-label">ページ</li>
+        <li><a href="index-j.html"><span class="dd-ico">🏠</span><span><span class="dd-title">ホーム</span><span class="dd-sub">トップページ</span></span></a></li>
+        <li><a href="index-j.html#research" aria-current="page"><span class="dd-ico">🔬</span><span><span class="dd-title">研究概要</span><span class="dd-sub">研究概要 2009–2020</span></span></a></li>
+        <li><a href="publications-j.html"><span class="dd-ico">📚</span><span><span class="dd-title">論文一覧</span><span class="dd-sub">全業績・BibTeX 付き</span></span></a></li>
+        <li><a href="publications-top-confs-j.html"><span class="dd-ico">🏆</span><span><span class="dd-title">難関国際会議</span><span class="dd-sub">AAAI・IJCAI・AAMAS・ACL・ACM CI など</span></span></a></li>
+        <li><a href="news-j.html"><span class="dd-ico">📰</span><span><span class="dd-title">お知らせ</span><span class="dd-sub">過去のお知らせすべて</span></span></a></li>
+        <li><a href="awards-j.html"><span class="dd-ico">🎖️</span><span><span class="dd-title">受賞歴</span><span class="dd-sub">受賞の全一覧</span></span></a></li>
+        <li><a href="activity-j.html"><span class="dd-ico">🤝</span><span><span class="dd-title">学会活動</span><span class="dd-sub">国際会議・学会・編集委員など</span></span></a></li>
+        <li><a href="lecture-j.html"><span class="dd-ico">🎓</span><span><span class="dd-title">担当講義</span><span class="dd-sub">年度別の担当科目</span></span></a></li>
+      </ul>
+      <div class="lang-pill">
+        <a href="ResearchStatement2018.html">EN</a>
+        <a href="researchstatement-j2018.html" class="on">JA</a>
+      </div>
+      <button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav-menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="nav-backdrop" aria-hidden="true"></div>
+<main class="rs-wrap">
 <h3>Research Statement 2018</h3>
 <h2>エージェント技術に基づく大規模合意形成支援システムの創成</h2>
 <h3>Professor Takayuki Ito, Nagoya Institute of Technology</h3>
@@ -32,5 +70,7 @@
     <p>議論の構造そのものを抽出する方法としてArgumentation Miningがありますが、その研究のほとんどが論理的な議論の構造を抽出するものであり、仮に抽出がうまくできたとしても、対立したものは対立しており、合意を得ることは難しいと考えらえます。合意を形成するためには、今ある議論の構造を抽出するだけでは不十分で、それと同時に問題解決の構造を抽出しながら創造的な合意案を群衆とインタラクションをしながら、形成していくことが重要だと考えられます。そこで本研究では、創造的なファシリテーションの代表的な方法論であるIBISの手法にヒント得た新しい合意構造表現手法に基づき、議論を仲介しながら問題解決の構造を抽出することによって創造的合意(構造）を導くファシリテータエージェントプログラムを開発します。</p>
     <p>ファシリテータエージェントプログラムは、テキスト文書による議論の中から構造を把握するために、深層学習におけるBilateral RNNやCNNを高度に最適化した手法を用いて問題解決の構造の抽出します。抽出した構造は、課題、アイデア、長所、短所をノードとし、各ノードの関係を表現するリンクで結ぶグラフになります。このグラフを用いて、ファシリテーショングラフ探索アルゴリズムにより、合意を効率的かつ包括的に探索し形成します。合意を得るための効率性および合意の包括性の尺度は本研究プロジェクトで提案する新しい合意に対する評価尺度です。</p>
     <p>本システムは、名古屋市や浜松での社会実験によりその効果を検証中です</p>
+</main>
+<script src="common/js/site-nav.js"></script>
 </body>
 </html>

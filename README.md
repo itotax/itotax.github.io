@@ -41,7 +41,8 @@
 | 2016 | `ResearchStatement2016.html` | `researchstatement-j2016.html` |
 | 2009 | `ResearchStatement2009.html` | `research-j.html`（※2009 JAのみ旧URL名を維持） |
 
-各ResearchStatementページの本文先頭に「← Home / 日本語(English)」の相互言語トグルを設置済み。
+各ResearchStatementページにも共通ナビ（`common/css/site-nav.css` + `common/js/site-nav.js`、ページ側は `<main class="rs-wrap">` で本文を包む）を導入済み（2026-11-08）。言語切替はナビの EN/JA ピルで行う。
+サブページと研究概要ページのナビには「🔬 Research / 研究概要」項目があり、`index(-j).html#research` の研究概要ボタン群へ飛ぶ。
 
 **命名規約**: EN = `ResearchStatementYYYY.html`、JA = `researchstatement-jYYYY.html`。
 新しい年版を追加する場合もこの規約に従い、`index.html` / `index-j.html` の研究概要リンク（`.research-links` 内）に両言語分を追加すること。

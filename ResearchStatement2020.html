@@ -26,10 +26,47 @@
   dt{margin-bottom:.6em;font-size:.9rem;color:#374151;}
   p{margin:1em 0;}
 </style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="common/css/site-nav.css">
+<style>
+  /* shared nav (common/css/site-nav.css) needs these tokens; the page keeps its own typography */
+  :root{--primary:#0f2044;--accent:#2563eb;--accent-light:#eff6ff;--accent-mid:#bfdbfe;--text:#1f2937;--text-sec:#6b7280;--bg-sec:#f9fafb;--border:#e5e7eb;--max-w:900px;--nav-h:58px;}
+  body{max-width:none !important;margin:0 !important;padding:0 !important;}
+  .rs-wrap{max-width:820px;margin:0 auto;padding:20px 22px 80px;}
+  nav.site-nav{font-family:'Inter','Noto Sans JP',system-ui,-apple-system,sans-serif;}
+  nav.site-nav ul{margin:0;padding:0;list-style:none;}
+  nav.site-nav a{text-decoration:none;}
+</style>
 </head>
 <body>
-<div class="topbar"><a href="index.html">← Home</a><span>·</span><a href="researchstatement-j2020.html">日本語 (Japanese)</a></div>
 
+<nav class="site-nav" aria-label="Site navigation">
+  <div class="nav-inner">
+    <a class="nav-brand" href="index.html">Takayuki Ito <span>Kyoto University</span></a>
+    <div class="nav-right">
+      <ul class="nav-menu nav-menu--pages" id="nav-menu">
+        <li class="nav-label">Pages</li>
+        <li><a href="index.html"><span class="dd-ico">🏠</span><span><span class="dd-title">Home</span><span class="dd-sub">Top page</span></span></a></li>
+        <li><a href="index.html#research" aria-current="page"><span class="dd-ico">🔬</span><span><span class="dd-title">Research</span><span class="dd-sub">Research statements 2009–2020</span></span></a></li>
+        <li><a href="publications.html"><span class="dd-ico">📚</span><span><span class="dd-title">Publications</span><span class="dd-sub">Full list with BibTeX</span></span></a></li>
+        <li><a href="publications-top-confs.html"><span class="dd-ico">🏆</span><span><span class="dd-title">Top Confs</span><span class="dd-sub">AAAI · IJCAI · AAMAS · ACL · ACM CI …</span></span></a></li>
+        <li><a href="news.html"><span class="dd-ico">📰</span><span><span class="dd-title">News</span><span class="dd-sub">All announcements</span></span></a></li>
+        <li><a href="awards.html"><span class="dd-ico">🎖️</span><span><span class="dd-title">Awards</span><span class="dd-sub">Complete list of awards</span></span></a></li>
+        <li><a href="activity.html"><span class="dd-ico">🤝</span><span><span class="dd-title">Activities</span><span class="dd-sub">Conference &amp; society service</span></span></a></li>
+        <li><a href="lecture.html"><span class="dd-ico">🎓</span><span><span class="dd-title">Teaching</span><span class="dd-sub">Courses by academic year</span></span></a></li>
+      </ul>
+      <div class="lang-pill">
+        <a href="ResearchStatement2020.html" class="on">EN</a>
+        <a href="researchstatement-j2020.html">JA</a>
+      </div>
+      <button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav-menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="nav-backdrop" aria-hidden="true"></div>
+<main class="rs-wrap">
 <h1>Research Statement 2020</h1>
 <p class="sub">Takayuki Ito</p>
 
@@ -137,5 +174,7 @@
 <h2>[Future Directions]</h2>
 <p>As a future development, I would like to propose a "social reasoning system," which can also be called a "distributed expert system." I noted that, in online discussion support, sharing and managing the structure of discussion is important. Going forward, beyond the structure of the discussion, one can also envision sharing simulations of the content being discussed. For example, in the case of traffic problems, experts on cars, on traffic congestion, on roads, on pedestrian flow, and on urban planning would jointly create a simulator. The "simulator" here is not a mere simulation but one that has an integrated structure of a system simulator and reasoning-based discussion. Each expert provides scenarios based on several hypotheses. The content discussed can include international issues, environmental issues, budget issues, traffic issues, and so on, with players at the national level, the city level, the university-professor level, the household level, and various other levels, and various problems can be considered. The simulation is assumed to be a dynamic simulation based on modeling such as system dynamics or qualitative modeling/qualitative reasoning. Ordinary citizens can further add discussion to the simulations and scenarios created by experts, or modify the simulation models. In this way, by simulating and hypothetically reasoning about the very systems that are solutions to social problems, experts and citizens can, as one, discuss and build the next-generation society.</p>
 
+</main>
+<script src="common/js/site-nav.js"></script>
 </body>
 </html>
