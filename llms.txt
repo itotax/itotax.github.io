@@ -1,0 +1,45 @@
+# Takayuki Ito (伊藤孝行)
+
+> Personal academic homepage of Takayuki Ito, Professor at the Department of Social Informatics, Graduate School of Informatics, Kyoto University, Japan. His research covers multi-agent systems, automated negotiation, collective intelligence, AI-supported consensus building and online deliberation (the D-Agree / "Hyperdemocracy" line of work), computational mechanism design, and LLM agents.
+
+Key facts:
+- Name: Takayuki Ito (Japanese: 伊藤孝行, いとう たかゆき). Doctor of Engineering, Nagoya Institute of Technology, 2000.
+- Position: Professor, Kyoto University (since October 2020). Previously at Nagoya Institute of Technology (2003–2020; full professor from 2014) and JAIST (2001–2003).
+- Visiting positions: USC/ISI (2000–2001), Harvard University and MIT Center for Coordination Science (2005–2006), MIT Center for Collective Intelligence (2008–2010).
+- Selected awards: Prizes for Science and Technology by the Minister of MEXT (2013, 2026); MEXT Young Scientists' Prize (2007); JSPS Prize (2014); Best Paper Award at AAMAS 2006; 2023 Gregory Kersten GDN Journal Best Paper Award.
+- Service: board member of IFAAMAS; PC Chair of AAMAS 2013 and PRIMA 2009, General Chair of PRIMA 2014; Associate Member of the Science Council of Japan.
+- Identifiers: ORCID 0000-0001-5093-3886; DBLP pid 24/1535-1.
+- Contact: ito [at] i.kyoto-u.ac.jp
+
+All pages contain their full content as static HTML. English pages are listed first; each has a Japanese counterpart with the suffix `-j.html`.
+
+## Main pages
+
+- [Home (English)](https://takayuki-ito.com/): profile, recent news, selected papers, biography, research interests, selected awards, contact
+- [Home (Japanese)](https://takayuki-ito.com/index-j.html): 日本語トップページ（略歴表を含む）
+- [Publications](https://takayuki-ito.com/publications.html): complete list of journal papers, conference papers, invited talks, books, patents and awards, by year
+- [Top-tier conference papers](https://takayuki-ito.com/publications-top-confs.html): papers at AAAI, IJCAI, AAMAS, ACL, EMNLP, ICML, KDD, SIGMOD and ACM Collective Intelligence
+- [News](https://takayuki-ito.com/news.html): paper acceptances, awards, invited talks and media coverage
+- [Awards](https://takayuki-ito.com/awards.html): awards and honors
+- [Professional activities](https://takayuki-ito.com/activity.html): conference chairing, society boards, editorial boards, program committees
+- [Teaching](https://takayuki-ito.com/lecture.html): courses taught, by academic year
+
+## Research statements
+
+- [Research Statement 2020](https://takayuki-ito.com/ResearchStatement2020.html)
+- [Research Statement 2018](https://takayuki-ito.com/ResearchStatement2018.html)
+- [Research Statement 2016](https://takayuki-ito.com/ResearchStatement2016.html)
+- [Research Statement 2009](https://takayuki-ito.com/ResearchStatement2009.html)
+
+## Data
+
+- [publications.bib](https://takayuki-ito.com/publications.bib): the complete publication record in BibTeX (source of the publication pages)
+- [CV (PDF)](https://takayuki-ito.com/CV.pdf): curriculum vitae; may be older than the web pages
+
+## External profiles
+
+- [Google Scholar](https://scholar.google.com/citations?user=eq7P_4YAAAAJ)
+- [ORCID](https://orcid.org/0000-0001-5093-3886)
+- [DBLP](https://dblp.org/pid/24/1535-1.html)
+- [researchmap](https://researchmap.jp/takayuki.ito)
+- [Lab homepage](http://www.agent.soc.i.kyoto-u.ac.jp/)

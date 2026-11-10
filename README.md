@@ -55,7 +55,8 @@
 /                       … 全HTMLページ、データファイル、ルート資産
   CNAME                 … 独自ドメイン設定
   robots.txt            … 全許可 + sitemap参照
-  sitemap.xml           … 12 URL（モダン版のみ掲載、hreflang付き）
+  sitemap.xml           … 14 URL（モダン版のみ、hreflang・lastmod 付き。build-static.js が生成）
+  llms.txt              … AI 向けのサイト要約と主要ページ一覧（手書き。役職・受賞などが変わったら更新）
   favicon.svg, apple-touch-icon.png
   publications.bib      … BibTeX（News生成にも使用、`accepted={YYYY-MM-DD}` フィールド）
   news.json             … News手動エントリ（bibkeyでbibと重複排除）
@@ -204,8 +205,12 @@ JSON駆動ではないので、追加・変更は両ファイルを直接編集�
 
 - 各モダンページに meta description / canonical / hreflang(en/ja/x-default) / OG / Twitter Card を完備。
 - **トップの canonical はサイトルート** `https://takayuki-ito.com/`（`index.html` 自身）。これに合わせて `index.html`・`index-j.html` の hreflang(en/x-default)・og:url、および `sitemap.xml` の該当 `<loc>`/hreflang もルートURLに統一済み。
-- `sitemap.xml` 掲載は**モダン版12ページのみ**。activity は2026-07-27のモダン化に伴い掲載に変更。
-  ResearchStatement・lecture は意図的に非掲載（インデックス方針）。
+- `sitemap.xml` は `tools/build-static.js` が生成する（**手で編集しない**）。モダン版14ページを掲載し、
+  各ページに日英の hreflang と `lastmod`（そのページの最終コミット日。未コミットの変更があれば当日）を付ける。
+  ResearchStatement 系は意図的に非掲載。ページを増やしたらスクリプト内の `PAGES` に追加する。
+- **構造化データ（JSON-LD）**: トップ2ページに ProfilePage + Person（所属・受賞・`sameAs` で外部プロフィール）+ 主な論文4本、
+  サブページ12ページに CollectionPage + BreadcrumbList を `<head>` に静的に記述。役職・所属・主な受賞・主な論文を
+  変えたらトップ2ページの JSON-LD と `llms.txt` も合わせて直す。
 - `robots.txt` は全許可 + sitemap 参照。
 
 ---
