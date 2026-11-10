@@ -1,6 +1,6 @@
 # Takayuki Ito (伊藤孝行)
 
-> Personal academic homepage of Takayuki Ito, Professor at the Department of Social Informatics, Graduate School of Informatics, Kyoto University, Japan. His research covers multi-agent systems, automated negotiation, collective intelligence, AI-supported consensus building and online deliberation (the "Hyperdemocracy" vision, realized in the D-Agree and X-Agree (D-AgreeX) systems), computational mechanism design, and LLM agents.
+> Personal academic homepage of Takayuki Ito, Professor at the Department of Social Informatics, Graduate School of Informatics, Kyoto University, Japan. His research covers multi-agent systems, automated negotiation, collective intelligence, AI-supported consensus building and online deliberation (the "Hyperdemocracy" vision, realized in D-Agree and in X-Agree (D-AgreeX), an agentic web forum in which multiple AI agents support discussion and consensus building), computational mechanism design, and LLM agents.
 
 Key facts:
 - Name: Takayuki Ito (Japanese: 伊藤孝行, いとう たかゆき). Doctor of Engineering, Nagoya Institute of Technology, 2000.
