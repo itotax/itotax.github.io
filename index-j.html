@@ -179,6 +179,21 @@
       border: 1px solid var(--accent-mid);
     }
     .hero-btns { display: flex; flex-wrap: wrap; gap: .6rem; }
+    .hero-profiles {
+      display: flex; flex-wrap: wrap; align-items: center; gap: .35rem .5rem;
+      margin-top: .9rem; font-size: .8rem;
+    }
+    .hero-profiles .hp-label {
+      font-size: .7rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+      color: var(--text-sec); margin-right: .15rem;
+    }
+    .hero-profiles a {
+      font-weight: 600; color: var(--text-sec);
+      padding: .15rem .6rem; border-radius: 20px;
+      border: 1px solid var(--border); background: var(--bg);
+      text-decoration: none !important; transition: all .15s;
+    }
+    .hero-profiles a:hover { color: var(--accent); border-color: var(--accent-mid); background: var(--accent-light); }
     .btn {
       display: inline-flex;
       align-items: center;
@@ -377,7 +392,7 @@
     @media (max-width: 680px) {
       .hero-grid { grid-template-columns: 1fr; gap: 1.75rem; text-align: center; }
       .photo-wrap { margin-left: auto; margin-right: auto; }
-      .hero-tags, .hero-btns { justify-content: center; }
+      .hero-tags, .hero-btns, .hero-profiles { justify-content: center; }
       .hero-name { font-size: 1.8rem; }
       .contact-cols { grid-template-columns: 1fr; gap: 1.5rem; }
       .news-row { grid-template-columns: 1fr; gap: .2rem; }
@@ -385,6 +400,238 @@
       .career-table td:first-child { white-space: normal; min-width: 0; }
     }
   </style>
+  <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ProfilePage",
+        "@id": "https://takayuki-ito.com/index-j.html#page",
+        "url": "https://takayuki-ito.com/index-j.html",
+        "name": "伊藤孝行 — 京都大学",
+        "inLanguage": "ja",
+        "mainEntity": {
+          "@id": "https://takayuki-ito.com/#person"
+        },
+        "dateModified": "2026-11-10"
+      },
+      {
+        "@type": "Person",
+        "@id": "https://takayuki-ito.com/#person",
+        "name": "Takayuki Ito",
+        "alternateName": [
+          "伊藤孝行",
+          "伊藤 孝行",
+          "Takayuki ITO",
+          "いとう たかゆき"
+        ],
+        "givenName": "Takayuki",
+        "familyName": "Ito",
+        "url": "https://takayuki-ito.com/",
+        "image": "https://takayuki-ito.com/ito20210307.jpeg",
+        "jobTitle": "Professor",
+        "description": "Professor at the Graduate School of Informatics, Kyoto University, working on multi-agent systems, automated negotiation, collective intelligence, consensus building and LLM agents.",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Graduate School of Informatics, Kyoto University",
+          "alternateName": "京都大学大学院情報学研究科",
+          "url": "https://www.i.kyoto-u.ac.jp/",
+          "parentOrganization": {
+            "@type": "CollegeOrUniversity",
+            "@id": "https://www.kyoto-u.ac.jp/#org",
+            "name": "Kyoto University",
+            "alternateName": "京都大学",
+            "url": "https://www.kyoto-u.ac.jp/"
+          }
+        },
+        "affiliation": {
+          "@type": "CollegeOrUniversity",
+          "@id": "https://www.kyoto-u.ac.jp/#org",
+          "name": "Kyoto University",
+          "alternateName": "京都大学",
+          "url": "https://www.kyoto-u.ac.jp/"
+        },
+        "alumniOf": {
+          "@type": "CollegeOrUniversity",
+          "name": "Nagoya Institute of Technology",
+          "alternateName": "名古屋工業大学",
+          "url": "https://www.nitech.ac.jp/"
+        },
+        "memberOf": [
+          {
+            "@type": "Organization",
+            "name": "Science Council of Japan",
+            "alternateName": "日本学術会議"
+          },
+          {
+            "@type": "Organization",
+            "name": "International Foundation for Autonomous Agents and Multiagent Systems (IFAAMAS)"
+          }
+        ],
+        "workLocation": {
+          "@type": "Place",
+          "name": "Kyoto University, Yoshida Campus",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Yoshida-Honmachi, Sakyo-ku",
+            "addressLocality": "Kyoto",
+            "postalCode": "606-8501",
+            "addressCountry": "JP"
+          }
+        },
+        "knowsAbout": [
+          "Multi-Agent Systems",
+          "Automated Negotiation",
+          "Collective Intelligence",
+          "Consensus Building",
+          "Group Decision Support",
+          "Computational Mechanism Design",
+          "Game Theory",
+          "Auction Theory",
+          "Distributed Artificial Intelligence",
+          "LLM Agents",
+          "Hyperdemocracy",
+          "Online Deliberation"
+        ],
+        "award": [
+          "Prizes for Science and Technology (Research Category), Commendation for Science and Technology by the Minister of MEXT (2026)",
+          "Gregory Kersten GDN Journal Best Paper Award (2023)",
+          "JSPS Prize, Japan Society for the Promotion of Science (2014)",
+          "Prizes for Science and Technology (Research Category), Commendation for Science and Technology by the Minister of MEXT (2013)",
+          "Young Scientists' Prize, Commendation for Science and Technology by the Minister of MEXT (2007)",
+          "Nagao Special Researcher Award, Information Processing Society of Japan (2007)",
+          "Best Paper Award, AAMAS 2006"
+        ],
+        "identifier": {
+          "@type": "PropertyValue",
+          "propertyID": "ORCID",
+          "value": "0000-0001-5093-3886"
+        },
+        "sameAs": [
+          "https://scholar.google.com/citations?user=eq7P_4YAAAAJ",
+          "https://orcid.org/0000-0001-5093-3886",
+          "https://dblp.org/pid/24/1535-1.html",
+          "https://researchmap.jp/takayuki.ito"
+        ]
+      },
+      {
+        "@type": "ScholarlyArticle",
+        "headline": "E-contact Facilitated by Conversational Agents Reduces Interethnic Prejudice and Anxiety in Afghanistan",
+        "author": [
+          {
+            "@type": "Person",
+            "name": "Sofia Sahab"
+          },
+          {
+            "@type": "Person",
+            "name": "Jawad Haqbeen"
+          },
+          {
+            "@type": "Person",
+            "name": "Rafik Hadfi"
+          },
+          {
+            "@id": "https://takayuki-ito.com/#person"
+          },
+          {
+            "@type": "Person",
+            "name": "Richard Imade"
+          },
+          {
+            "@type": "Person",
+            "name": "Susumu Ohnuma"
+          },
+          {
+            "@type": "Person",
+            "name": "Takuya Hasegawa"
+          }
+        ],
+        "datePublished": "2024",
+        "isPartOf": {
+          "@type": "Periodical",
+          "name": "Communications Psychology"
+        },
+        "url": "https://doi.org/10.1038/s44271-024-00070-z",
+        "sameAs": "https://doi.org/10.1038/s44271-024-00070-z",
+        "inLanguage": "en"
+      },
+      {
+        "@type": "ScholarlyArticle",
+        "headline": "An Agent that Facilitates Crowd Discussion: A Crowd Discussion Support System based on an Automated Facilitation Agent",
+        "author": [
+          {
+            "@id": "https://takayuki-ito.com/#person"
+          },
+          {
+            "@type": "Person",
+            "name": "Rafik Hadfi"
+          },
+          {
+            "@type": "Person",
+            "name": "Shota Suzuki"
+          }
+        ],
+        "datePublished": "2021",
+        "isPartOf": {
+          "@type": "Periodical",
+          "name": "Group Decision and Negotiation"
+        },
+        "award": "2023 Gregory Kersten GDN Journal Best Paper Award",
+        "url": "https://doi.org/10.1007/s10726-021-09765-8",
+        "sameAs": "https://doi.org/10.1007/s10726-021-09765-8",
+        "inLanguage": "en"
+      },
+      {
+        "@type": "ScholarlyArticle",
+        "headline": "Multi-issue Negotiation Protocol for Agents: Exploring Nonlinear Utility Spaces",
+        "author": [
+          {
+            "@id": "https://takayuki-ito.com/#person"
+          },
+          {
+            "@type": "Person",
+            "name": "Mark Klein"
+          },
+          {
+            "@type": "Person",
+            "name": "Hiromitsu Hattori"
+          }
+        ],
+        "datePublished": "2007",
+        "isPartOf": {
+          "@type": "CreativeWork",
+          "name": "Proceedings of the 20th International Joint Conference on Artificial Intelligence (IJCAI 2007)"
+        },
+        "pagination": "1347-1352",
+        "url": "https://takayuki-ito.com/papers/itota-ijcai2007.pdf",
+        "inLanguage": "en"
+      },
+      {
+        "@type": "ScholarlyArticle",
+        "headline": "Instantiating the Contingent Bids Model of Truthful Interdependent Value Auctions",
+        "author": [
+          {
+            "@id": "https://takayuki-ito.com/#person"
+          },
+          {
+            "@type": "Person",
+            "name": "David Parkes"
+          }
+        ],
+        "datePublished": "2006",
+        "isPartOf": {
+          "@type": "CreativeWork",
+          "name": "Proceedings of the Fifth International Joint Conference on Autonomous Agents and Multiagent Systems (AAMAS 2006)"
+        },
+        "pagination": "1151-1158",
+        "award": "Best Paper Award, AAMAS 2006",
+        "url": "https://doi.org/10.1145/1160633.1160842",
+        "sameAs": "https://doi.org/10.1145/1160633.1160842",
+        "inLanguage": "en"
+      }
+    ]
+  }
+  </script>
 </head>
 <body id="top">
 
@@ -439,6 +686,13 @@
           <a href="http://www.agent.soc.i.kyoto-u.ac.jp/" target="_blank" rel="noopener" class="btn btn-outline">🔬 研究室ページ</a>
           <a href="publications-j.html" class="btn btn-outline">📚 論文・業績一覧</a>
           <a href="publications-top-confs-j.html" class="btn btn-outline">🏆 難関国際会議とACM CI</a>
+        </div>
+        <div class="hero-profiles">
+          <span class="hp-label">研究者情報</span>
+          <a href="https://scholar.google.com/citations?user=eq7P_4YAAAAJ" target="_blank" rel="me noopener">Google Scholar</a>
+          <a href="https://orcid.org/0000-0001-5093-3886" target="_blank" rel="me noopener">ORCID</a>
+          <a href="https://dblp.org/pid/24/1535-1.html" target="_blank" rel="me noopener">DBLP</a>
+          <a href="https://researchmap.jp/takayuki.ito" target="_blank" rel="me noopener">researchmap</a>
         </div>
       </div>
     </div>
