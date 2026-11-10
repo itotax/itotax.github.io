@@ -71,6 +71,8 @@ common/js/
   site-nav.js           … 共通ナビの動作（ドロップダウン・ハンバーガー・scroll-spy）
 common/css/
   site-nav.css          … 共通ナビのスタイル
+tools/
+  build-static.js       … bib / JSON の内容を各ページに静的HTMLとして焼き込む（Node.js）
 papers/  (54 PDF)       … 論文PDF（全件が bib の url= から参照されている）
 oldfiles/               … アーカイブ（.gitignore 対象で非公開・ローカル保管のみ。media/ に新聞記事スキャン、photos/ に旧写真）
 ```
@@ -99,6 +101,22 @@ oldfiles/               … アーカイブ（.gitignore 対象で非公開・�
 ---
 
 ## 5. データ駆動コンテンツ（重要：更新方法）
+
+### 静的コピーの焼き込み（検索エンジン・AI クローラー対策）
+
+各ページはブラウザ上で bib / JSON から描画するが、JavaScript を実行しないクローラー（多くの AI クローラー）には
+中身が見えない。そこで `tools/build-static.js` が、同じ内容の素の HTML を各ページのコンテナ内
+（`<!--static:NAME-->` 〜 `<!--/static:NAME-->`）に書き込む。ページの JS は読み込み時にこれを置き換えるので、
+訪問者にはこれまでどおりの表示・絞り込み・検索が出る。
+
+- **bib / JSON を編集したら、コミット前に `node tools/build-static.js` を実行する**（何度実行しても同じ結果）。
+  実行し忘れても訪問者の表示は正しいままだが、クローラーに見える内容が古くなる。
+- `node tools/build-static.js --check` は、焼き込みが古い場合に終了コード1を返す（確認用）。
+- 対象は 14 ページ（index / publications / publications-top-confs / news / awards / activity / lecture の日英）。
+  **マーカーの間は手で編集しない**（次のビルドで上書きされる）。
+- News は `news-merge.js`、難関国際会議は `publications-top-confs.html` の `VENUE_RULES` をそのまま読んで使うので、
+  判定ルールの定義は増えていない。
+- トップページの「お知らせ」は掲載期間のルールがあるため、焼き込み内容はビルド時点のもの。
 
 **News・受賞・学会活動は HTML を直接編集しない。** クライアント側で生成される。
 
