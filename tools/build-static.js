@@ -251,6 +251,77 @@ ${urls.join('\n')}
 `;
 }
 
+// ── navigation ─────────────────────────────────────────────
+// The menu is defined once here and written into every page that has
+// <nav class="site-nav">. Items: [href, icon, title, subtitle]; a group
+// (label + items) becomes a dropdown. To add a page, add a line here.
+const NAV = {
+  en: [
+    ['index.html', 'Home'],
+    { label: 'Research', items: [
+      ['index.html#research', '🔬', 'Research Interests', 'Themes and keywords'],
+      ['ResearchStatement2020.html', '📄', 'Research Statement 2020', ''],
+      ['ResearchStatement2018.html', '📄', 'Research Statement 2018', ''],
+      ['ResearchStatement2016.html', '📄', 'Research Statement 2016', ''],
+      ['ResearchStatement2009.html', '📄', 'Research Statement 2009', ''],
+    ] },
+    { label: 'Publications', items: [
+      ['publications.html', '📚', 'Publications', 'Full list with BibTeX'],
+      ['publications-top-confs.html', '🏆', 'Top-Tier Conferences', 'AAAI · IJCAI · AAMAS · ACL · ACM CI …'],
+      ['awards.html', '🎖️', 'Awards', 'Complete list of awards'],
+    ] },
+    ['news.html', 'News'],
+    { label: 'Activities', items: [
+      ['activity.html', '🤝', 'Professional Activities', 'Conference & society service'],
+      ['lecture.html', '🎓', 'Teaching', 'Courses by academic year'],
+    ] },
+  ],
+  ja: [
+    ['index-j.html', 'ホーム'],
+    { label: '研究', items: [
+      ['index-j.html#research', '🔬', '研究テーマ', '研究の背景とキーワード'],
+      ['researchstatement-j2020.html', '📄', '研究概要 2020', ''],
+      ['researchstatement-j2018.html', '📄', '研究概要 2018', ''],
+      ['researchstatement-j2016.html', '📄', '研究概要 2016', ''],
+      ['research-j.html', '📄', '研究概要 2009', ''],
+    ] },
+    { label: '業績', items: [
+      ['publications-j.html', '📚', '論文一覧', '全業績・BibTeX 付き'],
+      ['publications-top-confs-j.html', '🏆', '難関国際会議', 'AAAI・IJCAI・AAMAS・ACL・ACM CI など'],
+      ['awards-j.html', '🎖️', '受賞歴', '受賞の全一覧'],
+    ] },
+    ['news-j.html', 'お知らせ'],
+    { label: '活動', items: [
+      ['activity-j.html', '🤝', '学会活動', '国際会議・学会・編集委員など'],
+      ['lecture-j.html', '🎓', '担当講義', '年度別の担当科目'],
+    ] },
+  ],
+};
+const CHEVRON = '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const isJa = f => /-j\.html$|-j\d{4}\.html$/.test(f);
+
+function navMenuHTML(file) {
+  const cur = h => h === file ? ' aria-current="page"' : '';
+  const rows = NAV[isJa(file) ? 'ja' : 'en'].map((it, i) => {
+    if (Array.isArray(it)) return `        <li><a href="${it[0]}"${cur(it[0])}>${esc(it[1])}</a></li>`;
+    const here = it.items.some(x => x[0] === file);
+    const items = it.items.map(([h, ico, t, sub]) =>
+      `            <li><a href="${h}"${cur(h)}><span class="dd-ico">${ico}</span><span><span class="dd-title">${esc(t)}</span>${sub ? `<span class="dd-sub">${esc(sub)}</span>` : ''}</span></a></li>`).join('\n');
+    return `        <li class="nav-more${here ? ' current' : ''}">
+          <button type="button" class="nav-more-btn" aria-expanded="false" aria-controls="nav-group-${i}">${esc(it.label)} ${CHEVRON}</button>
+          <ul class="nav-dropdown" id="nav-group-${i}">
+${items}
+          </ul>
+        </li>`;
+  });
+  return `<ul class="nav-menu" id="nav-menu">\n${rows.join('\n')}\n      </ul>`;
+}
+function applyNav(html, file) {
+  const re = /<ul class="nav-menu[^"]*" id="nav-menu">[\s\S]*?\n      <\/ul>/;
+  if (!re.test(html)) throw new Error(`${file}: nav menu not found`);
+  return html.replace(re, () => navMenuHTML(file));
+}
+
 // ── injection ──────────────────────────────────────────────
 // First run: an empty <tag id="X" …></tag> (or one holding only a
 // "Loading…" placeholder) gets the markers. Later runs replace
@@ -278,10 +349,15 @@ function inject(html, file, id, content) {
     jobs.push([`index${sfx}.html`, { 'news-feed': newsHTML(news.front, lang), 'awards-feed': awardsHTML(lang, 6) }]);
   }
 
+  // Pages that only need the shared menu (no baked data).
+  for (const f of fs.readdirSync(ROOT).filter(f => /\.html$/.test(f))) {
+    if (!jobs.some(j => j[0] === f) && /<nav class="site-nav"/.test(read(f))) jobs.push([f, {}]);
+  }
+
   let stale = 0;
   for (const [file, parts] of jobs) {
     const before = read(file);
-    let after = before;
+    let after = applyNav(before, file);
     for (const [id, content] of Object.entries(parts)) after = inject(after, file, id, content);
     if (after === before) continue;
     stale++;

@@ -39,7 +39,11 @@ nav.site-nav.scrolled { background: rgba(255,255,255,0.94); box-shadow: 0 6px 24
 .nav-brand span { font-weight: 400; color: var(--text-sec); font-size: .82rem; margin-left: .45rem; }
 .nav-right { display: flex; align-items: center; gap: .35rem; }
 
-.nav-menu { display: flex; align-items: center; gap: .1rem; list-style: none; }
+/* Self-contained box model: some pages (research statements) have no global reset. */
+nav.site-nav, nav.site-nav *, nav.site-nav *::before, nav.site-nav *::after { box-sizing: border-box; }
+.nav-menu, .nav-dropdown { margin: 0; }
+.nav-menu li { margin: 0; }
+.nav-menu { display: flex; align-items: center; gap: .1rem; list-style: none; padding: 0; }
 .nav-menu > li > a,
 .nav-more-btn {
   position: relative;
@@ -75,14 +79,14 @@ nav.site-nav.scrolled { background: rgba(255,255,255,0.94); box-shadow: 0 6px 24
 .nav-sep { width: 1px; height: 18px; background: var(--border); margin: 0 .3rem; }
 .nav-label { display: none; }
 
-/* "Pages" dropdown */
+/* Dropdown groups (Research / Publications / Activities) */
 .nav-more { position: relative; }
 .nav-more-btn svg { width: 12px; height: 12px; transition: transform .2s; }
 .nav-more.open .nav-more-btn svg { transform: rotate(180deg); }
 .nav-dropdown {
   position: absolute;
   top: calc(100% + 12px);
-  right: -.5rem;
+  left: -.5rem;
   width: 320px;
   list-style: none;
   padding: .45rem;
@@ -93,9 +97,10 @@ nav.site-nav.scrolled { background: rgba(255,255,255,0.94); box-shadow: 0 6px 24
   opacity: 0;
   visibility: hidden;
   transform: translateY(-6px) scale(.98);
-  transform-origin: top right;
+  transform-origin: top left;
   transition: opacity .18s ease, transform .18s ease, visibility .18s;
 }
+.nav-menu > li:last-child > .nav-dropdown { left: auto; right: -.5rem; transform-origin: top right; }
 .nav-dropdown::before {               /* hover bridge */
   content: ''; position: absolute; left: 0; right: 0; top: -14px; height: 14px;
 }
@@ -240,29 +245,27 @@ nav.site-nav.open .nav-toggle span:nth-child(3) { top: 19px; transform: rotate(-
   .nav-dropdown { grid-template-columns: 1fr; }
 }
 
-/* ----- Subpage variant: the menu lists the site's pages ----- */
-.nav-menu--pages .dd-ico,
-.nav-menu--pages .dd-sub { display: none; }
-.nav-menu--pages .dd-title { display: inline; font: inherit; color: inherit; }
-.nav-menu > li > a[aria-current="page"] { color: var(--primary); font-weight: 600; }
-.nav-menu > li > a[aria-current="page"]::after { transform: scaleX(1); }
+/* ----- Current page ----- */
+.nav-more-btn::after {
+  content: '';
+  position: absolute;
+  left: .68rem; right: .68rem; bottom: .12rem;
+  height: 2px; border-radius: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transition: transform .25s ease;
+}
+.nav-menu > li > a[aria-current="page"],
+.nav-more.current > .nav-more-btn { color: var(--primary); font-weight: 600; }
+.nav-menu > li > a[aria-current="page"]::after,
+.nav-more.current > .nav-more-btn::after { transform: scaleX(1); }
+.nav-dropdown a[aria-current="page"] { background: var(--accent-light); }
 
 @media (max-width: 920px) {
-  .nav-menu--pages .dd-ico,
-  .nav-menu--pages .dd-sub { display: grid; }
-  .nav-menu--pages .dd-sub { display: block; }
-  .nav-menu--pages .dd-title { display: block; font-size: .86rem; font-weight: 600; color: var(--primary); line-height: 1.35; }
-  .nav-menu--pages > li > a {
-    display: grid;
-    grid-template-columns: 36px 1fr;
-    gap: .75rem;
-    align-items: center;
-    padding: .55rem .6rem;
-    background: #fff;
-    white-space: normal;
-  }
-  .nav-menu--pages > li > a[aria-current="page"] { background: var(--accent-light); border-color: var(--accent-mid); }
-}
-@media (max-width: 520px) {
-  .nav-menu--pages { grid-template-columns: 1fr; }
+  .nav-menu > li:not(.nav-more):not(.nav-label) { grid-column: 1 / -1; }
+  .nav-menu > li > a[aria-current="page"],
+  .nav-dropdown a[aria-current="page"] { background: var(--accent-light); border-color: var(--accent-mid); }
+  .nav-more-btn::after { display: none; }
+  .nav-more:first-of-type { margin-top: .5rem; }
+  .nav-dropdown a { padding: .45rem .55rem; }
 }

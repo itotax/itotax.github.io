@@ -86,16 +86,15 @@ oldfiles/               … アーカイブ（.gitignore 対象で非公開・�
 - CSS変数: `--primary:#0f2044`（濃紺）、`--accent:#2563eb`（青）、`--text:#1f2937`。
 - フォント: Inter + Noto Sans JP（Google Fonts）。
 - レスポンシブ: 680px ブレークポイント（ナビのみ 920px で切替、下記）。
-- **ナビゲーション（全モダンページ共通）**: スタイルは `common/css/site-nav.css`、動作は `common/js/site-nav.js` に集約
-  （サイトで唯一の共通CSS）。マークアップ `<nav class="site-nav">` は各ページに静的HTMLで記述する。
-  - **トップページ**（`index.html` / `index-j.html`）: ページ内セクション6項目（お知らせ〜連絡先）を横並びにし、
-    表示中のセクションを強調表示（scroll-spy）。他ページは「ページ / Pages ▾」ドロップダウン（`.nav-dropdown`、アイコン＋説明付き）。
-    ナビは `position: fixed`（ページ側で上書き）。
-  - **サブページ**（論文一覧・難関国際会議・お知らせ・受賞歴・学会活動・担当講義）: サイトの各ページを横並び
-    （`.nav-menu--pages`）にし、表示中のページに `aria-current="page"` を付けて下線表示。ナビは `position: sticky`。
-  - 920px 以下はハンバーガーメニューになり、パネル表示（ページはアイコン付きカード）。
-  - **サブページを追加したら**: 両 index の `.nav-dropdown` と、全サブページの `.nav-menu--pages` に1行ずつ追加する。
-  - 研究概要（ResearchStatement 系8ページ）は文書ページのため対象外（← Home と言語トグルのみ）。
+- **ナビゲーション（全22ページ共通）**: スタイルは `common/css/site-nav.css`、動作は `common/js/site-nav.js`。
+  **メニューの中身は `tools/build-static.js` の `NAV` に1か所で定義**し、ビルド時に
+  `<nav class="site-nav">` を持つ全ページ（モダン14ページ＋研究概要8ページ）の `<ul class="nav-menu">` へ書き込む。
+  - 構成は5項目: ホーム / 研究 ▾（研究テーマ・研究概要 2020/2018/2016/2009）/ 業績 ▾（論文一覧・難関国際会議・受賞歴）/
+    お知らせ / 活動 ▾（学会活動・担当講義）。▾ はドロップダウン（`.nav-more` + `.nav-dropdown`）。
+  - 表示中のページには `aria-current="page"`、それを含むグループには `.current` が付き、下線で示す。
+  - 920px 以下はハンバーガーメニューになり、グループを見出し付きのカード一覧として展開表示する。
+  - **ページを追加・改名したら `NAV` を直して `node tools/build-static.js` を実行する**（各ページの `<ul class="nav-menu">` は手で編集しない）。
+  - トップ2ページのナビは `position: fixed`（ページ側で上書き）、その他は `position: sticky`。
 - サブページの見出しは各ページ先頭の `<h1>`（`.page-hero` / `.hero` / `.page-title`）。
 - フレームワーク・jQuery・ビルドツールはすべて不使用（レガシー資産は2026-06-15に撤去済み）。
 
