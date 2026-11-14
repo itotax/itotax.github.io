@@ -32,10 +32,11 @@
 | 学会活動 | `activity.html` | `activity-j.html` |
 | 担当講義 | `lecture.html` | `lecture-j.html` |
 
-### 研究概要（ResearchStatement、4年分・日英ペア完備）
+### 研究概要（ResearchStatement、5年分・日英ペア完備）
 
 | 年 | 英語 | 日本語 |
 |----|------|--------|
+| 2026（11月） | `ResearchStatement2026.html` | `researchstatement-j2026.html` |
 | 2020 | `ResearchStatement2020.html` | `researchstatement-j2020.html` |
 | 2018 | `ResearchStatement2018.html` | `researchstatement-j2018.html` |
 | 2016 | `ResearchStatement2016.html` | `researchstatement-j2016.html` |
@@ -88,8 +89,8 @@ oldfiles/               … アーカイブ（.gitignore 対象で非公開・�
 - レスポンシブ: 680px ブレークポイント（ナビのみ 920px で切替、下記）。
 - **ナビゲーション（全22ページ共通）**: スタイルは `common/css/site-nav.css`、動作は `common/js/site-nav.js`。
   **メニューの中身は `tools/build-static.js` の `NAV` に1か所で定義**し、ビルド時に
-  `<nav class="site-nav">` を持つ全ページ（モダン14ページ＋研究概要8ページ）の `<ul class="nav-menu">` へ書き込む。
-  - 構成は5項目: ホーム / 研究 ▾（研究テーマ・研究概要 2020/2018/2016/2009）/ 業績 ▾（論文一覧・難関国際会議・受賞歴）/
+  `<nav class="site-nav">` を持つ全ページ（モダン14ページ＋研究概要10ページ）の `<ul class="nav-menu">` へ書き込む。
+  - 構成は5項目: ホーム / 研究 ▾（研究テーマ・研究概要 2026/2020/2018/2016/2009）/ 業績 ▾（論文一覧・難関国際会議・受賞歴）/
     お知らせ / 活動 ▾（学会活動・担当講義）。▾ はドロップダウン（`.nav-more` + `.nav-dropdown`）。
   - 表示中のページには `aria-current="page"`、それを含むグループには `.current` が付き、下線で示す。
   - 920px 以下はハンバーガーメニューになり、グループを見出し付きのカード一覧として展開表示する。

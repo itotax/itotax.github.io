@@ -260,6 +260,7 @@ const NAV = {
     ['index.html', 'Home'],
     { label: 'Research', items: [
       ['index.html#research', '🔬', 'Research Interests', 'Themes and keywords'],
+      ['ResearchStatement2026.html', '📄', 'Research Statement 2026', 'November 2026'],
       ['ResearchStatement2020.html', '📄', 'Research Statement 2020', ''],
       ['ResearchStatement2018.html', '📄', 'Research Statement 2018', ''],
       ['ResearchStatement2016.html', '📄', 'Research Statement 2016', ''],
@@ -280,6 +281,7 @@ const NAV = {
     ['index-j.html', 'ホーム'],
     { label: '研究', items: [
       ['index-j.html#research', '🔬', '研究テーマ', '研究の背景とキーワード'],
+      ['researchstatement-j2026.html', '📄', '研究概要 2026', '2026年11月'],
       ['researchstatement-j2020.html', '📄', '研究概要 2020', ''],
       ['researchstatement-j2018.html', '📄', '研究概要 2018', ''],
       ['researchstatement-j2016.html', '📄', '研究概要 2016', ''],
