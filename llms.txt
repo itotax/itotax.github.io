@@ -26,12 +26,15 @@ All pages contain their full content as static HTML. English pages are listed fi
 
 ## Research statements
 
+- [Research Statement 2026](https://takayuki-ito.com/ResearchStatement2026.html): the current statement (November 2026) — consensus building and agent governance in the age of AI
 - [Research Statement 2020](https://takayuki-ito.com/ResearchStatement2020.html)
 - [Research Statement 2018](https://takayuki-ito.com/ResearchStatement2018.html)
 - [Research Statement 2016](https://takayuki-ito.com/ResearchStatement2016.html)
 - [Research Statement 2009](https://takayuki-ito.com/ResearchStatement2009.html)
 
 ## Data
+
+- [llms-full.txt](https://takayuki-ito.com/llms-full.txt): this summary plus the full text of the latest research statement, awards, recent news, top-tier conference papers and recent journal articles
 
 - [publications.bib](https://takayuki-ito.com/publications.bib): the complete publication record in BibTeX (source of the publication pages)
 - [CV (PDF)](https://takayuki-ito.com/CV.pdf): curriculum vitae; may be older than the web pages

@@ -58,6 +58,7 @@
   robots.txt            … 全許可 + sitemap参照
   sitemap.xml           … 14 URL（モダン版のみ、hreflang・lastmod 付き。build-static.js が生成）
   llms.txt              … AI 向けのサイト要約と主要ページ一覧（手書き。役職・受賞などが変わったら更新）
+  llms-full.txt         … 上記＋最新の研究概要全文・受賞・お知らせ・主要論文（build-static.js が生成）
   favicon.svg, apple-touch-icon.png
   publications.bib      … BibTeX（News生成にも使用、`accepted={YYYY-MM-DD}` フィールド）
   news.json             … News手動エントリ（bibkeyでbibと重複排除）
@@ -205,9 +206,15 @@ JSON駆動ではないので、追加・変更は両ファイルを直接編集�
 
 - 各モダンページに meta description / canonical / hreflang(en/ja/x-default) / OG / Twitter Card を完備。
 - **トップの canonical はサイトルート** `https://takayuki-ito.com/`（`index.html` 自身）。これに合わせて `index.html`・`index-j.html` の hreflang(en/x-default)・og:url、および `sitemap.xml` の該当 `<loc>`/hreflang もルートURLに統一済み。
-- `sitemap.xml` は `tools/build-static.js` が生成する（**手で編集しない**）。モダン版14ページを掲載し、
-  各ページに日英の hreflang と `lastmod`（そのページの最終コミット日。未コミットの変更があれば当日）を付ける。
-  ResearchStatement 系は意図的に非掲載。ページを増やしたらスクリプト内の `PAGES` に追加する。
+- `sitemap.xml` は `tools/build-static.js` が生成する（**手で編集しない**）。モダン版14ページ・研究概要10ページ・
+  論文ページ（`papers/*.html`）を掲載し、日英ペアには hreflang と `lastmod`（最終コミット日。未コミットの変更があれば当日）を付ける。
+  ページを増やしたらスクリプト内の `PAGES`（モダン版）または `STATEMENTS`（研究概要）に追加する。
+- **研究概要ページの `<head>`**: `<!--seo-->` 〜 `<!--/seo-->` の間（canonical・hreflang・OG・JSON-LD）はビルドが生成する。
+  ページ独自の `<meta name="description">` があればそれを使い、無ければ定型文を入れる。
+- **論文ページ（`papers/NAME.html`）**: `papers/NAME.pdf` を `url=` で参照している bib エントリごとに、ビルドが1ページ生成する
+  （Google Scholar 用の `citation_*` メタタグ、ScholarlyArticle の JSON-LD、PDF・DOI へのリンク）。**手で編集しない**。
+  bib から参照が消えると、対応するページも次のビルドで削除される。論文一覧の静的コピーからは「Details」で辿れる。
+- **`llms-full.txt`** もビルドが生成する（`llms.txt` ＋ 最新の研究概要の全文 ＋ 受賞 ＋ 最近のお知らせ ＋ 難関国際会議論文 ＋ 2020年以降の英文誌論文）。
 - **構造化データ（JSON-LD）**: トップ2ページに ProfilePage + Person（所属・受賞・`sameAs` で外部プロフィール）+ 主な論文4本、
   サブページ12ページに CollectionPage + BreadcrumbList を `<head>` に静的に記述。役職・所属・主な受賞・主な論文を
   変えたらトップ2ページの JSON-LD と `llms.txt` も合わせて直す。
