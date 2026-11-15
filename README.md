@@ -169,7 +169,7 @@ News は3系統をマージして表示（`common/js/news-merge.js`）:
 `index.html` / `index-j.html` の `<section id="papers">`（お知らせの直下）に**静的HTML**で記述。
 JSON駆動ではないので、追加・変更は両ファイルを直接編集する（`.paper` ブロックを1件分コピー）。
 各件は venue・年・受賞バッジ（任意）・タイトル（DOI/PDFリンク）・著者・2〜3文の説明・リンクボタンで構成。
-2026-11-16 時点で6件（ICML 2026、ACL 2026 Findings、Communications Psychology 2024、GDN 2021、IJCAI 2007、AAMAS 2006）。
+4件（Communications Psychology 2024、GDN 2021、IJCAI 2007、AAMAS 2006）。
 件数や内容を変えたら、同じページの JSON-LD（`ScholarlyArticle`）も合わせて直す。
 
 ### 受賞の更新
