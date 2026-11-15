@@ -89,6 +89,7 @@ function citation(e, lang) {
   if (e.doi) bits.push(`<a href="https://doi.org/${attr(e.doi)}">doi:${esc(e.doi)}</a>`);
   if (e.url) bits.push(`<a href="${attr(e.url)}">${/\.pdf$/i.test(e.url) ? 'PDF' : 'Link'}</a>`);
   if (/^papers\/[^/]+\.pdf$/i.test(e.url || '')) bits.push(`<a href="${attr(e.url.replace(/\.pdf$/i, '.html'))}">Details</a>`);
+  if (e.abstract) bits.push(`<br><small><strong>${lang === 'ja' ? '要旨' : 'Abstract'}:</strong> ${esc(e.abstract)}</small>`);
   return bits.join(' ');
 }
 
@@ -307,6 +308,7 @@ function paperPageHTML(e) {
     ...(venue ? { isPartOf: { '@type': e._type === 'article' ? 'Periodical' : 'CreativeWork', name: venue } } : {}),
     ...(e.pages ? { pagination: cleanTeX(e.pages) } : {}),
     ...(e.doi ? { sameAs: 'https://doi.org/' + e.doi } : {}),
+    ...(e.abstract ? { abstract: e.abstract } : {}),
     encoding: { '@type': 'MediaObject', contentUrl: pdf, encodingFormat: 'application/pdf' },
   }]);
   const cite = [venue && `<em>${esc(venue)}</em>`, e.volume && `vol. ${esc(e.volume)}${e.number ? `(${esc(e.number)})` : ''}`,
@@ -347,6 +349,7 @@ ${ld}
   <h1>${esc(title)}</h1>
   <p class="authors">${esc(authors.join(', '))}</p>
   <p class="venue">${cite}</p>
+  ${e.abstract ? `<h2 style="font-size:1rem;color:#0f2044;margin:0 0 .4rem">Abstract</h2>\n  <p style="margin:0 0 1.5rem">${esc(e.abstract)}</p>` : ''}
   <p class="links">
     <a class="btn fill" href="${esc(path.basename(e.url))}">PDF</a>
     ${e.doi ? `<a class="btn" href="https://doi.org/${attr(e.doi)}">DOI</a>` : ''}
@@ -384,7 +387,8 @@ const plain = h => String(h || '').replace(/<[^>]+>/g, '').replace(/&amp;/g, '&'
   .replace(/&ldquo;|&rdquo;/g, '"').replace(/&rsquo;/g, "'").replace(/&nbsp;/g, ' ').replace(/&mdash;/g, '—').replace(/&[a-z]+;/g, ' ').replace(/[ \t]+/g, ' ').trim();
 function textCite(e) {
   const a = cleanTeX(e.author || ''), t = cleanTeX(e.title || ''), v = cleanTeX(e.journal || e.booktitle || '');
-  return `- ${a}. "${t}." ${v}${e.year ? ', ' + e.year : ''}.${e.doi ? ' https://doi.org/' + e.doi : ''}`;
+  return `- ${a}. "${t}." ${v}${e.year ? ', ' + e.year : ''}.${e.doi ? ' https://doi.org/' + e.doi : ''}`
+    + (e.abstract ? `\n  Abstract: ${e.abstract}` : '');
 }
 function llmsFull(news) {
   const out = [read('llms.txt').trim(), ''];

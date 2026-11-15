@@ -169,7 +169,8 @@ News は3系統をマージして表示（`common/js/news-merge.js`）:
 `index.html` / `index-j.html` の `<section id="papers">`（お知らせの直下）に**静的HTML**で記述。
 JSON駆動ではないので、追加・変更は両ファイルを直接編集する（`.paper` ブロックを1件分コピー）。
 各件は venue・年・受賞バッジ（任意）・タイトル（DOI/PDFリンク）・著者・2〜3文の説明・リンクボタンで構成。
-2026-09-16 時点で4件（Communications Psychology 2024、GDN 2021、IJCAI 2007、AAMAS 2006）。
+2026-11-16 時点で6件（ICML 2026、ACL 2026 Findings、Communications Psychology 2024、GDN 2021、IJCAI 2007、AAMAS 2006）。
+件数や内容を変えたら、同じページの JSON-LD（`ScholarlyArticle`）も合わせて直す。
 
 ### 受賞の更新
 `awards.json` に追記。`year` / `tag` / `ja` / `en` / 任意で `link`（`link_en`・`link_ja` で言語別リンク文言可）。年降順で表示、トップページは上位6件。
@@ -199,6 +200,9 @@ JSON駆動ではないので、追加・変更は両ファイルを直接編集�
 各年の中は**採択日の新しい順**に表示する（論文一覧・難関国際会議ページ共通）。日付は `accepted`（Newsにも掲載）を使い、News は `news.json` 側に手動エントリがあるなどの理由で bib から出したくない場合は、並び順だけに効く `acceptdate = {YYYY-MM-DD}` を使う。日付のないエントリは各年の後ろに、従来の順で並ぶ。
 `url` が `.pdf` で終わる場合、論文一覧では「PDF ↗」バッジとして表示される（難関国際会議ページでは DOI があっても併記）。
 2026-09-25 に未参照だった52本を該当エントリへ紐付け、内容が同一の重複10本（`jsai94/96/97/98`・`ipsj95/96/97/98-1`・`icmas-poster`・`ieaaie-poster`。`itota-` 付きの同名版を残した）を削除した。
+**要旨**: bib エントリに `abstract = {…}`（1行、波括弧 `{}` とバックスラッシュを含めない）を入れると、論文一覧・難関国際会議ページに
+「Abstract / 要旨」ボタンが出て、検索の対象にもなる。静的コピー・論文ページ（`papers/*.html`）・`llms-full.txt` にも反映される。
+2026-11-16 に45本（2020年以降の英文誌と難関国際会議の論文のうち、OpenAlex・Semantic Scholar・arXiv から取得できたもの）に追加した。
 
 ---
 
