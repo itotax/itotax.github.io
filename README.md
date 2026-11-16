@@ -45,6 +45,8 @@
 各ResearchStatementページにも共通ナビ（`common/css/site-nav.css` + `common/js/site-nav.js`、ページ側は `<main class="rs-wrap">` で本文を包む）を導入済み（2026-11-08）。言語切替はナビの EN/JA ピルで行う。
 サブページと研究概要ページのナビには「🔬 Research / 研究概要」項目があり、`index(-j).html#research` の研究概要ボタン群へ飛ぶ。
 
+**日付**: 本文冒頭の所属行に `<time class="rs-date" datetime="YYYY-MM-DD">` を入れると、ビルドがその日付を JSON-LD の `datePublished` に使う（無い版は年のみ）。2026年版は 2026-11-16。
+
 **命名規約**: EN = `ResearchStatementYYYY.html`、JA = `researchstatement-jYYYY.html`。
 新しい年版を追加する場合もこの規約に従い、`index.html` / `index-j.html` の研究概要リンク（`.research-links` 内）に両言語分を追加すること。
 
