@@ -47,9 +47,9 @@
 
 **日付**: 本文冒頭の所属行に `<time class="rs-date" datetime="YYYY-MM-DD">` を入れると、ビルドがその日付を JSON-LD の `datePublished` に使う（無い版は年のみ）。2026年版は 2026-11-16。
 
-**PDF版**: 2026年版は日英とも PDF 版（`ResearchStatement2026.pdf` / `researchstatement-j2026.pdf`、A4）があり、ページ冒頭の「📄 PDF version / PDF版」から開ける。
-本文を直したら `node tools/make-statement-pdf.js ResearchStatement2026.html researchstatement-j2026.html` で作り直す
-（ページの `@media print` でナビと PDF リンクを隠し、日本語は Noto Sans JP を埋め込む）。
+**PDF版**: 全10ページに PDF 版（A4）があり、各ページの「📄 PDF version / PDF版」から開ける。ファイル名は HTML と同じ名前の `.pdf`
+（2009 JA のみ `researchstatement-j2009.pdf`）。本文を直したら `node tools/make-statement-pdf.js 対象.html`
+（引数なしなら全10ページ）で作り直す。印刷用 CSS（`site-nav.css` の `@media print`）でナビと PDF リンクを隠し、日本語は Noto Sans JP を埋め込む。
 
 **命名規約**: EN = `ResearchStatementYYYY.html`、JA = `researchstatement-jYYYY.html`。
 新しい年版を追加する場合もこの規約に従い、`index.html` / `index-j.html` の研究概要リンク（`.research-links` 内）に両言語分を追加すること。
@@ -73,7 +73,7 @@
   lecture.json          … 担当講義データ（年度別＋英訳辞書、lecture.html / lecture-j.html が参照）
   FIXES.md              … 保守・修正履歴
   README.md             … 本ドキュメント
-  *.pdf (9)             … CV、受賞状・業績紹介、講演チラシ等（全件がページまたは bib から参照）、研究概要2026の PDF 版（日英）
+  *.pdf (17)            … CV、受賞状・業績紹介、講演チラシ等（全件がページまたは bib から参照）、研究概要の PDF 版（10本）
   *.jpg/.jpeg (9)       … プロフィール写真（Web用縮小版＋OG画像）、受賞写真
 common/js/
   news-merge.js         … News生成スクリプト
