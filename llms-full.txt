@@ -54,6 +54,8 @@ Source: https://takayuki-ito.com/ResearchStatement2026.html
 Takayuki Ito, Graduate School of Informatics, Kyoto University
 November 16, 2026
 
+📄 PDF version
+
 Consensus Building and Agent Governance in the Age of AI
 
 Legitimacy, Mechanism Design, and Human Challenge
