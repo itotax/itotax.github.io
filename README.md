@@ -47,6 +47,10 @@
 
 **日付**: 本文冒頭の所属行に `<time class="rs-date" datetime="YYYY-MM-DD">` を入れると、ビルドがその日付を JSON-LD の `datePublished` に使う（無い版は年のみ）。2026年版は 2026-11-16。
 
+**PDF版**: 2026年版は日英とも PDF 版（`ResearchStatement2026.pdf` / `researchstatement-j2026.pdf`、A4）があり、ページ冒頭の「📄 PDF version / PDF版」から開ける。
+本文を直したら `node tools/make-statement-pdf.js ResearchStatement2026.html researchstatement-j2026.html` で作り直す
+（ページの `@media print` でナビと PDF リンクを隠し、日本語は Noto Sans JP を埋め込む）。
+
 **命名規約**: EN = `ResearchStatementYYYY.html`、JA = `researchstatement-jYYYY.html`。
 新しい年版を追加する場合もこの規約に従い、`index.html` / `index-j.html` の研究概要リンク（`.research-links` 内）に両言語分を追加すること。
 
@@ -69,7 +73,7 @@
   lecture.json          … 担当講義データ（年度別＋英訳辞書、lecture.html / lecture-j.html が参照）
   FIXES.md              … 保守・修正履歴
   README.md             … 本ドキュメント
-  *.pdf (7)             … CV、受賞状・業績紹介、講演チラシ等（全件がページまたは bib から参照）
+  *.pdf (9)             … CV、受賞状・業績紹介、講演チラシ等（全件がページまたは bib から参照）、研究概要2026の PDF 版（日英）
   *.jpg/.jpeg (9)       … プロフィール写真（Web用縮小版＋OG画像）、受賞写真
 common/js/
   news-merge.js         … News生成スクリプト
@@ -80,6 +84,7 @@ common/css/
   monthly-rebuild.yml   … 月1回 build-static.js を実行し、差分があれば main にコミット（GitHub Actions）
 tools/
   build-static.js       … bib / JSON の内容を各ページに静的HTMLとして焼き込む（Node.js）
+  make-statement-pdf.js … 研究概要ページから印刷用 PDF を作る（Playwright が必要）
 papers/  (54 PDF + 54 HTML) … 論文PDF（全件が bib の url= から参照）と、各PDFの論文ページ（build-static.js が生成）
 oldfiles/               … アーカイブ（.gitignore 対象で非公開・ローカル保管のみ。media/ に新聞記事スキャン、photos/ に旧写真）
 ```

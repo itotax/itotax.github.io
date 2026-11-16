@@ -113,6 +113,18 @@
   .refs p.ref{font-size:.86rem;line-height:1.6;margin:.45em 0;padding-left:2.2em;text-indent:-2.2em;word-break:break-word;}
   .refs p.ref-note{font-size:.82rem;color:#6b7280;}
   .refs a{color:var(--accent);}
+  .rs-pdf{margin:-1.1em 0 1.6em;font-size:.9rem;}
+  .rs-pdf a{color:var(--accent);text-decoration:none;border:1px solid var(--accent-mid);border-radius:8px;padding:.3em .8em;display:inline-block;}
+  .rs-pdf a:hover{background:var(--accent-light);}
+  @media print{
+    nav.site-nav,.nav-backdrop,.rs-pdf{display:none !important;}
+    .rs-wrap{max-width:none;padding:0;}
+    body{font-size:10.5pt;line-height:1.7;}
+    h2,h3{break-after:avoid;}
+    p,dt{orphans:3;widows:3;}
+    a{color:inherit;text-decoration:none;}
+    .refs a{color:var(--accent);}
+  }
 </style>
 </head>
 <body>
@@ -163,6 +175,7 @@
 <main class="rs-wrap">
 <h1>Research Statement — November 2026</h1>
 <p class="sub">Takayuki Ito, Graduate School of Informatics, Kyoto University<br><time class="rs-date" datetime="2026-11-16">November 16, 2026</time></p>
+<p class="rs-pdf"><a href="ResearchStatement2026.pdf">📄 PDF version</a></p>
 <p class="paper-title">Consensus Building and Agent Governance in the Age of AI</p>
 <p class="paper-sub">Legitimacy, Mechanism Design, and Human Challenge</p>
 
