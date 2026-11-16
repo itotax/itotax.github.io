@@ -241,6 +241,8 @@ function statementSeo(html, year, en, ja, lang) {
     ? `伊藤孝行（京都大学）の研究概要（${year}年版）。`
     : `Research statement (${year}) by Takayuki Ito, Professor at Kyoto University.`);
   const home = lang === 'ja' ? SITE + 'index-j.html' : SITE;
+  // 本文に <time class="rs-date" datetime="YYYY-MM-DD"> があればその日付を公開日にする
+  const published = (/<time class="rs-date" datetime="(\d{4}-\d{2}-\d{2})"/.exec(html) || [, String(year)])[1];
   const lines = [
     own ? '' : `<meta name="description" content="${attr(desc)}">`,
     `<link rel="canonical" href="${url}">`,
@@ -255,7 +257,7 @@ function statementSeo(html, year, en, ja, lang) {
     `<meta name="twitter:card" content="summary">`,
     ldScript([
       { '@type': 'Article', '@id': url + '#article', headline: title, description: desc, url, inLanguage: lang,
-        datePublished: String(year), author: PERSON_REF, about: PERSON_REF,
+        datePublished: published, author: PERSON_REF, about: PERSON_REF,
         isPartOf: { '@type': 'WebSite', '@id': SITE + '#website', url: SITE, name: 'Takayuki Ito' },
         breadcrumb: { '@id': url + '#breadcrumb' } },
       { '@type': 'BreadcrumbList', '@id': url + '#breadcrumb', itemListElement: [
