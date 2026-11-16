@@ -230,11 +230,14 @@ nav.site-nav.open .nav-toggle span:nth-child(3) { top: 19px; transform: rotate(-
   }
   .nav-more-btn svg { display: none; }
   .nav-more.open .nav-more-btn { background: none; color: var(--text-sec); }
-  .nav-dropdown {
+  /* 表示・非表示は親の .nav-menu に従う（visible にすると、閉じたメニューの透明な項目が
+     ページ上部を覆ってタップを横取りする） */
+  .nav-dropdown,
+  .nav-more.open .nav-dropdown {
     position: static; width: auto;
     display: grid; grid-template-columns: 1fr 1fr; gap: .4rem;
     padding: 0; border: 0; box-shadow: none; background: none;
-    opacity: 1; visibility: visible; transform: none;
+    opacity: 1; visibility: inherit; transform: none;
   }
   .nav-dropdown::before { display: none; }
   .nav-dropdown a { border: 1px solid var(--border); background: #fff; }
