@@ -74,6 +74,8 @@ common/js/
   site-nav.js           … 共通ナビの動作（ドロップダウン・ハンバーガー・scroll-spy）
 common/css/
   site-nav.css          … 共通ナビのスタイル
+.github/workflows/
+  monthly-rebuild.yml   … 月1回 build-static.js を実行し、差分があれば main にコミット（GitHub Actions）
 tools/
   build-static.js       … bib / JSON の内容を各ページに静的HTMLとして焼き込む（Node.js）
 papers/  (54 PDF + 54 HTML) … 論文PDF（全件が bib の url= から参照）と、各PDFの論文ページ（build-static.js が生成）
@@ -119,8 +121,9 @@ oldfiles/               … アーカイブ（.gitignore 対象で非公開・�
 - News は `news-merge.js`、難関国際会議は `publications-top-confs.html` の `VENUE_RULES` をそのまま読んで使うので、
   判定ルールの定義は増えていない。
 - トップページの「お知らせ」は掲載期間のルールがあるため、焼き込み内容はビルド時点のもの。
-  bib / JSON を変更しなくても日付の経過で掲載対象が変わるので、**しばらく更新がない時期も月1回程度ビルドし直してコミットする**
-  （`--check` が index / index-j を「out of date」と報告したらその合図）。
+  bib / JSON を変更しなくても日付の経過で掲載対象が変わるので、**GitHub Actions で月1回自動的にビルドし直す**
+  （`.github/workflows/monthly-rebuild.yml`、毎月1日 9:23 JST）。差分があれば `main` にコミットして Pages の公開を依頼し、
+  差分がなければ何もしない。すぐに反映したいときは GitHub の Actions タブから「Monthly static rebuild」を手動実行できる。
 
 **News・受賞・学会活動は HTML を直接編集しない。** クライアント側で生成される。
 
