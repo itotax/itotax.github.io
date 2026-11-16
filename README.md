@@ -3,7 +3,7 @@
 伊藤孝行（京都大学 情報学研究科 教授）の個人ホームページのソース。
 本ドキュメントは**現状の完全な記録**であり、保守の際の参照点とする。
 
-最終更新: 2026-09-25
+最終更新: 2026-11-16
 
 ---
 
@@ -18,7 +18,7 @@
 
 ---
 
-## 2. ページ一覧（現存21ページ）
+## 2. ページ一覧（現存24ページ＋論文ページ54枚）
 
 ### モダン版（本番・SEO対応・sitemap掲載）
 
@@ -56,7 +56,7 @@
 /                       … 全HTMLページ、データファイル、ルート資産
   CNAME                 … 独自ドメイン設定
   robots.txt            … 全許可 + sitemap参照
-  sitemap.xml           … 14 URL（モダン版のみ、hreflang・lastmod 付き。build-static.js が生成）
+  sitemap.xml           … 78 URL（モダン版14・研究概要10・論文ページ54、hreflang・lastmod 付き。build-static.js が生成）
   llms.txt              … AI 向けのサイト要約と主要ページ一覧（手書き。役職・受賞などが変わったら更新）
   llms-full.txt         … 上記＋最新の研究概要全文・受賞・お知らせ・主要論文（build-static.js が生成）
   favicon.svg, apple-touch-icon.png
@@ -76,7 +76,7 @@ common/css/
   site-nav.css          … 共通ナビのスタイル
 tools/
   build-static.js       … bib / JSON の内容を各ページに静的HTMLとして焼き込む（Node.js）
-papers/  (54 PDF)       … 論文PDF（全件が bib の url= から参照されている）
+papers/  (54 PDF + 54 HTML) … 論文PDF（全件が bib の url= から参照）と、各PDFの論文ページ（build-static.js が生成）
 oldfiles/               … アーカイブ（.gitignore 対象で非公開・ローカル保管のみ。media/ に新聞記事スキャン、photos/ に旧写真）
 ```
 
@@ -88,7 +88,7 @@ oldfiles/               … アーカイブ（.gitignore 対象で非公開・�
 - CSS変数: `--primary:#0f2044`（濃紺）、`--accent:#2563eb`（青）、`--text:#1f2937`。
 - フォント: Inter + Noto Sans JP（Google Fonts）。
 - レスポンシブ: 680px ブレークポイント（ナビのみ 920px で切替、下記）。
-- **ナビゲーション（全22ページ共通）**: スタイルは `common/css/site-nav.css`、動作は `common/js/site-nav.js`。
+- **ナビゲーション（全24ページ共通）**: スタイルは `common/css/site-nav.css`、動作は `common/js/site-nav.js`。
   **メニューの中身は `tools/build-static.js` の `NAV` に1か所で定義**し、ビルド時に
   `<nav class="site-nav">` を持つ全ページ（モダン14ページ＋研究概要10ページ）の `<ul class="nav-menu">` へ書き込む。
   - 構成は5項目: ホーム / 研究 ▾（研究テーマ・研究概要 2026/2020/2018/2016/2009）/ 業績 ▾（論文一覧・難関国際会議・受賞歴）/
@@ -119,6 +119,8 @@ oldfiles/               … アーカイブ（.gitignore 対象で非公開・�
 - News は `news-merge.js`、難関国際会議は `publications-top-confs.html` の `VENUE_RULES` をそのまま読んで使うので、
   判定ルールの定義は増えていない。
 - トップページの「お知らせ」は掲載期間のルールがあるため、焼き込み内容はビルド時点のもの。
+  bib / JSON を変更しなくても日付の経過で掲載対象が変わるので、**しばらく更新がない時期も月1回程度ビルドし直してコミットする**
+  （`--check` が index / index-j を「out of date」と報告したらその合図）。
 
 **News・受賞・学会活動は HTML を直接編集しない。** クライアント側で生成される。
 
@@ -237,7 +239,7 @@ JSON駆動ではないので、追加・変更は両ファイルを直接編集�
 
 - 詳細な修正・整理の履歴は `FIXES.md` を参照。
 - 2026-06-15 に、モダンサイトから未リンクの孤立レガシーページ群（`menu*` / `selfintro*` / `top-j`）と、それ専用だった旧資産（Prototype/Scriptaculous、Flash `.swf`、旧 `css/`、`Scripts/` 等）を一括撤去。
-- 現存全HTMLの**内部参照リンク切れは0件**（最終確認 2026-06-15）。
+- 現存全HTMLの**内部参照リンク切れは0件**（最終確認 2026-11-16）。
 - `oldfiles/` はアーカイブ。`.gitignore` 対象のため公開されず、サイト本体からも参照しない。
 - 2026-09-25 にルート直下の未参照ファイルを整理: 賞状・業績紹介・講演チラシは bib / `awards.json` の該当エントリから `link`（受賞）/ `url`（講演）で参照、新聞・雑誌記事スキャン11点（著作権が掲載元にあるため）と未使用写真4点は `oldfiles/` へ移して非公開化、未使用の `test.js` は削除。これでルート直下・`papers/` とも未参照の公開ファイルは0件。
 - bib の `@award` は `link` / `link_en` / `link_ja` で賞状等へのリンクを付けられる（`url` があれば併記される）。
