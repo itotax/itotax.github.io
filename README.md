@@ -3,7 +3,7 @@
 伊藤孝行（京都大学 情報学研究科 教授）の個人ホームページのソース。
 本ドキュメントは**現状の完全な記録**であり、保守の際の参照点とする。
 
-最終更新: 2026-11-16
+最終更新: 2026-11-17
 
 ---
 
@@ -36,7 +36,7 @@
 
 | 年 | 英語 | 日本語 |
 |----|------|--------|
-| 2026（11月） | `ResearchStatement2026.html` | `researchstatement-j2026.html` |
+| 2026 | `ResearchStatement2026.html` | `researchstatement-j2026.html` |
 | 2020 | `ResearchStatement2020.html` | `researchstatement-j2020.html` |
 | 2018 | `ResearchStatement2018.html` | `researchstatement-j2018.html` |
 | 2016 | `ResearchStatement2016.html` | `researchstatement-j2016.html` |
@@ -45,7 +45,7 @@
 各ResearchStatementページにも共通ナビ（`common/css/site-nav.css` + `common/js/site-nav.js`、ページ側は `<main class="rs-wrap">` で本文を包む）を導入済み（2026-11-08）。言語切替はナビの EN/JA ピルで行う。
 サブページと研究概要ページのナビには「🔬 Research / 研究概要」項目があり、`index(-j).html#research` の研究概要ボタン群へ飛ぶ。
 
-**日付**: 本文冒頭の所属行に `<time class="rs-date" datetime="YYYY-MM-DD">` を入れると、ビルドがその日付を JSON-LD の `datePublished` に使う（無い版は年のみ）。2026年版は 2026-11-16。
+**日付**: 本文冒頭の所属行に `<time class="rs-date" datetime="YYYY-MM-DD">` を入れると、ビルドがその日付を JSON-LD の `datePublished` に使う（無い版は年のみ）。2026年版は 2026-09-29（第18回京都大学公共政策大学院・JIAM連携セミナーでの講演日。本文はその講演をまとめたもので、日付の下に注記とセミナーへのリンクがある。サイト上の公開は 2026-11-14）。
 
 **PDF版**: 全10ページに PDF 版（A4）があり、各ページの「📄 PDF version / PDF版」から開ける。ファイル名は HTML と同じ名前の `.pdf`
 （2009 JA のみ `researchstatement-j2009.pdf`）。本文を直したら `node tools/make-statement-pdf.js 対象.html`
