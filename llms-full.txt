@@ -344,6 +344,7 @@ Bibliographic data for [1]–[23] follow https://takayuki-ito.com/publications.h
 - 2004: Super Creator Award, IPA Exploratory Software Creation Projects
 
 ## Recent news
+- 2026-11-23: Paper accepted: Tianyou Gao and Takayuki Ito, "Fast Computation of the Friedkin–Johnsen Steady State in Large-Scale Social Networks with Group-Mediated Interactions," Knowledge and Information Systems, 2026
 - 2026-11-14: 📄 New research statement: Research Statement 2026, "Consensus Building and Agent Governance in the Age of AI: Legitimacy, Mechanism Design, and Human Challenge" (Japanese version).
 - 2026-11-13: Paper accepted: Shun Okuhara and Takayuki Ito, "On the Complexity and Encoding Footprint of Variable-Elimination Relaxation in Over-Constrained DisCSPs," IEICE Transactions on Information and Systems, 2026
 - 2026-11-13: Paper accepted: Shun Okuhara and Takayuki Ito, "Computational Complexity of Threshold-Based Agreement Admissibility in Automated Negotiation," IEICE Transactions on Information and Systems, 2026
@@ -363,7 +364,6 @@ Bibliographic data for [1]–[23] follow https://takayuki-ito.com/publications.h
 - 2026-09-18: 🎤 Keynote: "Toward an Agentic Society: The Evolution and Prospects of AI Agent Research" at DX&AI Forum 2026 Fall Tokyo (organized by Business+IT / SB Creative), Tokyo Midtown Hall, Roppongi, Japan.
 - 2026-09-03: 🎤 Research-meeting talk: "Democratization of Creation and the Diversity of Field Constraints: A Computational Study of Citizen Participation in Academic Publishing in the Generative-AI Era" at the Consensus and Co-creation Technical Committee (Consen), IEICE (Ito & Okuhara; Kitakyushu, co-located with FIT2026).
 - 2026-09-02: 🎤 Invited talk: "Social Reasoning and Simulation with LLM Multi-Agents" in the event session "How Autonomously Can AI Agents Perform Work?" at FIT2026 (25th Forum on Information Technology), Kitakyushu, Japan.
-- 2026-08-19: Paper accepted: Takayuki Ito, "Moral Utility for Stable Coalitions in Cooperative Games," The 23rd Pacific Rim International Conference on Artificial Intelligence (PRICAI 2026), 2026, Guangzhou, China
 
 ## Papers at top-tier conferences (AAAI, IJCAI, AAMAS, ACL, EMNLP, ICML, KDD, SIGMOD, ACM CI)
 - Tianyou Gao and Takayuki Ito. "On Optimizing Route-Responsive Urban Tree Placement in City-Scale Pedestrian Networks." In Proceedings of the 32nd ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD2026), 2026.
@@ -440,6 +440,7 @@ Bibliographic data for [1]–[23] follow https://takayuki-ito.com/publications.h
 - Takayuki Ito and Toramatsu Shintani. "Persuasion among Agents: An Approach to Implementing a Group Decision Support System Based on Multi-Agent Negotiation." Proceedings of the 15th International Joint Conference on Artificial Intelligence (IJCAI-97), 1997.
 
 ## English-language journal articles since 2020
+- Tianyou Gao and Takayuki Ito. "Fast Computation of the Friedkin–Johnsen Steady State in Large-Scale Social Networks with Group-Mediated Interactions." Knowledge and Information Systems, 2026.
 - Shun Okuhara and Takayuki Ito. "On the Complexity and Encoding Footprint of Variable-Elimination Relaxation in Over-Constrained DisCSPs." IEICE Transactions on Information and Systems, 2026.
 - Shun Okuhara and Takayuki Ito. "Computational Complexity of Threshold-Based Agreement Admissibility in Automated Negotiation." IEICE Transactions on Information and Systems, 2026.
 - Sofia Sahab and Jawad Haqbeen and Takayuki Ito. "AI facilitation and affective dynamics of online deliberation." Discover Psychology, 2026. https://doi.org/10.1007/s44202-026-00976-1
