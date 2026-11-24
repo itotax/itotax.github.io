@@ -3,7 +3,7 @@
 伊藤孝行（京都大学 情報学研究科 教授）の個人ホームページのソース。
 本ドキュメントは**現状の完全な記録**であり、保守の際の参照点とする。
 
-最終更新: 2026-11-17
+最終更新: 2026-11-24
 
 ---
 
@@ -84,6 +84,7 @@ common/css/
   monthly-rebuild.yml   … 月1回 build-static.js を実行し、差分があれば main にコミット（GitHub Actions）
 tools/
   build-static.js       … bib / JSON の内容を各ページに静的HTMLとして焼き込む（Node.js）
+  pre-commit            … コミット時に build-static.js を自動実行する git フック（要 `git config core.hooksPath tools`）
   make-statement-pdf.js … 研究概要ページから印刷用 PDF を作る（Playwright が必要）
 papers/  (54 PDF + 54 HTML) … 論文PDF（全件が bib の url= から参照）と、各PDFの論文ページ（build-static.js が生成）
 oldfiles/               … アーカイブ（.gitignore 対象で非公開・ローカル保管のみ。media/ に新聞記事スキャン、photos/ に旧写真）
@@ -122,6 +123,19 @@ oldfiles/               … アーカイブ（.gitignore 対象で非公開・�
 
 - **bib / JSON を編集したら、コミット前に `node tools/build-static.js` を実行する**（何度実行しても同じ結果）。
   実行し忘れても訪問者の表示は正しいままだが、クローラーに見える内容が古くなる。
+- **実行し忘れを防ぐ pre-commit フック**（`tools/pre-commit`）がある。git のフック設定はリポジトリと一緒には
+  配られないので、**clone するたびに一度だけ `git config core.hooksPath tools` を実行して有効化する**。
+  有効にすると、コミットのたびに焼き込みを実行し、作り直されたファイル（各ページ・`papers/*.html`・
+  `llms-full.txt`・`sitemap.xml`）をそのコミットに自動で追加する。つまり `git add publications.bib` だけで
+  コミットしてよい。次の場合はコミットを中止する（メッセージに対象ファイルが出る）:
+  - データの `*.json` が JSON として読めない（`news.json` は壊れていてもビルドが失敗せず、お知らせが空のまま
+    焼き込まれてしまうため、フック側で事前に検査している）
+  - 焼き込みが失敗した
+  - ページや生成物（`*.html`・`sitemap.xml`・`llms-full.txt`）に、フック自身が作ったものではない未ステージの
+    変更が残っている（手動で焼き込んでステージし忘れたのか、意図して外しているのかを区別できないため）。
+    焼き込み結果なら `git add` して再コミット、意図的なら `git commit --no-verify`。
+  - Node.js が無い環境では警告だけ出して素通しする。GitHub 上で直接編集した場合や、フックを有効化していない
+    環境からのコミットには効かないので、その場合は従来どおり手動で実行する。
 - `node tools/build-static.js --check` は、焼き込みが古い場合に終了コード1を返す（確認用）。
 - 対象は 14 ページ（index / publications / publications-top-confs / news / awards / activity / lecture の日英）。
   **マーカーの間は手で編集しない**（次のビルドで上書きされる）。

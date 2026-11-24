@@ -1,0 +1,94 @@
+#!/bin/sh
+# ────────────────────────────────────────────────────────────
+#  pre-commit — keep the baked static content in step with the data
+#
+#  Runs tools/build-static.js before every commit and adds whatever
+#  it regenerated (pages, papers/*.html, llms-full.txt, sitemap.xml)
+#  to that commit, so an edit to publications.bib or a *.json file
+#  can no longer be committed with stale static HTML.
+#
+#  Enable once per clone (git then reads its hooks from tools/):
+#      git config core.hooksPath tools
+#
+#  The commit is stopped when a data file is not valid JSON, when the
+#  build fails, or when a page / generated file still has unstaged
+#  changes that the hook did not make itself: it cannot tell a baked
+#  copy you forgot to add from an edit you are holding back, and
+#  either way the commit would not match what the build produces.
+#  Use `git commit --no-verify` to bypass the hook.
+# ────────────────────────────────────────────────────────────
+cd "$(git rev-parse --show-toplevel)" || exit 0
+[ -f tools/build-static.js ] || exit 0
+
+if ! command -v node >/dev/null 2>&1; then
+  echo "pre-commit: node が見つからないため、静的コピーの焼き込みを省略しました。" >&2
+  echo "            node を入れて node tools/build-static.js を実行してください。" >&2
+  exit 0
+fi
+
+tmp=$(mktemp -d) || exit 0
+trap 'rm -rf "$tmp"' EXIT
+
+# Every path the build may write, as "<hash or 'deleted'><TAB><path>", limited
+# to paths whose working copy differs from the index (or is untracked).
+snapshot() {
+  {
+    git -c core.quotePath=false diff --name-only -- '*.html' sitemap.xml llms-full.txt
+    git -c core.quotePath=false ls-files -o --exclude-standard -- '*.html' sitemap.xml llms-full.txt
+  } | sort -u | while IFS= read -r f; do
+    if [ -f "$f" ]; then h=$(git hash-object -- "$f"); else h=deleted; fi
+    printf '%s\t%s\n' "$h" "$f"
+  done
+}
+
+# news-merge.js swallows a news.json it cannot parse (the page would just show
+# fewer items), so the build alone would bake an empty list. Check up front.
+if ! git ls-files -z -- '*.json' | xargs -0 node -e '
+  for (const f of process.argv.slice(1)) {
+    try { JSON.parse(require("fs").readFileSync(f, "utf8")); }
+    catch (e) { console.error("    " + f + ": " + e.message); process.exitCode = 1; }
+  }' > "$tmp/json" 2>&1; then
+  echo "pre-commit: JSON として読めないデータファイルがあるため、コミットを中止しました。" >&2
+  cat "$tmp/json" >&2
+  exit 1
+fi
+
+snapshot > "$tmp/before"
+if ! node tools/build-static.js > "$tmp/log" 2>&1; then
+  echo "pre-commit: 静的コピーの焼き込みに失敗したため、コミットを中止しました。" >&2
+  sed 's/^/    /' "$tmp/log" >&2
+  exit 1
+fi
+snapshot > "$tmp/after"
+
+tab=$(printf '\t')
+: > "$tmp/added"; : > "$tmp/mixed"; : > "$tmp/held"
+while IFS="$tab" read -r h f; do
+  was=$(awk -F '\t' -v f="$f" '$2 == f { print $1 }' "$tmp/before")
+  if [ -z "$was" ]; then
+    git add -A -- "$f" && echo "$f" >> "$tmp/added"          # written by the build alone
+  elif [ "$was" != "$h" ]; then
+    echo "$f" >> "$tmp/mixed"                                # your unstaged edits + the build's
+  elif git ls-files --error-unmatch -- "$f" >/dev/null 2>&1; then
+    echo "$f" >> "$tmp/held"                                 # unstaged before, untouched by the build
+  fi
+done < "$tmp/after"
+
+if [ -s "$tmp/mixed" ]; then
+  echo "pre-commit: 次のファイルは焼き込みで更新されましたが、未ステージの変更も含んでいます。" >&2
+  sed 's/^/    /' "$tmp/mixed" >&2
+  echo "            内容を確認して git add してから、もう一度コミットしてください。" >&2
+  exit 1
+fi
+if [ -s "$tmp/held" ]; then
+  echo "pre-commit: 次のファイルに未ステージの変更が残っているため、コミットを中止しました。" >&2
+  sed 's/^/    /' "$tmp/held" >&2
+  echo "            焼き込み結果であれば git add してから、もう一度コミットしてください" >&2
+  echo "            （意図して除外する場合は git commit --no-verify）。" >&2
+  exit 1
+fi
+if [ -s "$tmp/added" ]; then
+  echo "pre-commit: 静的コピーを焼き込み、$(wc -l < "$tmp/added" | tr -d ' ') ファイルをこのコミットに追加しました。"
+  sed 's/^/    /' "$tmp/added"
+fi
+exit 0

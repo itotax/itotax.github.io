@@ -15,7 +15,8 @@
 //          node tools/build-static.js --check  (exit 1 if out of date)
 //
 //  Run it after editing publications.bib, news.json, awards.json,
-//  activity.json or lecture.json. tools/pre-commit does that for you.
+//  activity.json or lecture.json. tools/pre-commit does that for you
+//  once the clone is set up with `git config core.hooksPath tools`.
 // ────────────────────────────────────────────────────────────
 'use strict';
 const fs = require('fs');
