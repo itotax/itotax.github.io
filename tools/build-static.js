@@ -105,13 +105,16 @@ const TYPE_LABEL = {
 const typeOf = e => (e._type === 'inproceedings' && (e.category || '').toLowerCase() === 'domestic') ? 'domesticconf' : e._type;
 
 // ── data ───────────────────────────────────────────────────
+// Name the file in the error: a broken data file stops the build (and with it the commit hook and the CI rebuild).
+const readJSON = f => { try { return JSON.parse(read(f)); } catch (e) { throw new Error(`${f}: ${e.message}`); } };
 const BIB = parseBib(read('publications.bib'));
-const AWARDS = JSON.parse(read('awards.json'));
-const ACTIVITY = JSON.parse(read('activity.json'));
-const LECTURE = JSON.parse(read('lecture.json'));
+const AWARDS = readJSON('awards.json');
+const ACTIVITY = readJSON('activity.json');
+const LECTURE = readJSON('lecture.json');
 
 // News: reuse the site's own merge logic so the baked list matches the page.
 async function loadNews() {
+  readJSON('news.json');   // news-merge.js swallows a file it cannot parse; fail here rather than bake an empty list
   const sandbox = { window: {} };
   const fetchLocal = async f => ({
     ok: true,

@@ -1,0 +1,75 @@
+# 焼き込み内容（各ページの静的HTML・papers/*.html・llms-full.txt・sitemap.xml）を main のデータと一致させる。
+#   push     … main に入ったコミットが焼き込みを含んでいない場合に作り直す。pre-commit フック（tools/pre-commit）が
+#              効かない経路（GitHub 上での直接編集、フック未設定の clone、PR のマージ）の受け皿。
+#   schedule … トップページ「お知らせ」欄など、日付の経過だけで掲載対象が変わる内容を月1回作り直す（README 5章参照）。
+# どちらも差分がなければ何もしない。Actions タブから手動実行もできる。
+# 焼き込みが古いことを「失敗」として知らせる方式にしていないのは、内容が日付に依存するため、
+# データを触っていない push でも日付の経過だけで失敗してしまうから（直せるものは直す）。
+name: Static rebuild
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '23 0 1 * *'   # 毎月1日 00:23 UTC（日本時間 09:23）
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: static-rebuild
+  cancel-in-progress: false
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    env:
+      TZ: Asia/Tokyo
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main        # 待機中に main が進んでいても、常に最新を作り直す
+          fetch-depth: 0   # sitemap の lastmod に各ファイルの最終コミット日を使うため
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      # データの JSON が壊れているとここで失敗する（壊れた内容を焼き込んでコミットしない）
+      - name: Rebuild static content
+        run: node tools/build-static.js
+
+      - name: Commit and push if changed
+        id: commit
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "No changes."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git status --short
+          case "$GITHUB_EVENT_NAME" in
+            schedule) msg="Monthly rebuild of date-dependent static content ($(date +%Y-%m-%d))" ;;
+            push)     msg="Rebuild static content after $(git rev-parse --short HEAD)" ;;
+            *)        msg="Rebuild static content ($(date +%Y-%m-%d))" ;;
+          esac
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "$msg"
+          # GITHUB_TOKEN による push は workflow を起動しないので、この commit で再実行のループにはならない
+          if git push origin HEAD:main; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::notice::作り直しの間に main が進みました。新しいコミットに対する実行が作り直します。"
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      # GITHUB_TOKEN による push では Pages の公開処理が自動で走らないことがあるため、明示的に依頼する
+      - name: Request a GitHub Pages build
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X POST "repos/${{ github.repository }}/pages/builds"

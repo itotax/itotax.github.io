@@ -9,9 +9,11 @@
 #
 #  Enable once per clone (git then reads its hooks from tools/):
 #      git config core.hooksPath tools
+#  Commits made without it (GitHub's web editor, a fresh clone) are
+#  caught after the push by .github/workflows/static-rebuild.yml.
 #
-#  The commit is stopped when a data file is not valid JSON, when the
-#  build fails, or when a page / generated file still has unstaged
+#  The commit is stopped when the build fails (a data file that is not
+#  valid JSON included), or when a page / generated file still has unstaged
 #  changes that the hook did not make itself: it cannot tell a baked
 #  copy you forgot to add from an edit you are holding back, and
 #  either way the commit would not match what the build produces.
@@ -40,18 +42,6 @@ snapshot() {
     printf '%s\t%s\n' "$h" "$f"
   done
 }
-
-# news-merge.js swallows a news.json it cannot parse (the page would just show
-# fewer items), so the build alone would bake an empty list. Check up front.
-if ! git ls-files -z -- '*.json' | xargs -0 node -e '
-  for (const f of process.argv.slice(1)) {
-    try { JSON.parse(require("fs").readFileSync(f, "utf8")); }
-    catch (e) { console.error("    " + f + ": " + e.message); process.exitCode = 1; }
-  }' > "$tmp/json" 2>&1; then
-  echo "pre-commit: JSON として読めないデータファイルがあるため、コミットを中止しました。" >&2
-  cat "$tmp/json" >&2
-  exit 1
-fi
 
 snapshot > "$tmp/before"
 if ! node tools/build-static.js > "$tmp/log" 2>&1; then
