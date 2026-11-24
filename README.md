@@ -51,6 +51,10 @@
 （2009 JA のみ `researchstatement-j2009.pdf`）。本文を直したら `node tools/make-statement-pdf.js 対象.html`
 （引数なしなら全10ページ）で作り直す。印刷用 CSS（`site-nav.css` の `@media print`）でナビと PDF リンクを隠し、日本語は Noto Sans JP を埋め込む。
 
+**ライセンス**: 研究概要は全10ページ（PDF 版を含む）を [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) で公開している（2026-11-24〜）。
+本文末の表示（`<!--license-->` 〜 `<!--/license-->`、© 年は各版の年）、`<head>` の `<link rel="license">`、JSON-LD の `license` は
+`tools/build-static.js` が生成する（**手で編集しない**）。新しい年版も `STATEMENTS` に追加すれば自動で付く。
+
 **命名規約**: EN = `ResearchStatementYYYY.html`、JA = `researchstatement-jYYYY.html`。
 新しい年版を追加する場合もこの規約に従い、`index.html` / `index-j.html` の研究概要リンク（`.research-links` 内）に両言語分を追加すること。
 
