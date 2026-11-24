@@ -31,7 +31,7 @@ All pages contain their full content as static HTML. English pages are listed fi
 - [Research Statement 2018](https://takayuki-ito.com/ResearchStatement2018.html)
 - [Research Statement 2016](https://takayuki-ito.com/ResearchStatement2016.html)
 - [Research Statement 2009](https://takayuki-ito.com/ResearchStatement2009.html)
-- All research statements (2009–2026, EN/JA, HTML and PDF) are licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/); please credit Takayuki Ito, the title and the URL.
+- All research statements (2009–2026, EN/JA, HTML and PDF) are licensed under CC BY-NC-ND 4.0 (https://creativecommons.org/licenses/by-nc-nd/4.0/): they may be shared unchanged for non-commercial purposes with credit to Takayuki Ito, the title and the URL; no derivatives (including translations or rewritten versions).
 
 ## Data
 

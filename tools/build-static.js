@@ -236,12 +236,12 @@ const PERSON_REF = { '@type': 'Person', '@id': SITE + '#person', name: 'Takayuki
 const ldScript = graph => '<script type="application/ld+json">\n'
   + JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }, null, 2) + '\n</script>';
 
-// 研究概要は全ページ CC BY 4.0。本文末（</main> の直前）にライセンス表示を入れる。
-const CC_BY = 'https://creativecommons.org/licenses/by/4.0/';
+// 研究概要は全ページ CC BY-NC-ND 4.0（2026-11-24 に CC BY 4.0 から変更）。本文末（</main> の直前）にライセンス表示を入れる。
+const CC_LICENSE = 'https://creativecommons.org/licenses/by-nc-nd/4.0/';
 function statementLicense(html, year, file, lang) {
   const text = lang === 'ja'
-    ? `© ${year} 伊藤孝行。本稿は<a rel="license" href="${CC_BY}">クリエイティブ・コモンズ 表示 4.0 国際 ライセンス（CC BY 4.0）</a>の下に提供されています。著者名・タイトル・出典URLを明記すれば、営利目的を含め自由に共有・改変できます。`
-    : `© ${year} Takayuki Ito. This research statement is licensed under a <a rel="license" href="${CC_BY}">Creative Commons Attribution 4.0 International License (CC BY 4.0)</a>. You may share and adapt it for any purpose, provided you credit the author, title and source URL.`;
+    ? `© ${year} 伊藤孝行。本稿は<a rel="license" href="${CC_LICENSE}">クリエイティブ・コモンズ 表示 - 非営利 - 改変禁止 4.0 国際 ライセンス（CC BY-NC-ND 4.0）</a>の下に提供されています。著者名・タイトル・出典URLを明記すれば、非営利目的に限り、改変せずにそのまま共有できます。`
+    : `© ${year} Takayuki Ito. This research statement is licensed under a <a rel="license" href="${CC_LICENSE}">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License (CC BY-NC-ND 4.0)</a>. You may share it unchanged for non-commercial purposes, provided you credit the author, title and source URL.`;
   const block = `<!--license-->\n<footer class="rs-license"><p>${text}</p></footer>\n<!--/license-->`;
   if (/<!--license-->[\s\S]*?<!--\/license-->/.test(html)) return html.replace(/<!--license-->[\s\S]*?<!--\/license-->/, () => block);
   if (!/<\/main>/.test(html)) throw new Error(`${file}: </main> not found`);
@@ -262,7 +262,7 @@ function statementSeo(html, year, en, ja, lang) {
   const lines = [
     own ? '' : `<meta name="description" content="${attr(desc)}">`,
     `<link rel="canonical" href="${url}">`,
-    `<link rel="license" href="${CC_BY}">`,
+    `<link rel="license" href="${CC_LICENSE}">`,
     `<link rel="alternate" hreflang="en" href="${SITE + en}">`,
     `<link rel="alternate" hreflang="ja" href="${SITE + ja}">`,
     `<link rel="alternate" hreflang="x-default" href="${SITE + en}">`,
@@ -275,7 +275,7 @@ function statementSeo(html, year, en, ja, lang) {
     ldScript([
       { '@type': 'Article', '@id': url + '#article', headline: title, description: desc, url, inLanguage: lang,
         datePublished: published, author: PERSON_REF, about: PERSON_REF,
-        license: CC_BY, copyrightHolder: PERSON_REF, copyrightYear: year,
+        license: CC_LICENSE, copyrightHolder: PERSON_REF, copyrightYear: year,
         isPartOf: { '@type': 'WebSite', '@id': SITE + '#website', url: SITE, name: 'Takayuki Ito' },
         breadcrumb: { '@id': url + '#breadcrumb' } },
       { '@type': 'BreadcrumbList', '@id': url + '#breadcrumb', itemListElement: [
