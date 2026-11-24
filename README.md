@@ -3,7 +3,7 @@
 伊藤孝行（京都大学 情報学研究科 教授）の個人ホームページのソース。
 本ドキュメントは**現状の完全な記録**であり、保守の際の参照点とする。
 
-最終更新: 2026-11-24
+最終更新: 2026-11-25
 
 ---
 
@@ -13,7 +13,8 @@
 - **ホスティング**: GitHub Pages、`main` ブランチからデプロイ。
 - **独自ドメイン**: `CNAME`（`takayuki-ito.com`）で設定。
 - **ビルド不要**: フレームワーク・バンドラなし。素のHTML + 各ファイルにインライン `<style>`。
-- **更新フロー**: `main` に直接コミット → `git push` でデプロイ反映。
+- **更新フロー**: `main` に直接コミットして `git push`、または作業ブランチからプルリクエストを作って `main` にマージ。
+  どちらも `main` に入った時点で Pages が公開する（1分前後）。焼き込み漏れは GitHub Actions が補う（5章）ので、その後は `git pull` してから作業する。
 - **言語**: バイリンガル（日本語 / 英語）。EN = `name.html` / JA = `name-j.html` で対をなす。
 
 ---
@@ -43,7 +44,7 @@
 | 2009 | `ResearchStatement2009.html` | `research-j.html`（※2009 JAのみ旧URL名を維持） |
 
 各ResearchStatementページにも共通ナビ（`common/css/site-nav.css` + `common/js/site-nav.js`、ページ側は `<main class="rs-wrap">` で本文を包む）を導入済み（2026-11-08）。言語切替はナビの EN/JA ピルで行う。
-サブページと研究概要ページのナビには「🔬 Research / 研究概要」項目があり、`index(-j).html#research` の研究概要ボタン群へ飛ぶ。
+ナビの「研究 ▾ / Research ▾」に全5年分の研究概要が並ぶ（2026年版のサブタイトルは「最新版 / Latest」）。「研究テーマ」は `index(-j).html#research` へ飛ぶ。
 
 **日付**: 本文冒頭の所属行に `<time class="rs-date" datetime="YYYY-MM-DD">` を入れると、ビルドがその日付を JSON-LD の `datePublished` に使う（無い版は年のみ）。2026年版は 2026-09-29（第18回京都大学公共政策大学院・JIAM連携セミナーでの講演日。本文はその講演をまとめたもので、日付の下に注記とセミナーへのリンクがある。サイト上の公開は 2026-11-14）。
 
@@ -98,9 +99,10 @@ oldfiles/               … アーカイブ（.gitignore 対象で非公開・�
 
 ## 4. スタイル・技術規約
 
-- スタイルは各HTMLのインライン `<style>` が基本（例外はナビの `common/css/site-nav.css` のみ）。
+- スタイルは各HTMLのインライン `<style>` が基本。例外は共有の `common/css/site-nav.css` で、ナビのほか、研究概要ページ共通の
+  PDF リンク（`.rs-pdf`）・印刷用 CSS（`@media print`）・ライセンス表示（`.rs-license`）もここにある。
 - CSS変数: `--primary:#0f2044`（濃紺）、`--accent:#2563eb`（青）、`--text:#1f2937`。
-- フォント: Inter + Noto Sans JP（Google Fonts）。
+- フォント: Inter + Noto Sans JP（Google Fonts）。Noto Sans JP を読み込むのは日本語ページ中心で、英語トップや研究概要は Inter のみ読み込む（日本語は端末のフォント）。
 - レスポンシブ: 680px ブレークポイント（ナビのみ 920px で切替、下記）。
 - **ナビゲーション（全24ページ共通）**: スタイルは `common/css/site-nav.css`、動作は `common/js/site-nav.js`。
   **メニューの中身は `tools/build-static.js` の `NAV` に1か所で定義**し、ビルド時に
@@ -111,6 +113,8 @@ oldfiles/               … アーカイブ（.gitignore 対象で非公開・�
   - 920px 以下はハンバーガーメニューになり、グループを見出し付きのカード一覧として展開表示する。
   - **ページを追加・改名したら `NAV` を直して `node tools/build-static.js` を実行する**（各ページの `<ul class="nav-menu">` は手で編集しない）。
   - トップ2ページのナビは `position: fixed`（ページ側で上書き）、その他は `position: sticky`。
+  - **920px 以下でドロップダウンに `visibility: visible` を指定しない**（`inherit` にする）。閉じたメニューの透明なリンクが
+    ページ上部を覆い、スマホで本文のリンクがタップできなくなる（2026-11-12〜16 に発生、修正済み）。
 - サブページの見出しは各ページ先頭の `<h1>`（`.page-hero` / `.hero` / `.page-title`）。
 - フレームワーク・jQuery・ビルドツールはすべて不使用（レガシー資産は2026-06-15に撤去済み）。
 
@@ -185,8 +189,8 @@ News は3系統をマージして表示（`common/js/news-merge.js`）:
 **重要判定**（`rankOf()`）:
 
 1. **英文論文誌はすべて重要**。`@article` かつ `lang` が `ja` でなく、誌名に日本語文字を
-   含まないものを英文誌とみなす（`isEnglishJournal()`）。bib の @article 152件は
-   `lang={ja}` の72件と和文誌名の72件が完全に一致しているため、この2条件で確実に分離できる。
+   含まないものを英文誌とみなす（`isEnglishJournal()`）。bib の @article 157件のうち `lang={ja}` は72件、和文誌名は73件
+   （`ito2026coic_moralagent` のみ `lang` 指定なし）。どちらか一方に当たれば和文誌扱いになるので、この2条件で分離できる。
    和文誌（人工知能学会論文誌・情報処理学会論文誌など）は通常扱い。
 2. **難関国際会議**は誌名・会議名の正規表現 `TOP_CONF` で判定。範囲は
    `publications-top-confs.html` の `VENUE_RULES` と同じ
@@ -248,7 +252,7 @@ JSON駆動ではないので、追加・変更は両ファイルを直接編集�
 - `sitemap.xml` は `tools/build-static.js` が生成する（**手で編集しない**）。モダン版14ページ・研究概要10ページ・
   論文ページ（`papers/*.html`）を掲載し、日英ペアには hreflang と `lastmod`（最終コミット日。未コミットの変更があれば当日）を付ける。
   ページを増やしたらスクリプト内の `PAGES`（モダン版）または `STATEMENTS`（研究概要）に追加する。
-- **研究概要ページの `<head>`**: `<!--seo-->` 〜 `<!--/seo-->` の間（canonical・hreflang・OG・JSON-LD）はビルドが生成する。
+- **研究概要ページの `<head>`**: `<!--seo-->` 〜 `<!--/seo-->` の間（canonical・hreflang・`rel="license"`・OG・JSON-LD）はビルドが生成する。
   ページ独自の `<meta name="description">` があればそれを使い、無ければ定型文を入れる。
 - **論文ページ（`papers/NAME.html`）**: `papers/NAME.pdf` を `url=` で参照している bib エントリごとに、ビルドが1ページ生成する
   （Google Scholar 用の `citation_*` メタタグ、ScholarlyArticle の JSON-LD、PDF・DOI へのリンク）。**手で編集しない**。
@@ -272,7 +276,7 @@ JSON駆動ではないので、追加・変更は両ファイルを直接編集�
 
 - 詳細な修正・整理の履歴は `FIXES.md` を参照。
 - 2026-06-15 に、モダンサイトから未リンクの孤立レガシーページ群（`menu*` / `selfintro*` / `top-j`）と、それ専用だった旧資産（Prototype/Scriptaculous、Flash `.swf`、旧 `css/`、`Scripts/` 等）を一括撤去。
-- 現存全HTMLの**内部参照リンク切れは0件**（最終確認 2026-11-16）。
+- 現存全HTMLの**内部参照リンク切れは0件**（最終確認 2026-11-25）。
 - `oldfiles/` はアーカイブ。`.gitignore` 対象のため公開されず、サイト本体からも参照しない。
 - 2026-09-25 にルート直下の未参照ファイルを整理: 賞状・業績紹介・講演チラシは bib / `awards.json` の該当エントリから `link`（受賞）/ `url`（講演）で参照、新聞・雑誌記事スキャン11点（著作権が掲載元にあるため）と未使用写真4点は `oldfiles/` へ移して非公開化、未使用の `test.js` は削除。これでルート直下・`papers/` とも未参照の公開ファイルは0件。
 - bib の `@award` は `link` / `link_en` / `link_ja` で賞状等へのリンクを付けられる（`url` があれば併記される）。
