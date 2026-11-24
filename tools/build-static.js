@@ -236,6 +236,18 @@ const PERSON_REF = { '@type': 'Person', '@id': SITE + '#person', name: 'Takayuki
 const ldScript = graph => '<script type="application/ld+json">\n'
   + JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }, null, 2) + '\n</script>';
 
+// 研究概要は全ページ CC BY 4.0。本文末（</main> の直前）にライセンス表示を入れる。
+const CC_BY = 'https://creativecommons.org/licenses/by/4.0/';
+function statementLicense(html, year, file, lang) {
+  const text = lang === 'ja'
+    ? `© ${year} 伊藤孝行。本稿は<a rel="license" href="${CC_BY}">クリエイティブ・コモンズ 表示 4.0 国際 ライセンス（CC BY 4.0）</a>の下に提供されています。著者名・タイトル・出典URLを明記すれば、営利目的を含め自由に共有・改変できます。`
+    : `© ${year} Takayuki Ito. This research statement is licensed under a <a rel="license" href="${CC_BY}">Creative Commons Attribution 4.0 International License (CC BY 4.0)</a>. You may share and adapt it for any purpose, provided you credit the author, title and source URL.`;
+  const block = `<!--license-->\n<footer class="rs-license"><p>${text}</p></footer>\n<!--/license-->`;
+  if (/<!--license-->[\s\S]*?<!--\/license-->/.test(html)) return html.replace(/<!--license-->[\s\S]*?<!--\/license-->/, () => block);
+  if (!/<\/main>/.test(html)) throw new Error(`${file}: </main> not found`);
+  return html.replace(/<\/main>/, m => `${block}\n${m}`);
+}
+
 function statementSeo(html, year, en, ja, lang) {
   const file = lang === 'ja' ? ja : en;
   const url = SITE + file;
@@ -250,6 +262,7 @@ function statementSeo(html, year, en, ja, lang) {
   const lines = [
     own ? '' : `<meta name="description" content="${attr(desc)}">`,
     `<link rel="canonical" href="${url}">`,
+    `<link rel="license" href="${CC_BY}">`,
     `<link rel="alternate" hreflang="en" href="${SITE + en}">`,
     `<link rel="alternate" hreflang="ja" href="${SITE + ja}">`,
     `<link rel="alternate" hreflang="x-default" href="${SITE + en}">`,
@@ -262,6 +275,7 @@ function statementSeo(html, year, en, ja, lang) {
     ldScript([
       { '@type': 'Article', '@id': url + '#article', headline: title, description: desc, url, inLanguage: lang,
         datePublished: published, author: PERSON_REF, about: PERSON_REF,
+        license: CC_BY, copyrightHolder: PERSON_REF, copyrightYear: year,
         isPartOf: { '@type': 'WebSite', '@id': SITE + '#website', url: SITE, name: 'Takayuki Ito' },
         breadcrumb: { '@id': url + '#breadcrumb' } },
       { '@type': 'BreadcrumbList', '@id': url + '#breadcrumb', itemListElement: [
@@ -581,7 +595,10 @@ function inject(html, file, id, content) {
     let after = applyNav(before, file);
     for (const [id, content] of Object.entries(parts)) after = inject(after, file, id, content);
     const st = STATEMENTS.find(x => x[1] === file || x[2] === file);
-    if (st) after = statementSeo(after, st[0], st[1], st[2], st[2] === file ? 'ja' : 'en');
+    if (st) {
+      const lang = st[2] === file ? 'ja' : 'en';
+      after = statementLicense(statementSeo(after, st[0], st[1], st[2], lang), st[0], file, lang);
+    }
     if (after === before) continue;
     stale++;
     if (CHECK) console.log(`out of date: ${file}`);

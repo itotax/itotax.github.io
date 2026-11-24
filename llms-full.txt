@@ -31,6 +31,7 @@ All pages contain their full content as static HTML. English pages are listed fi
 - [Research Statement 2018](https://takayuki-ito.com/ResearchStatement2018.html)
 - [Research Statement 2016](https://takayuki-ito.com/ResearchStatement2016.html)
 - [Research Statement 2009](https://takayuki-ito.com/ResearchStatement2009.html)
+- All research statements (2009–2026, EN/JA, HTML and PDF) are licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/); please credit Takayuki Ito, the title and the URL.
 
 ## Data
 
@@ -324,6 +325,8 @@ General references
 
 [30] D. Acemoglu, S. Johnson, Power and Progress: Our Thousand-Year Struggle Over Technology and Prosperity, PublicAffairs, 2023.
 Bibliographic data for [1]–[23] follow https://takayuki-ito.com/publications.html ([16] follows the CV).
+
+© 2026 Takayuki Ito. This research statement is licensed under a Creative Commons Attribution 4.0 International License (CC BY 4.0). You may share and adapt it for any purpose, provided you credit the author, title and source URL.
 
 ## Awards
 - 2026: Prizes for Science and Technology (Research Category), Commendation for Science and Technology by the Minister of MEXT — "Study on Consensus Support Systems based on AI Agents" (with Rafik Hadfi & Sofia Sahab)
