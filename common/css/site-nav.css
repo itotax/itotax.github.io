@@ -283,7 +283,7 @@ nav.site-nav.open .nav-toggle span:nth-child(3) { top: 19px; transform: rotate(-
   .rs-wrap { max-width: none !important; padding: 0 !important; }
 }
 
-/* 研究概要のライセンス表示（CC BY 4.0）。印刷・PDF にも出す */
+/* 研究概要のライセンス表示（CC BY-NC-ND 4.0）。印刷・PDF にも出す */
 .rs-license { margin-top: 3em; padding-top: 1em; border-top: 1px solid var(--border); font-size: .82rem; line-height: 1.6; color: var(--text-sec); }
 .rs-license p { margin: 0; }
 .rs-license a { color: var(--accent); }
